@@ -16,7 +16,7 @@ Widget constructCustomAppBar(logout, userName, id) {
           userName,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 14,
+            fontSize: 18,
           ),
         ),
         Text(
