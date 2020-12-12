@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './widgets/CustomFloatingActionButton.dart';
+import './widgets/CustomAppBar.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -20,9 +22,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF8F0026),
-      ),
+      appBar:constructCustomAppBar(() {}, 'Benimaru Shinmon', '0123456789'),
+      drawer: Drawer(),
       body: Text('sup'),
       floatingActionButton: CustomFloatingActionButton(() {}),
       backgroundColor: Color(0xFF035F6D),
