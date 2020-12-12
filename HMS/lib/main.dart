@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/CustomFloatingActionButton.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF8F0026),
+      ),
+      body: Text('sup'),
+      floatingActionButton: CustomFloatingActionButton(() {}),
+      backgroundColor: Color(0xFF035F6D),
     );
   }
 }
