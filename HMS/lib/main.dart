@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import './widget/RaisedButton.dart';
+import 'widget/NiceButton.dart';
+import 'widget/CardWidget.dart';
+import 'package:intl/intl.dart';
+import 'widget/CardHistoryWidget.dart';
+import 'widget/main_drawer.dart';
 
 void main() => runApp(MyApp01());
 
@@ -28,27 +32,50 @@ class MyHomePage extends StatelessWidget {
         ],
         title: Text("HMS"),
       ),
+      drawer: MainDrawer(),
       body: ListView(
         children: [
-          Container(
-            height: 200,
-            width: double.infinity,
-            child: Image(
-              image: NetworkImage(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
-            ),
+          // Container(
+          //   height: 200,
+          //   width: double.infinity,
+          //   child: Image(
+          //     image: NetworkImage(
+          //         'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+          //   ),
+          // ),
+          // NiceButton(
+          //   nameOfButton: "My Profile",
+          //   heightOfButton: 75,
+          // ),
+          // NiceButton(
+          //   nameOfButton: "My Appointments",
+          //   widthOfButton: double.infinity,
+          //   heightOfButton: 75,
+          // ),
+          // NiceButton(
+          //   nameOfButton: "My Midical History",
+          //   widthOfButton: double.infinity,
+          //   heightOfButton: 75,
+          // ),
+          CardWidget(
+            titleOfCardApp: "Analysis",
+            bodyOfCardApp: ['Doctor: Ahmed', 'afs'],
+            dateOfReservation: DateTime.now(),
           ),
-          NiseButton(
-            nameOfButton: "My Profile",
-            sizeOfButton: double.infinity,
+          CardWidget(
+            titleOfCardApp: "Radiation",
+            bodyOfCardApp: ['Doctor: Youef', 'sasa'],
+            dateOfReservation: DateTime.now(),
           ),
-          NiseButton(
-            nameOfButton: "My Appointments",
-            sizeOfButton: double.infinity,
+          CardHistoryWidget(
+            titleOfCardApp: "Friday",
+            bodyOfCardApp: ['Doctor: Mohamed', 'ada'],
+            dateOfReservation: DateTime.now(),
           ),
-          NiseButton(
-            nameOfButton: "My Midical History",
-            sizeOfButton: double.infinity,
+          CardHistoryWidget(
+            titleOfCardApp: "SatrDay",
+            bodyOfCardApp: ['Doctor: Ali', 'JFGD'],
+            dateOfReservation: DateTime.now(),
           ),
         ],
       ),
