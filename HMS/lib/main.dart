@@ -1,11 +1,20 @@
+import 'package:HMS/screens/auth_screens.dart';
+import 'package:HMS/screens/chat_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'widget/NiceButton.dart';
-import 'widget/CardWidget.dart';
-import 'package:intl/intl.dart';
+//import 'widget/NiceButton.dart';
+import 'widget/appointment/CardWidget.dart';
+//import 'package:intl/intl.dart';
 import 'widget/CardHistoryWidget.dart';
-import 'widget/main_drawer.dart';
+//import 'widget/main_drawer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp01());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp01());
+}
 
 class MyApp01 extends StatelessWidget {
   @override
@@ -13,7 +22,21 @@ class MyApp01 extends StatelessWidget {
     return MaterialApp(
       title: 'HMS',
       //theme: ThemeData(primarySwatch:/*Color.fromARGB(1, 3, 95, 109)*/ ),
-      home: MyHomePage(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.onAuthStateChanged,
+        builder: (ctx, userSnapshot) {
+          if (userSnapshot.hasData) {
+            return ChatScreen();
+          }
+          return AuthScreen();
+        },
+      ),
+
+      //MyHomePage(),
+      theme: ThemeData(
+        backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+        // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+      ),
     );
   }
 }
@@ -32,7 +55,7 @@ class MyHomePage extends StatelessWidget {
         ],
         title: Text("HMS"),
       ),
-      drawer: MainDrawer(),
+      // drawer: MainDrawer(),
       body: ListView(
         children: [
           // Container(

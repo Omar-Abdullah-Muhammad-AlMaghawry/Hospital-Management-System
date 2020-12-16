@@ -1,7 +1,7 @@
-import 'package:HMS/widget/NiceButton.dart';
+//import 'package:HMS/widget/NiceButton.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'CardWidget.dart';
+//import 'CardWidget.dart';
 class CardHistoryWidget extends StatelessWidget {
   final String titleOfCardApp;
   final List<String> bodyOfCardApp;
