@@ -62,6 +62,18 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "date_field",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/date_field-0.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "datetime_picker_formfield",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/datetime_picker_formfield-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0-nullsafety.1",
       "packageUri": "lib/",
@@ -230,7 +242,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-13T15:34:28.845233Z",
+  "generated": "2020-12-19T07:42:29.889339Z",
   "generator": "pub",
-  "generatorVersion": "2.10.3"
+  "generatorVersion": "2.10.4"
 }

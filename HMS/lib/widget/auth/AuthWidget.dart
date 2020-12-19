@@ -73,7 +73,7 @@ class _AuthFormState extends State<AuthForm> {
                           key: Key("password"),
                           validator: (password) {
                             if (password.isEmpty || password.length < 7) {
-                              return "User Nam have to be more than 7 ";
+                              return "aPassword have to be more than 7 ";
                             }
                             return null;
                           },
