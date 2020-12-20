@@ -1,6 +1,8 @@
 import 'package:HMS/screens/auth_screens.dart';
 import 'package:HMS/screens/chat_screen.dart';
+import 'package:HMS/screens/history_screen.dart';
 import 'package:HMS/screens/my_appointment_screen.dart';
+import 'package:HMS/screens/patients_home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'widget/NiceButton.dart';
@@ -27,8 +29,12 @@ class MyApp01 extends StatelessWidget {
         stream: FirebaseAuth.instance.onAuthStateChanged,
         builder: (ctx, userSnapshot) {
           if (userSnapshot.hasData) {
-            return ChatScreen();
-            // MyAppointmentScreen();
+            return 
+           // HistoryScreen();
+            //PatientHome();
+            MyAppointmentScreen();
+            //ChatScreen();
+
           }
           return AuthScreen();
         },

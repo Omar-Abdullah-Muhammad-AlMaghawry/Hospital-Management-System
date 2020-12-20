@@ -1,6 +1,5 @@
-
-
-import 'package:HMS/widget/appointment/new_appointment.dart';
+import 'package:HMS/widget/appointment/my_apointment.dart';
+import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
 import 'package:flutter/material.dart';
 
 class CardAppointment extends StatefulWidget {
@@ -9,17 +8,24 @@ class CardAppointment extends StatefulWidget {
   final String doctor;
   final String time;
   final String date;
+  final String diagnose;
+  final String treatment;
+  final String cardId;
   final bool isAppointment;
+  //final Function delete;
   // final int vaildButtons;
   final ValueKey key;
   CardAppointment(
       {this.key,
+      this.cardId,
       @required this.isAppointment,
       this.titleOfCardApp,
       this.department,
       this.date,
       this.doctor,
-      this.time});
+      this.time,
+      this.diagnose,
+      this.treatment});
 
   @override
   _CardAppointmentState createState() => _CardAppointmentState();
@@ -30,7 +36,25 @@ class _CardAppointmentState extends State<CardAppointment> {
     showModalBottomSheet(
         context: context,
         builder: (ctx) {
-          return NewAppointment(changeTime: true);
+//          MyAppointmenyt(isChange: isChange,);
+          return NewEditDeleteAppointment(
+            changeTime: true,
+            deleteAppoint: false,
+            idOfCard: widget.cardId,
+          );
+        });
+  }
+
+  void delete(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (ctx) {
+//          MyAppointmenyt(isChange: isChange,);
+          return NewEditDeleteAppointment(
+            deleteAppoint: true,
+            changeTime: false,
+            idOfCard: widget.cardId,
+          );
         });
   }
 
@@ -100,7 +124,7 @@ class _CardAppointmentState extends State<CardAppointment> {
                         ),
                       ),
                       Text(
-                        "Doctor : " + widget.doctor,
+                        widget.doctor,
                         style: TextStyle(
                           color: Color.fromRGBO(0, 0, 0, 1),
                           fontSize: 17,
@@ -112,6 +136,25 @@ class _CardAppointmentState extends State<CardAppointment> {
                           color: Color.fromRGBO(0, 0, 0, 1),
                           fontSize: 17,
                         ),
+                      ),
+                      if (!widget.isAppointment)
+                        Text(
+                          "Diagnose the Disease : " + widget.diagnose,
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 17,
+                          ),
+                        ),
+                      if (!widget.isAppointment)
+                        Text(
+                          "The treatment : " + widget.treatment,
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 17,
+                          ),
+                        ),
+                      SizedBox(
+                        height: 8,
                       ),
                     ],
                   ),
@@ -145,7 +188,7 @@ class _CardAppointmentState extends State<CardAppointment> {
                           fontSize: 10,
                         ),
                       ),
-                      onPressed:()=> change(context),
+                      onPressed: () => change(context),
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
@@ -163,7 +206,7 @@ class _CardAppointmentState extends State<CardAppointment> {
                           fontSize: 10,
                         ),
                       ),
-                      onPressed: null,
+                      onPressed: () => delete(context),
                       color: Theme.of(context).primaryColor,
                     ),
                   ),

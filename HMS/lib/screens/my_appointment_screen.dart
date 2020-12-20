@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:HMS/widget/appointment/my_apointment.dart';
-import 'package:HMS/widget/appointment/new_appointment.dart';
+import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
 import 'package:flutter/material.dart';
 
 class MyAppointmentScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
             showModalBottomSheet(
                 context: context,
                 builder: (ctx) {
-                  return NewAppointment(changeTime: false,);
+                  return NewEditDeleteAppointment(changeTime: false,deleteAppoint: false,);
                 });}
   @override
   Widget build(BuildContext context) {
