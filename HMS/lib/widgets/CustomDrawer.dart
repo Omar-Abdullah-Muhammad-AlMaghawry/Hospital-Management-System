@@ -124,8 +124,39 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           Container(
+            height: 260,
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(height: 50),
+                Text(
+                  'Contact us:',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'Phone: 07775000',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'Address: شارع الشهيد ميكي ماوس',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
             alignment: Alignment.bottomCenter,
-            height: 300,
+            height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -155,7 +186,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
