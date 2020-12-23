@@ -33,9 +33,12 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   var _isChange = false;
   var _isDelete = false;
   var _isClinic = true;
+  UserCredential userCredential;
+  final _user = FirebaseAuth.instance.currentUser;
   String x = '';
   final cardID = FirebaseFirestore.instance.collection("appointments").doc().id;
   void _changeDateAndTime() async {
+    final _user = FirebaseAuth.instance.currentUser;
     FocusScope.of(context).unfocus();
     // var content =
     //     await FirebaseFirestore.instance.collection("appointments").doc().get();
@@ -43,11 +46,14 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
     _formKeyA.currentState.save();
     await FirebaseFirestore.instance
         .collection("appointments")
+        .document("onePatient")
+        .collection(_user.uid)
         .document(widget.idOfCard)
         .update({
       'time_Reservation': _timeOfReservation,
       'date_Reservation': _dateOfReservation
     });
+    Navigator.of(context).pop();
     // Firestore.instance
     //                 .runTransaction((Transaction transaction) async {
     //               CollectionReference reference =
@@ -56,13 +62,17 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   }
 
   void _delete() async {
+    final _user = FirebaseAuth.instance.currentUser;
     // var content =
     //     await FirebaseFirestore.instance.collection("appointments").doc().get();
     _isDelete = true;
     await FirebaseFirestore.instance
         .collection("appointments")
+        .document("onePatient")
+        .collection(_user.uid)
         .document(widget.idOfCard)
         .delete();
+    Navigator.of(context).pop();
 //     Firestore.instance.runTransaction((Transaction myTransaction) async {
 //     await myTransaction.delete();
 // });
@@ -71,7 +81,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   void _submitResrvation() async {
     x = cardID;
     FocusScope.of(context).unfocus();
-    final _user = FirebaseAuth.instance.currentUser;
+    //  final _user = FirebaseAuth.instance.currentUser;
+
     var _isValid = _formKeyA.currentState.validate();
     if (_isValid) {
       _formKeyA.currentState.save();
@@ -86,6 +97,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
 
       FirebaseFirestore.instance
           .collection("appointments")
+          .document("onePatient")
+          .collection(_user.uid)
           .document(cardID)
           .set({
         'userId': _user.uid,
@@ -101,11 +114,14 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
         "cardID": cardID,
       });
       _isLoading = false;
-    }
+    Navigator.of(context).pop();
     _controller1.clear();
     _controller2.clear();
     _controller3.clear();
     _controller4.clear();
+    
+    }
+    
   }
 
   @override
@@ -148,7 +164,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                   //       DropdownMenuItem(child: Text("Radiation"))
                   //     ],
                   //     onChanged: () {
-                        
+
                   //     }),
                   if (!(widget.deleteAppoint))
                     if (!(widget.changeTime))

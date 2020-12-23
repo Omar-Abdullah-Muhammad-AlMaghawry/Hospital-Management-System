@@ -10,17 +10,19 @@ class MainDrawer extends StatelessWidget {
             margin: EdgeInsets.only(
               top: 30,
             ),
-            color: Color.fromRGBO(153, 238, 255, 1),
+            color: Theme.of(context).primaryColorDark,
+            //Color.fromRGBO(153, 238, 255, 1),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
+                    height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: NetworkImage(
-                            'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.itl.cat%2Fwallview%2Fhwmhxo_cute-profile-images-pic-for-whatsapp-for-boys%2F&psig=AOvVaw33eNQImBWnkA9wJ87Hnjpo&ust=1607908633876000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMi5vsvkye0CFQAAAAAdAAAAABAD'),
+                            'https://img.republicworld.com/republic-prod/stories/promolarge/xxhdpi/tivvhptvbuc6cs3l_1596777854.jpeg?tr=w-812,h-464'),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -61,6 +63,9 @@ class MainDrawer extends StatelessWidget {
             leading: Icon(Icons.map),
             title: Text("Map"),
             onTap: () {},
+          ),
+          SizedBox(
+            height: 50,
           ),
           Container(
             margin: EdgeInsets.only(top: 50),

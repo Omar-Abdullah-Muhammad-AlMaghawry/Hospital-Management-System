@@ -1,3 +1,4 @@
+import 'package:HMS/screens/my_appointment_screen.dart';
 import 'package:flutter/material.dart';
 
 class NiceButton extends StatelessWidget {
@@ -6,16 +7,20 @@ class NiceButton extends StatelessWidget {
   final double heightOfButton;
   final Function functionOfButton;
   final double fontOfSize;
-
+  final Function (BuildContext ctx) onPressed;
 
   NiceButton(
-      {this.nameOfButton,
+    
+      {@required this.onPressed,this.nameOfButton,
       this.widthOfButton,
       this.functionOfButton,
       this.heightOfButton,
       this.fontOfSize});
+ 
+
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -27,7 +32,7 @@ class NiceButton extends StatelessWidget {
       width: widthOfButton,
       height: heightOfButton,
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      
+
       //color: Color.fromRGBO(0, 153, 255, 1),
       child: FlatButton(
         textColor: Color.fromRGBO(255, 255, 255, 1),
@@ -38,7 +43,7 @@ class NiceButton extends StatelessWidget {
               // color: Color.fromRGBO(255, 255, 255, 1),
               fontWeight: FontWeight.bold),
         ),
-        onPressed: () {},
+        onPressed:()=> onPressed(context),
       ),
     );
   }

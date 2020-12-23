@@ -1,9 +1,31 @@
-import 'package:HMS/widget/patient_home/NiceButton.dart';
-import 'package:HMS/widget/main_drawer.dart';
+import './chat_screen.dart';
+import './history_screen.dart';
+import '../widget/patient_home/NiceButton.dart';
+import '../widget/main_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../screens/my_appointment_screen.dart';
 
 class PatientHome extends StatelessWidget {
+  void moveToMyHistory(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      HistoryScreen.nameRoute,
+    );
+  }
+
+  void moveToMyAppointment(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MyAppointmentScreen.nameRoute,
+    );
+  }
+
+  void moveToChat(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      ChatScreen.nameRoute,
+    );
+  }
+
+  static const nameRoute = "/patient-home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +39,7 @@ class PatientHome extends StatelessWidget {
             },
           )
         ],
-        title: Text("HMS"),
+        title: Text("Home"),
       ),
       drawer: MainDrawer(),
       body: ListView(
@@ -36,15 +58,18 @@ class PatientHome extends StatelessWidget {
           ),
 
           NiceButton(
+            onPressed: null,
             nameOfButton: "My Profile",
             heightOfButton: 75,
           ),
           NiceButton(
+            onPressed: moveToMyAppointment,
             nameOfButton: "My Appointments",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),
           NiceButton(
+            onPressed: moveToMyHistory,
             nameOfButton: "My Midical History",
             widthOfButton: double.infinity,
             heightOfButton: 75,
@@ -77,7 +102,7 @@ class PatientHome extends StatelessWidget {
         child: Icon(
           Icons.chat,
         ),
-        onPressed: () {},
+        onPressed: () =>moveToChat(context),
       ),
     );
   }

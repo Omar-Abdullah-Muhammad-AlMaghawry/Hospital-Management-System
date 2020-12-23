@@ -7,9 +7,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class History extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _user = FirebaseAuth.instance.currentUser;
     return StreamBuilder(
+
         stream: FirebaseFirestore.instance
-            .collection("appointments")
+            .collection("appointments/onePatient/" + _user.uid)
             .orderBy("created At")
             .snapshots(),
         builder: (ctx, appointSnapshot) {
@@ -26,12 +28,13 @@ class History extends StatelessWidget {
 
                 return CardAppointment(
                   department: appointmentDocs[index]["department"],
-                  doctor: appointmentDocs[index]["doctor"],
+                  doctor: appointmentDocs[index]["doctorOrAnlysisName"],
                   time:appointmentDocs[index]["time_Reservation"],
                   titleOfCardApp: "Clinic",
                   date: appointmentDocs[index]["date_Reservation"],
                   diagnose: "",
                   treatment: "",
+
                   isAppointment: false,
                 );
 

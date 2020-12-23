@@ -1,8 +1,8 @@
-import 'package:HMS/screens/auth_screens.dart';
-import 'package:HMS/screens/chat_screen.dart';
-import 'package:HMS/screens/history_screen.dart';
-import 'package:HMS/screens/my_appointment_screen.dart';
-import 'package:HMS/screens/patients_home_screen.dart';
+import './screens/auth_screens.dart';
+import './screens/chat_screen.dart';
+import './screens/history_screen.dart';
+import './screens/my_appointment_screen.dart';
+import './screens/patients_home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'widget/NiceButton.dart';
@@ -12,6 +12,7 @@ import 'widget/CardHistoryWidget.dart';
 //import 'widget/main_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import './screens/my_appointment_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,16 +30,36 @@ class MyApp01 extends StatelessWidget {
         stream: FirebaseAuth.instance.onAuthStateChanged,
         builder: (ctx, userSnapshot) {
           if (userSnapshot.hasData) {
-            return 
-           // HistoryScreen();
-            //PatientHome();
-            MyAppointmentScreen();
+            return
+                //HistoryScreen();
+                PatientHome();
+            //  MyAppointmentScreen();
             //ChatScreen();
 
           }
           return AuthScreen();
         },
       ),
+      routes: {
+        //   "/":(ctx)=>StreamBuilder(
+        //   stream: FirebaseAuth.instance.onAuthStateChanged,
+        //   builder: (ctx, userSnapshot) {
+        //     if (userSnapshot.hasData) {
+        //       return
+        //      //HistoryScreen();
+        //     PatientHome();
+        //      // MyAppointmentScreen();
+        //       //ChatScreen();
+
+        //     }
+        //     return AuthScreen();
+        //   },
+        // ),
+        PatientHome.nameRoute: (context) => PatientHome(),
+        MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
+        HistoryScreen.nameRoute: (context) => HistoryScreen(),
+        ChatScreen.nameRoute: (context) => ChatScreen(),
+      },
 
       //MyHomePage(),
       theme: ThemeData(

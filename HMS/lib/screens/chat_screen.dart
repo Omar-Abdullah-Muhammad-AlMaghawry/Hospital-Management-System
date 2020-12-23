@@ -5,6 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatScreen extends StatelessWidget {
+ static const nameRoute = "/chat-screen";
+ void movingToChat(context){
+
+ }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +44,14 @@ class ChatScreen extends StatelessWidget {
           )
         ],
       ),
-      body:Container(child: Column(
-        children: [
-          Expanded(child: Messages()) ,
-          NewMessage(),
-        ],
-      ),) 
-      ,      
+      body: Container(
+        child: Column(
+          children: [
+            Expanded(child: Messages()),
+            NewMessage(),
+          ],
+        ),
+      ),
     );
   }
 }
