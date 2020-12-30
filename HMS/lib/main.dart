@@ -1,9 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import './widgets/CustomDrawer.dart';
 import 'package:flutter/material.dart';
 import './widgets/CustomFloatingActionButton.dart';
 import './widgets/CustomAppBar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import './services/DbService.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -21,12 +27,27 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: constructCustomAppBar(() {}, 'Benimaru Shinmon', '0123456789'),
-      drawer: CustomDrawer(),
-      body: Text('sup'),
-      floatingActionButton: CustomFloatingActionButton(() {}),
-      backgroundColor: Color(0xFF035F6D),
-    );
+    return StreamBuilder<QuerySnapshot>(
+        stream: DbService().getPatients,
+        builder: (context, snapshot) {
+          return Scaffold(
+            appBar: constructCustomAppBar(() {}, 'Suxess', '0123456789'),
+            drawer: CustomDrawer(),
+            floatingActionButton: CustomFloatingActionButton(() {}),
+            backgroundColor: Color(0xFF035F6D),
+            body: /*Text(snapshot.data.docs[0].data()['name'])*/
+                ListView.builder(
+              itemCount: snapshot.data.docs.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Text(snapshot.data.docs[index].data()['name']),
+                    Text(snapshot.data.docs[index].data()['phoneNumber']),
+                  ],
+                );
+              },
+            ),
+          );
+        });
   }
 }
