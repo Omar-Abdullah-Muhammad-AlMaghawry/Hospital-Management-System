@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
             body: ListView.builder(
               itemCount: snapshot.data.docs.length,
               itemBuilder: (context, index) {
-                return Column(
+                return Row(
                   children: [
                     Text(snapshot.data.docs[index].data()['name']),
                     Text(snapshot.data.docs[index].data()['phoneNumber']),
