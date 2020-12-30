@@ -35,8 +35,7 @@ class HomePage extends StatelessWidget {
             drawer: CustomDrawer(),
             floatingActionButton: CustomFloatingActionButton(() {}),
             backgroundColor: Color(0xFF035F6D),
-            body: /*Text(snapshot.data.docs[0].data()['name'])*/
-                ListView.builder(
+            body: ListView.builder(
               itemCount: snapshot.data.docs.length,
               itemBuilder: (context, index) {
                 return Column(
