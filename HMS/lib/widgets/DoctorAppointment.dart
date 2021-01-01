@@ -1,8 +1,8 @@
-import 'package:HMS/widget/appointment/my_apointment.dart';
-import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+// import '../services/DbService.dart';
 import 'package:flutter/material.dart';
 
-class CardAppointment extends StatefulWidget {
+class DoctorAppointment extends StatefulWidget {
   final String titleOfCardApp;
   final String department;
   final String doctor;
@@ -15,7 +15,7 @@ class CardAppointment extends StatefulWidget {
   //final Function delete;
   // final int vaildButtons;
   final ValueKey key;
-  CardAppointment(
+  DoctorAppointment(
       {this.key,
       this.cardId,
       @required this.isAppointment,
@@ -28,35 +28,46 @@ class CardAppointment extends StatefulWidget {
       this.treatment});
 
   @override
-  _CardAppointmentState createState() => _CardAppointmentState();
+  _DoctorAppointmentState createState() => _DoctorAppointmentState();
 }
 
-class _CardAppointmentState extends State<CardAppointment> {
-  void change(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (ctx) {
-//          MyAppointmenyt(isChange: isChange,);
-          return NewEditDeleteAppointment(
-            changeTime: true,
-            deleteAppoint: false,
-            idOfCard: widget.cardId,
-          );
-        });
+class _DoctorAppointmentState extends State<DoctorAppointment> {
+//   void change(context) {
+//     showModalBottomSheet(
+//         context: context,
+//         builder: (ctx) {
+// //          MyAppointmenyt(isChange: isChange,);
+//           return NewEditDeleteAppointment(
+//             changeTime: true,
+//             deleteAppoint: false,
+//             idOfCard: widget.cardId,
+//           );
+//         });
+//   }
+
+//   void delete(context) {
+//     showModalBottomSheet(
+//         context: context,
+//         builder: (ctx) {
+// //          MyAppointmenyt(isChange: isChange,);
+//           return NewEditDeleteAppointment(
+//             deleteAppoint: true,
+//             changeTime: false,
+//             idOfCard: widget.cardId,
+//           );
+//         });
+//   }
+
+  void addTreatment() {
+    FirebaseFirestore.instance
+        .collection('abdo-partients-test')
+        .doc(widget.cardId)
+        .update({'treatment': 'SUXESS'});
   }
 
-  void delete(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (ctx) {
-//          MyAppointmenyt(isChange: isChange,);
-          return NewEditDeleteAppointment(
-            deleteAppoint: true,
-            changeTime: false,
-            idOfCard: widget.cardId,
-          );
-        });
-  }
+  void addDiagnosis() {}
+
+  void viewPatientHistory() {}
 
   @override
   Widget build(BuildContext context) {
@@ -140,22 +151,22 @@ class _CardAppointmentState extends State<CardAppointment> {
                             fontSize: 17,
                           ),
                         ),
-                        if (!widget.isAppointment)
-                          Text(
-                            "Diagnose the Disease : " + widget.diagnose,
-                            style: TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: 17,
-                            ),
+                        // if (!widget.isAppointment)
+                        Text(
+                          "Diagnosis: " + widget.diagnose,
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 17,
                           ),
-                        if (!widget.isAppointment)
-                          Text(
-                            "The treatment : " + widget.treatment,
-                            style: TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: 17,
-                            ),
+                        ),
+                        // if (!widget.isAppointment)
+                        Text(
+                          "The treatment : " + widget.treatment,
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 17,
                           ),
+                        ),
                         SizedBox(
                           height: 8,
                         ),
@@ -178,38 +189,56 @@ class _CardAppointmentState extends State<CardAppointment> {
                     //     fontOfSize: 10)
 
                     Container(
-                      margin: EdgeInsets.only(left: 25),
+                      margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                         color: Color.fromRGBO(0, 153, 255, 1),
                       ),
                       child: FlatButton(
                         child: Text(
-                          "Change ",
+                          "Add diagnosis ",
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 10,
                           ),
                         ),
-                        onPressed: () => change(context),
+                        onPressed: addDiagnosis,
                         color: Theme.of(context).primaryColor,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 25),
+                      margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                         color: Color.fromRGBO(0, 153, 255, 1),
                       ),
                       child: FlatButton(
                         child: Text(
-                          "Cancel",
+                          "Add treatment",
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 10,
                           ),
                         ),
-                        onPressed: () => delete(context),
+                        onPressed: addTreatment,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        color: Color.fromRGBO(0, 153, 255, 1),
+                      ),
+                      child: FlatButton(
+                        child: Text(
+                          "View history ",
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontSize: 10,
+                          ),
+                        ),
+                        onPressed: viewPatientHistory,
                         color: Theme.of(context).primaryColor,
                       ),
                     ),

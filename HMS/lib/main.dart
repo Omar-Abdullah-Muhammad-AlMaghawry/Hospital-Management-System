@@ -1,3 +1,4 @@
+import 'widgets/DoctorAppointment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import './widgets/CustomDrawer.dart';
@@ -38,11 +39,18 @@ class HomePage extends StatelessWidget {
             body: ListView.builder(
               itemCount: snapshot.data.docs.length,
               itemBuilder: (context, index) {
-                return Row(
-                  children: [
-                    Text(snapshot.data.docs[index].data()['name']),
-                    Text(snapshot.data.docs[index].data()['phoneNumber']),
-                  ],
+                return Container(
+                  child: DoctorAppointment(
+                    cardId: snapshot.data.docs[index].data()['cardId'],
+                    isAppointment: true,
+                    titleOfCardApp: snapshot.data.docs[index].data()['name'],
+                    date: snapshot.data.docs[index].data()['date'],
+                    doctor: 'Dr. Fancy Coats',
+                    department: snapshot.data.docs[index].data()['department'],
+                    treatment: snapshot.data.docs[index].data()['treatment'],
+                    time: snapshot.data.docs[index].data()['time'],
+                    diagnose: snapshot.data.docs[index].data()['diagnosis'],
+                  ),
                 );
               },
             ),
