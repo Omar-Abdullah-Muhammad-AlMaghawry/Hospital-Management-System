@@ -1,3 +1,5 @@
+import './message_list_screen.dart';
+
 import './chat_screen.dart';
 import './history_screen.dart';
 import '../widget/patient_home/NiceButton.dart';
@@ -21,7 +23,7 @@ class PatientHome extends StatelessWidget {
 
   void moveToChat(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      ChatScreen.nameRoute,
+      MessageListSreen.nameRoute,
     );
   }
 

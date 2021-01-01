@@ -1,9 +1,12 @@
+import 'package:HMS/widget/chat/message-list.dart';
 import 'package:HMS/widget/chat/message_bubles.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Messages extends StatelessWidget {
+  var id = '';
+  Messages({this.id});
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -25,10 +28,13 @@ class Messages extends StatelessWidget {
               reverse: true,
               itemCount: chatDocs.length,
               itemBuilder: (ctx, index) {
-                return MessageBuble(
+               
+                if(chatDocs[index]["senderId"] ==
+                      FirebaseAuth.instance.currentUser.uid && chatDocs[index]["recieverId"]==MessageList.reciever.id ||chatDocs[index]["senderId"] ==MessageList.reciever.id&&chatDocs[index]["recieverId"]==FirebaseAuth.instance.currentUser.uid)
+                  return MessageBuble(
                   chatDocs[index]["text"],
                   chatDocs[index]["userName"],
-                  chatDocs[index]["userId"] ==
+                  chatDocs[index]["senderId"] ==
                       FirebaseAuth.instance.currentUser.uid,
                   key: ValueKey(chatDocs[index].documentID),
                 );

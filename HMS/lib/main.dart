@@ -1,3 +1,5 @@
+import 'package:HMS/screens/message_list_screen.dart';
+
 import './screens/auth_screens.dart';
 import './screens/chat_screen.dart';
 import './screens/history_screen.dart';
@@ -32,10 +34,10 @@ class MyApp01 extends StatelessWidget {
           if (userSnapshot.hasData) {
             return
                 //HistoryScreen();
-                PatientHome();
-            //  MyAppointmentScreen();
-            //ChatScreen();
-
+               PatientHome();
+            // MyAppointmentScreen();
+            // ChatScreen();
+             // MessageListSreen();
           }
           return AuthScreen();
         },
@@ -59,6 +61,7 @@ class MyApp01 extends StatelessWidget {
         MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
         HistoryScreen.nameRoute: (context) => HistoryScreen(),
         ChatScreen.nameRoute: (context) => ChatScreen(),
+        MessageListSreen.nameRoute:(context)=>MessageListSreen(),
       },
 
       //MyHomePage(),

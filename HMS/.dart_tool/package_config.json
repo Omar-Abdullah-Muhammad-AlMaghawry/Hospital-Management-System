@@ -80,6 +80,30 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "firebase",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-7.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "firebase_analytics",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "firebase_analytics_platform_interface",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics_platform_interface-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "firebase_analytics_web",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics_web-0.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "firebase_auth",
       "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.18.4+1",
       "packageUri": "lib/",
@@ -134,6 +158,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "http",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
       "packageUri": "lib/",
@@ -168,6 +198,12 @@
       "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0-nullsafety.1",
       "packageUri": "lib/",
       "languageVersion": "2.10"
+    },
+    {
+      "name": "pedantic",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "plugin_platform_interface",
@@ -242,7 +278,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-19T07:42:29.889339Z",
+  "generated": "2021-01-01T17:20:15.224778Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }
