@@ -1,4 +1,4 @@
-name: HMS
+name: out_patient_clinics
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -23,8 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    firebase_auth: ^0.18.4+1
-    cloud_firestore: ^0.14.4
 
 
   # The following adds the Cupertino Icons font to your application.

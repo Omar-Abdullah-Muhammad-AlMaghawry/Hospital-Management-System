@@ -1,4 +1,4 @@
-# HMS
+# out_patient_clinics
 
 A new Flutter project.
 
