@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import '../services/DbService.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class DoctorAppointment extends StatefulWidget {
   final String titleOfCardApp;
@@ -15,24 +17,54 @@ class DoctorAppointment extends StatefulWidget {
   //final Function delete;
   // final int vaildButtons;
   final ValueKey key;
-  DoctorAppointment(
-      {this.key,
-      this.cardId,
-      @required this.isAppointment,
-      this.titleOfCardApp,
-      this.department,
-      this.date,
-      this.doctor,
-      this.time,
-      this.diagnose,
-      this.treatment});
+  DoctorAppointment({
+    this.key,
+    this.cardId,
+    @required this.isAppointment,
+    this.titleOfCardApp,
+    this.department,
+    this.date,
+    this.doctor,
+    this.time,
+    this.diagnose,
+    this.treatment,
+  });
 
   @override
   _DoctorAppointmentState createState() => _DoctorAppointmentState();
 }
 
 class _DoctorAppointmentState extends State<DoctorAppointment> {
-//   void change(context) {
+  File _pickedImage;
+
+  void addTreatment() async {
+    File _pickedImageFile = File(await ImagePicker()
+        .getImage(
+          source: ImageSource.camera,
+          imageQuality: 50,
+        )
+        .then((value) => value.path));
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child('test')
+        .child(widget.cardId + '.jpg');
+    await ref.putFile(_pickedImageFile);
+    String url = await ref.getDownloadURL();
+    FirebaseFirestore.instance
+        .collection('abdo-partients-test')
+        .doc(widget.cardId)
+        .update({'treatment': url});
+    setState(() {});
+  }
+
+  void addDiagnosis() {
+    FirebaseFirestore.instance
+        .collection('abdo-partients-test')
+        .doc(widget.cardId)
+        .update({'diagnosis': 'asuism'});
+  }
+
+  // void change(context) {
 //     showModalBottomSheet(
 //         context: context,
 //         builder: (ctx) {
@@ -45,32 +77,13 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
 //         });
 //   }
 
-//   void delete(context) {
-//     showModalBottomSheet(
-//         context: context,
-//         builder: (ctx) {
-// //          MyAppointmenyt(isChange: isChange,);
-//           return NewEditDeleteAppointment(
-//             deleteAppoint: true,
-//             changeTime: false,
-//             idOfCard: widget.cardId,
-//           );
-//         });
-//   }
-
-  void addTreatment() {
-    FirebaseFirestore.instance
-        .collection('abdo-partients-test')
-        .doc(widget.cardId)
-        .update({'treatment': 'SUXESS'});
-  }
-
-  void addDiagnosis() {}
+//TODO add the view patient history function for routing
 
   void viewPatientHistory() {}
 
   @override
   Widget build(BuildContext context) {
+    print(widget.treatment);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(35)),
@@ -131,7 +144,7 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
                       // Use children total size
                       children: [
                         Text(
-                          "Department : " + widget.department,
+                          "Department: " + widget.department,
                           style: TextStyle(
                             color: Color.fromRGBO(0, 0, 0, 1),
                             fontSize: 17,
@@ -160,13 +173,13 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
                           ),
                         ),
                         // if (!widget.isAppointment)
-                        Text(
-                          "The treatment : " + widget.treatment,
-                          style: TextStyle(
-                            color: Color.fromRGBO(0, 0, 0, 1),
-                            fontSize: 17,
-                          ),
-                        ),
+                        // Text(
+                        //   "The treatment : " + widget.treatment,
+                        //   style: TextStyle(
+                        //     color: Color.fromRGBO(0, 0, 0, 1),
+                        //     fontSize: 17,
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 8,
                         ),
@@ -175,19 +188,20 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
                   ),
                 ),
               ),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: widget.treatment != ''
+                    ? Image.network(
+                        widget.treatment,
+                        fit: BoxFit.fitWidth,
+                      )
+                    : null,
+              ),
               if (widget.isAppointment)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // mainAxisSize: MainAxisSize.min,
                   children: [
-                    // NiceButton(
-                    //   nameOfButton: "Change U",
-                    //   fontOfSize: 10,
-                    // ),
-                    // NiceButton(
-                    //     nameOfButton: "Cancel the Reservation",
-                    //     fontOfSize: 10)
-
                     Container(
                       margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(

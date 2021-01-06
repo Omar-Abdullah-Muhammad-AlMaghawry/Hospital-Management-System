@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+//TODO bind drawer buttons to the pages the point to.
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child: ListView(
         children: [
           Container(
             width: double.infinity,

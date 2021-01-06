@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//TODO connect it to the logout button.
 Widget constructCustomAppBar(logout, userName, id) {
   return AppBar(
     actions: [

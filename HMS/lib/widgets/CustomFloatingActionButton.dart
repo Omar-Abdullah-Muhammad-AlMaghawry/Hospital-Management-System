@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//TODO connect it to the chat page
 class CustomFloatingActionButton extends StatelessWidget {
   Function function;
 
