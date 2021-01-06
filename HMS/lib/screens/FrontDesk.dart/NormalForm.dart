@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:authentication/shared/constants.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'BedReservation.dart';
+import './bed_reservation.dart';
 
 class NormalBeds extends StatefulWidget {
   @override

@@ -4,21 +4,22 @@ import 'package:authentication/services/auth.dart';
 import 'package:authentication/screens/authenticate/register.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomeDoctor extends StatelessWidget {
+class Profile extends StatelessWidget {
   AuthResult result;
   final AuthService _auth = AuthService();
   //String userName = RegisterState().userName;
   Future mm() async {
-    final var11 = await FirebaseAuth.instance.currentUser();
+    final current = await FirebaseAuth.instance.currentUser();
     FutureBuilder(
-      future: Firestore.instance.collection("users").document(var11.uid).get(),
+      future:
+          Firestore.instance.collection("users").document(current.uid).get(),
       builder: (context, index) {
         //Firestore.instance.collection("users").document(var11.uid).get()
         // ["userName"];
       },
     );
     //return
-    return var11;
+    return current;
     // );
   }
 

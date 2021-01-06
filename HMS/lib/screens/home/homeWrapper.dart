@@ -13,8 +13,13 @@ class HomeWrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
     print(user);
     //return either doctor home or patient home widget
-    //var ok = (user.email).contains('doctor');
-
-    return Homepage();
+    var ok = user.email;
+    var index = ok.indexOf('@');
+    if (ok.contains('d', index)) {
+      return Profile();
+    }
+    if (ok.contains('p', index)) {
+      return HomePatient();
+    }
   }
 }

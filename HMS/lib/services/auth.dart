@@ -58,6 +58,19 @@ class AuthService {
     }
   }
 
+//
+  Future resetPassword(email) async {
+    try {
+      String email;
+      await _auth.sendPasswordResetEmail(email: email);
+      //FirebaseUser user = result.user;
+      // return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   //register with email and password
   Future registerWithEmailAndPassword(
       {String email,

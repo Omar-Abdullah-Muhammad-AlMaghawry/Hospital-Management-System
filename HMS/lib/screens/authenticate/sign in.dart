@@ -1,3 +1,4 @@
+import 'package:authentication/screens/authenticate/ResetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:authentication/services/auth.dart';
 import 'package:authentication/shared/constants.dart';
@@ -110,6 +111,16 @@ class _SignInState extends State<SignIn> {
                       error,
                       style: TextStyle(color: Colors.red, fontSize: 14.0),
                     ),
+                    SizedBox(height: 12.0),
+                    TextButton(
+                      child: Text('Forget Pasword?'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResetPassword()));
+                      },
+                    )
                   ],
                 ),
               ),
