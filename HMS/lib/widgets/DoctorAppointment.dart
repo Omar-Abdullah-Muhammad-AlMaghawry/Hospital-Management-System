@@ -58,10 +58,30 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
   }
 
   void addDiagnosis() {
-    FirebaseFirestore.instance
-        .collection('abdo-partients-test')
-        .doc(widget.cardId)
-        .update({'diagnosis': 'asuism'});
+    showBottomSheet(
+      context: context,
+      builder: (ctx) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: 'Enter Diagnosis',
+            ),
+            onSubmitted: (diagnosis) {
+              FirebaseFirestore.instance
+                  .collection('abdo-partients-test')
+                  .doc(widget.cardId)
+                  .update({'diagnosis': diagnosis});
+              Navigator.pop(ctx);
+            },
+          ),
+        );
+      },
+    );
+    // FirebaseFirestore.instance
+    //     .collection('abdo-partients-test')
+    //     .doc(widget.cardId)
+    //     .update({'diagnosis': 'asuism'});
   }
 
   // void change(context) {
