@@ -12,26 +12,56 @@ class DoctorChatList extends StatefulWidget {
 }
 
 class _DoctorChatListState extends State<DoctorChatList> {
+  String sender;
+  String message1;
   User loggedinuser;
-  final _auth = FirebaseAuth.instance;
+  String user1;
+  String user2;
+  String temp1;
+  String temp2;
+  String temp3;
+  String x;
+  
   String chatteduser;
+    Future getroomid()async{
+    temp1 = user1 + "-" + user2;
+    print('temp1');print(temp1);
+    temp2 = user2 + "-" + user1;
+    print('temp2');print(temp2);
+    var chatroomid1 =await Firestore.instance.collection('chatrooms/$temp1/messages').getDocuments().then((value) {
+      if(value.docs.length>0){
+        temp3 = temp1;
+        print('temp1exist');
+        ///print collectoin here
+      }
+      else{
+        temp3=temp2;
+        print('temp1NOEXISTANCE');
+      }
+      
+
+    });
+
+   
+    return temp3;
+
+  }
+
   void GetCurrentUser()async{
     try{
       final user =await FirebaseAuth.instance.currentUser;
       if(user!= null){
         loggedinuser = user;
-        print(loggedinuser.email);
+        user1 = loggedinuser.email;
+        print('INSIDE DOCTOR CHATLIST');
+        print(user1);
       }
     }
     catch(e){
       print(e);
       print('nooooo');
     }
-  }
-
-  void initState(){
-    super.initState();
-    GetCurrentUser();
+    
   }
 
 
@@ -41,16 +71,16 @@ class _DoctorChatListState extends State<DoctorChatList> {
     return doc.documents;
   }
 
+ void initState(){
+      super.initState();
+      getdoctornames();
+      GetCurrentUser();
 
+    }
 
   @override
   Widget build(BuildContext context) {
-    void initState(){
-      super.initState();
-      getdoctornames();
-
-
-    }
+   
 
     return Scaffold(
       backgroundColor: Color(0xFFB3E5FC),
@@ -67,8 +97,10 @@ class _DoctorChatListState extends State<DoctorChatList> {
             future:getdoctornames() ,
             builder:(context,snapshot){
               if(snapshot.connectionState== ConnectionState.waiting){
-                return CircularProgressIndicator(
-                  backgroundColor: Colors.blue,
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.blue,
+                  ),
                 );
               }
               else{
@@ -80,17 +112,39 @@ class _DoctorChatListState extends State<DoctorChatList> {
                       child: Text(snapshot.data[index]['username']
                         ,style: TextStyle(fontSize: 20),
                       ),
-                      onPressed: (){
-                        chatteduser = snapshot.data[index]['email'];
+                      onPressed: ()async{
+
+                        user2 = await snapshot.data[index]['email'];
+                        print('WHEN USER2 SELECTED');
+
+                           x= await getroomid();
+       
+                        
+                      
+                            
+                        print('the ROOOOOM ID :');
+                        print(x);
+
+      
+         print('navigating...');
+           Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Chat(roomid: x,),
+                          ),
+                        );
+                        
+                        
+                     
 
                         // Navigator.pushNamed(context, ChatScreen.id);
 
-                        Navigator.push(
+                       /* Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ChatScreen(chattedusername: chatteduser,),
+                            builder: (context) => Chat(roomid: temp3,),
                           ),
-                        );
+                        );*/
 
                       },
                     ),

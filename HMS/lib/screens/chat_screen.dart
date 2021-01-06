@@ -9,118 +9,113 @@ import 'package:flash_chat/screens/testimage.dart';
 
 
 
-class ChatScreen extends StatefulWidget {
-  String chattedusername;
-  ChatScreen({this.chattedusername});
+class Chat extends StatefulWidget {
+  String roomid;
+  Chat({this.roomid});
 
 
   static const id = 'Chat_Screen';
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  _ChatState createState() => _ChatState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatState extends State<Chat> {
 
   final textfieldcontroller = TextEditingController();
+  String user1;
+  String temp3;
   String sender;
   String message1;
   User loggedinuser;
-  final _auth = FirebaseAuth.instance;
-  ////////////////
-  String user1;
-  String user2;
-  String temp1;
-  String temp2;
-  String temp3;
-  Stream chatmessagesstream;
   ///get the image
   File _image;
-  /* Future getimage()async{
-     await ImagePicker().getImage(source: ImageSource.camera).then((value) {
-      _image =  File(value.path);
-    });
+  Stream<QuerySnapshot> _stream;
+ 
+void UploadImage()async{
 
-
-  }
-
-  */
-  void _pickimage()async{
     await ImagePicker.pickImage(source: ImageSource.camera).then((value) {
       _image =  value;
     });
-  }
-  ///shit everywhere
-  /* Future QuerySnapshot getinitialdata(String temp33)async{
-    QuerySnapshot querySnapshot = await Firestore.instance.collection('chatrooms/$temp33/messages').getDocuments();
-    var list = querySnapshot.documents,
-  }
-*/
-  Future getroomid()async{
-    temp1 = user1 + "-" + user2;
-    temp2 = user2 + "-" + user1;
-    var chatroomid1 =await Firestore.instance.collection('chatrooms/$temp1/messages').getDocuments().then((value) {
-      if(value.docs.length>0){
-        temp3 = temp1;
-        print('temp1exist');
-        ///print collectoin here
-      }
-      else{
-        temp3=temp2;
-        print('temp1existNOEXISTANCE');
-      }
+    //ref is a pointer to the main bucket
+    //a pointer to the path of the uploaded image
+    String imagename = user1 + Timestamp.now().toString();
+    final refpath =  FirebaseStorage.instance.ref().child('imagemessages').child(imagename + '.jpg');
+    
+    await refpath.putFile(_image);
+   final url = await refpath.getDownloadURL();
+   /////////store image url in messages collection of this chatroom
+   print('uploading IMAGE NOWWWWWW');
+  FirebaseFirestore.instance.collection('chatrooms/${widget.roomid}/messages').add({ 
+             'text': url,
+             'sender':loggedinuser.email,
+             'createdat':Timestamp.now(),
+             'type':'image'
+                        });
+                        }
 
-    });
-
-    Firestore.instance.collection('chatrooms/$temp3/messages/temp').add({
-      'text':'',
-      'sender':loggedinuser.email,
-      'createdat':Timestamp.now(),
-    });
-
-    // var chatroomid2 =await Firestore.instance.collection('chatrooms').doc('$user2-$user1').get();
-
-  }
-
-  void GetCurrentUser()async{
+  Future GetCurrentUser()async{
     try{
-      final user =await FirebaseAuth.instance.currentUser;
+      final user = FirebaseAuth.instance.currentUser;
       if(user!= null){
         loggedinuser = user;
         print(loggedinuser.email);
         user1 = loggedinuser.email;
-        ///check that i got the chatted user name correctly ;)
-        print(widget.chattedusername);
+        print(widget.roomid);
+        print(user1);
+        return user1;
       }
     }
     catch(e){
       print(e);
       print('nooooo');
     }
-    getroomid();
   }
 
   void initState(){
     super.initState();
-    user2 = widget.chattedusername;
-    GetCurrentUser();
 
-    //  Firestore.instance.collection('chatrooms/$temp3/messages').doc('temp').delete();
-    /* Firestore.instance.collection('chatrooms/$temp3/messages').get().then((value) => (){
-       value.docs.forEach((element) {
-          return Text(element['text']);
-       });
+    GetCurrentUser();
+    print('check before making temp on user1');
+    print(user1);
+    _stream = FirebaseFirestore.instance.collection('/chatrooms/${widget.roomid}/messages').orderBy('createdat',descending: true).snapshots();
+    
+  
+   /*  Firestore.instance.collection('chatrooms/${widget.roomid}/messages/temp').add({
+  
+      'text':'uuu',
+      'sender':user1,
+      'createdat':Timestamp.now(),
+      'type':'text',
     });
-*/
+    */
+  /*  Firestore.instance.collection('chatrooms/${widget.roomid}/messages').doc('temp').set(
+      {
+  
+      'text':'empty',
+      'sender':user1,
+      'createdat':Timestamp.now(),
+      'type':'text',
+    }
+    );
+  
+     
+         print('done888888888888888888888');
+         FirebaseFirestore.instance.collection('chatrooms/${widget.roomid}/messages').doc('temp').delete();
+
+     */
+      
+     
+ 
   }
   @override
   Widget build(BuildContext context) {
     return
       MaterialApp(
         home: Scaffold(
-          backgroundColor: Color(0xFF035F6D),
+          backgroundColor: Color(0xFFB3E5FC),
           appBar:AppBar(
-            backgroundColor: Color(0xFF8F0026),
+            backgroundColor:  Color(0xFFD6D6D6),
             title: Text('⚡️Chat'),
             actions: [
               IconButton(
@@ -142,44 +137,44 @@ class _ChatScreenState extends State<ChatScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: _image!=null?Colors.black:Colors.white60,
-
-                    backgroundImage:_image!=null?FileImage(_image):null,
-
-                  ),
-                ),
+        
                 Expanded(
                   child: Container(
-                    color: Color(0xFF035F6D),
+                    color: Color(0xFFB3E5FC),
                     child:
-
                     StreamBuilder<QuerySnapshot>(
                       ///here i am gonna pass two vars of both logged in&chatted usernames
-                      stream: FirebaseFirestore.instance.collection('chatrooms/$temp3/messages').orderBy('createdat',descending: true).snapshots(),
-                      //initialData:
+                      stream:_stream,
 
                       builder:(context,snapshot) {
-                        if(snapshot.hasData){
-                          final messages = snapshot.data.documents;
-                          List<Bubble>messagewidgets=[];
-                          for(var message in messages){
-                            var messagetext = message.data()['text'];
-                            final messagesender = message.data()['sender'];
-                            final  messagewidget =Bubble(sender: messagesender,text: messagetext,isloggeduser: (messagesender==loggedinuser)?true:false);
-                            messagewidgets.add(messagewidget);
-                          }
-                          return
-                            Expanded(
-                              child: ListView(
-                                reverse: true,
-                                children: messagewidgets,
-                              ),
-                            );
-                        }
-                      },
+                        if (!snapshot.hasData ) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              backgroundColor:Color(0XFF0277BD),
+                            ),
+                          );
+                          
+                         }
+                       
+                         final messages = snapshot.data.docs;
+                        
+                             return ListView.builder(
+                               reverse: true,
+                               itemCount: messages.length,
+                               itemBuilder:(ctx,index)=>Bubble(
+                               
+                               text: messages[index]['text'],
+                               sender: messages[index]['sender'],
+                               isloggeduser: loggedinuser.email==messages[index]['sender']?true:false,
+                               type: messages[index]['type'],
+
+                               ) ,
+                           );}
+                             
+                           
+                        
+
+                   
                     ),
 
                   ),
@@ -201,9 +196,10 @@ class _ChatScreenState extends State<ChatScreen> {
                           controller: textfieldcontroller,
                           onChanged: (value){
                             setState(() {
-                              message1 = value;
+                               message1 = value;
                             });
 
+                             
                           },
                           cursorWidth: 1,
                           cursorColor: Colors.white,
@@ -217,75 +213,54 @@ class _ChatScreenState extends State<ChatScreen> {
 
                           ),
                           style: TextStyle(
-                            color:Color(0xFF8F0026) ,
+                            color:Color(0XFF424242) ,
                           ),
                         ),
                       ),
 
                       //////////////////////////added for the photo upload
                       IconButton(
-                        icon: Icon(Icons.perm_media_outlined),
+                        icon: Icon(Icons.photo),
                         highlightColor: Colors.grey,
                         disabledColor: Colors.white10,
-                        color: Color(0xFF8F0026),
+                        color: Color(0XFF424242),
                         onPressed:
-                            ()async{
+                            (){
                           //Upload the photo
-                          //a pointer to the path of the uploaded image
-                          _pickimage();
-
-
-                          //ref is a pointer to the main bucket
-                          final refpath =  FirebaseStorage.instance.ref().child('imagemessages').child(user1 + '.jpg');
-                          await refpath.putFile(_image);
-                          final url = await refpath.getDownloadURL();
-                          ///make the keyboard disappear after pressing the send button
-                          FocusScope.of(context).unfocus();
-                          /////////store image url in messages collection of this chatroom
-                          FirebaseFirestore.instance.collection('chatrooms/$temp3/messages').add({
-                            'text': 'image',
-                            'sender':loggedinuser.email,
-                            'createdat':Timestamp.now(),
-                            'imageurl':url,
-                          });
+                          UploadImage();
+                         
                         },
-
                       ),
                       IconButton(
                         icon: Icon(Icons.send),
                         highlightColor: Colors.grey,
                         disabledColor: Colors.white10,
 
-                        color: Color(0xFF8F0026),
+                        color: Color(0XFF424242),
                         onPressed:
                             (){
-                          setState(() {
 
-                            //check if the chatroom already exists
-                            print('TEMP33333333333');
-                            print(temp3);
-                            /////////////////////////////////////////////
-                            //store data in firestore database
-                            //message1 in text field in messages collection & loggedinuser.email in sender field
-
-                            FirebaseFirestore.instance.collection('chatrooms/$temp3/messages').add({
-                              'text': message1,
-                              'sender':loggedinuser.email,
-                              'createdat':Timestamp.now(),
-                            });
-                            FirebaseFirestore.instance.collection('chatrooms/$temp3/messages').doc('temp').delete();
                             ///delete message from textfield
                             textfieldcontroller.clear();
                             ///make the keyboard disappear after pressing the send button
                             FocusScope.of(context).unfocus();
+                            //check if the chatroom already exists
+                            print('TEMP33333333333');
+                            print(widget.roomid);
+                            //store data in firestore database
+                           
+                            FirebaseFirestore.instance.collection('chatrooms/${widget.roomid}/messages').doc('temp').delete();
 
-                          });
-
+                            FirebaseFirestore.instance.collection('chatrooms/${widget.roomid}/messages').add({
+                              'text': message1,
+                              'sender':loggedinuser.email,
+                              'createdat':Timestamp.now(),
+                              'type':'text',
+                            });
+                            
+                    
                         },
-
                       ),
-
-
                     ],
                   ),
                 ),
@@ -297,32 +272,46 @@ class _ChatScreenState extends State<ChatScreen> {
       );
   }
 }
+
+
 class Bubble extends StatelessWidget {
-  Bubble({this.text,this.sender,this.isloggeduser});
+  Bubble({this.text,this.sender,this.isloggeduser,this.type});
   final bool isloggeduser;
   final String text;
   final String sender;
+  final String type;
+   
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: type=='text'?EdgeInsets.all(10):EdgeInsets.all(0),
       child: Column(
         crossAxisAlignment: isloggeduser?CrossAxisAlignment.end:CrossAxisAlignment.start,
         children: <Widget>[
           Text(sender),
           Material(
-            borderRadius:isloggeduser?
+            borderRadius:
+            text=='image'? BorderRadius.circular(0):
+            isloggeduser?
             BorderRadius.only(topLeft:Radius.circular(15) ,bottomLeft:Radius.circular(15) ,bottomRight: Radius.circular(0),topRight: Radius.circular(15))
                 : BorderRadius.only(topLeft:Radius.circular(15) ,bottomLeft:Radius.circular(0) ,bottomRight: Radius.circular(15),topRight: Radius.circular(15)),
-            color:  isloggeduser?Colors.white:Color(0xFF8F0026),
+            color:  isloggeduser?Color(0XFF424242):Color(0xFFD6D6D6),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(10, 7, 10, 10),
-              child: Text(
+              padding:type=='text'? EdgeInsets.fromLTRB(10, 7, 10, 10):EdgeInsets.all(0),
+              child: ( type=='text')? Text(
                 text ,
                 style: TextStyle(
                   color: Colors.white,
                 ),
-              ),
+                )
+                :Image.network(text,
+                width: 150,
+                height: 180,
+
+                ),
+               
+        
             ),
           )
         ],
