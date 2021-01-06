@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="08984bfe-a4fa-42d5-8f2e-8bb3b3190b6d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/HMS/lib/ftont desk/bed_reservation.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HMS/lib/ftont desk/home page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HMS/lib/ftont desk/service fees.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/kotlin/com/example/frontDesk/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/front_desk/bed_reservation.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/lib/main.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/pubspec.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontDesk/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/api/firebase_api.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/data.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/HMS/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/model/message.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/model/user.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/page/chat_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/page/chats_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/users.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/utils.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/bed_reservation.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/chat_body_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/chat_header_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/fees.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/message_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/messages_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/new_message_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/lib/widget/profile_header_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/preview.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/HMS/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMS/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontDesk/test/widget_test.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mTMq9RXFFMI0ZClqHBcAYWnvg7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="recentsLimit" value="1" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="bed_reservation" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true">
+      <option name="filePath" value="$PROJECT_DIR$/HMS/lib/main.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/HMS" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Command Line App.bed_reservation" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08984bfe-a4fa-42d5-8f2e-8bb3b3190b6d" name="Default Changelist" comment="" />
+      <created>1609513315179</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609513315179</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="47" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609765680778">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="47" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1609765680778" />
+    <state x="526" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609765111228">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="526" y="195" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1609765111228" />
+    <state x="168" y="100" width="1200" height="584" key="AVDManager" timestamp="1609513983682">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="168" y="100" width="1200" height="584" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1609513983682" />
+    <state width="1340" height="194" key="GridCell.Tab.0.bottom" timestamp="1609768411001">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1340" height="194" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609768411001" />
+    <state width="1340" height="194" key="GridCell.Tab.0.center" timestamp="1609768411000">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1340" height="194" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609768411000" />
+    <state width="1340" height="194" key="GridCell.Tab.0.left" timestamp="1609768411000">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1340" height="194" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609768411000" />
+    <state width="1340" height="194" key="GridCell.Tab.0.right" timestamp="1609768411000">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1340" height="194" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609768411000" />
+    <state x="277" y="38" key="SettingsEditor" timestamp="1609767372047">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="38" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609767372047" />
+  </component>
+</project>
