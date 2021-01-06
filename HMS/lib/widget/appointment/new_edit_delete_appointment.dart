@@ -1,5 +1,10 @@
 import 'dart:developer';
 
+import 'package:HMS/moduls/reciever.dart';
+import 'package:HMS/screens/doctors_list_screen%20copy.dart';
+import 'package:HMS/widget/appointment/doctor-list.dart';
+import 'package:HMS/widget/appointment/doctors_dropdown_list.dart';
+import 'package:HMS/widget/appointment/listtile-doctor.dart';
 import 'package:HMS/widget/appointment/my_apointment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -13,6 +18,7 @@ class NewEditDeleteAppointment extends StatefulWidget {
   final bool changeTime;
   String idOfCard = '';
   var deleteAppoint = false;
+  static Reciever doctorRec;
   NewEditDeleteAppointment(
       {this.changeTime, this.idOfCard, this.deleteAppoint});
 
@@ -25,7 +31,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   final _formKeyA = GlobalKey<FormState>();
   var _departmentName = '';
   var _doctorOrAnlysisName = '';
-  var _dateOfReservation = '';
+  DateTime _dateOfReservation;
   var _timeOfReservation = '';
   TextEditingController _controller1, _controller2, _controller3, _controller4;
 //  DocumentReference refrence;
@@ -33,6 +39,10 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   var _isChange = false;
   var _isDelete = false;
   var _isClinic = true;
+  var _isState = false;
+
+  var _isChoosed = ListTileOfDoctors.isChoosed;
+
   UserCredential userCredential;
   final _user = FirebaseAuth.instance.currentUser;
   String x = '';
@@ -43,17 +53,29 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
     // var content =
     //     await FirebaseFirestore.instance.collection("appointments").doc().get();
     _isChange = true;
-    _formKeyA.currentState.save();
-    await FirebaseFirestore.instance
-        .collection("appointments")
-        .document("onePatient")
-        .collection(_user.uid)
-        .document(widget.idOfCard)
-        .update({
-      'time_Reservation': _timeOfReservation,
-      'date_Reservation': _dateOfReservation
-    });
-    Navigator.of(context).pop();
+    var _isValid = _formKeyA.currentState.validate();
+    if (_isValid ) {
+      //this condition with its else is reciently added
+      _formKeyA.currentState.save();
+      await FirebaseFirestore.instance
+          .collection("appointments")
+          .document(widget.idOfCard)
+          .update({
+        'time_Reservation': _timeOfReservation,
+        'date_Reservation': _dateOfReservation
+      });
+      Navigator.of(context).pop();
+    } else {
+     // Navigator.of(context).pop();
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(
+          "You have to full up the data above",
+        ),
+        backgroundColor: Colors.red,
+      ));
+      return;
+    }
+
     // Firestore.instance
     //                 .runTransaction((Transaction transaction) async {
     //               CollectionReference reference =
@@ -68,8 +90,6 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
     _isDelete = true;
     await FirebaseFirestore.instance
         .collection("appointments")
-        .document("onePatient")
-        .collection(_user.uid)
         .document(widget.idOfCard)
         .delete();
     Navigator.of(context).pop();
@@ -84,7 +104,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
     //  final _user = FirebaseAuth.instance.currentUser;
 
     var _isValid = _formKeyA.currentState.validate();
-    if (_isValid) {
+    if (_isValid ) {
+      //this condition with its else is reciently added
       _formKeyA.currentState.save();
       // _isLoading = true;
       final userDate = await FirebaseFirestore.instance
@@ -97,16 +118,18 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
 
       FirebaseFirestore.instance
           .collection("appointments")
-          .document("onePatient")
-          .collection(_user.uid)
           .document(cardID)
           .set({
-        'userId': _user.uid,
-        'UserName': userDate["userName"],
+        'senderPatientId': _user.uid,
+        'senderPatientName': userDate["userName"],
         'department': _departmentName.trim(),
+        // 'doctorOrAnlysisName': _isClinic
+        //     ? "Doctor : " + _doctorOrAnlysisName.trim()
+        //     : "Name : " + _doctorOrAnlysisName.trim(),
         'doctorOrAnlysisName': _isClinic
-            ? "Doctor : " + _doctorOrAnlysisName.trim()
+            ? "Doctor : " + DoctorsList.reciever.name
             : "Name : " + _doctorOrAnlysisName.trim(),
+        'recieverDoctorId': _isClinic ? DoctorsList.reciever.id : null,
         'date_Reservation': _dateOfReservation,
         'time_Reservation': _timeOfReservation,
         "title": _isClinic ? "Clinic" : _departmentName.trim(),
@@ -114,14 +137,20 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
         "cardID": cardID,
       });
       _isLoading = false;
-    Navigator.of(context).pop();
-    _controller1.clear();
-    _controller2.clear();
-    _controller3.clear();
-    _controller4.clear();
-    
+      Navigator.of(context).pop();
+      _controller1.clear();
+      _controller2.clear();
+      _controller3.clear();
+      _controller4.clear();
+    } else {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(
+          "You have to full up the data above",
+        ),
+        backgroundColor: Colors.red,
+      ));
+      return;
     }
-    
   }
 
   @override
@@ -188,33 +217,97 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                       ),
                   if (!(widget.deleteAppoint))
                     if (!widget.changeTime)
-                      TextFormField(
-                        key: ValueKey("Doctor"),
-                        controller: _controller2,
-                        validator: (value) {
-                          if (value.isEmpty)
-                            return "Please Enter The Name Of the Doctor";
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            labelText: _isClinic
-                                ? "The Name of Doctor, you want make your Reservation with..?"
-                                : "The Name of Analysis/RadiationThe, you want to do..?"),
-                        onSaved: (value) {
-                          setState(() {
-                            _doctorOrAnlysisName = value;
-                          });
-                        },
-                      ),
+                      if (_isClinic)
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              border: Border.fromBorderSide(BorderSide.none)),
+                          child: InkWell(
+                            focusColor: Colors.green,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  !_isChoosed
+                                      ? "Choose The Doctor you Want to Reserve"
+                                      : DoctorsList.reciever.name,
+                                  style: !_isChoosed
+                                      ? TextStyle(color: Colors.black54)
+                                      : TextStyle(color: Colors.black),
+                                ),
+                                Icon(Icons.change_history_rounded)
+                              ],
+                            ),
+                            onTap: () {
+                              setState(() {
+                                if (ListTileOfDoctors.isChoosed)
+                                  _isState = !_isState;
+                                Navigator.of(context).pushNamed(
+                                  DoctorsListScreen.nameRoute,
+                                );
+                              });
+
+                              //     .then((result) {
+                              //   _isChoosed = result;
+                              //   print(result);
+                              // }
+                              // );
+                            },
+                          ),
+                        ),
+                  if (!(widget.deleteAppoint))
+                    if (!widget.changeTime)
+                      if (!_isClinic)
+                        TextFormField(
+                          key: ValueKey("Doctor"),
+                          controller: _controller2,
+                          validator: (value) {
+                            if (value.isEmpty)
+                              return "Please Enter The Name Of the Doctor";
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              labelText: _isClinic
+                                  ? "The Name of Doctor, you want make your Reservation with..?"
+                                  : "The Name of Analysis/RadiationThe, you want to do..?"),
+                          onSaved: (value) {
+                            setState(() {
+                              _doctorOrAnlysisName = value;
+                            });
+                          },
+                        ),
+                  //Container(
+                  //   width: double.infinity,
+                  //   height: 48,
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text("Choose one of the following Doctor"),
+                  //       DropdownButton(
+                  //           iconSize: 30,
+                  //           icon: Icon(Icons.arrow_drop_down),
+                  //           items: [
+                  //           ],
+                  //           onChanged: (value) {}),
+                  //     ],
+                  //   ),
+                  // ),
+
                   if (!(widget.deleteAppoint))
                     DateTimeField(
+                     
                         key: ValueKey("Date"),
+                        validator: (value) {
+                          if (value == null) return "please Choose The Date";
+                          return null;
+                        },
                         controller: _controller3,
                         onSaved: (value) {
                           setState(() {
-                            String formatDate =
-                                DateFormat.yMMMd().format(value);
-                            _dateOfReservation = formatDate;
+                            _dateOfReservation = value;
+                            // String formatDate =
+                            //     DateFormat.yMMMd().format(value);
+                            // _dateOfReservation = formatDate;
                           });
                         },
                         decoration:
@@ -226,13 +319,19 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                         onShowPicker: (ctx, value) {
                           return showDatePicker(
                             context: ctx,
-                            initialDate: value ?? DateTime.now(),
-                            firstDate: DateTime(2010),
+                            initialDate:
+                                value ?? DateTime.now().add(Duration(days: 1)),
+                            firstDate: DateTime.now(),
                             lastDate: DateTime(2100),
                           );
                         }),
                   if (!(widget.deleteAppoint))
                     DateTimeField(
+                     
+                       validator: (value) {
+                          if (value == null) return "please Choose The Time";
+                          return null;
+                        },
                         key: ValueKey("Time"),
                         //  key: _formKeyA,
                         controller: _controller4,

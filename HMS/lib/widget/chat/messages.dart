@@ -28,16 +28,18 @@ class Messages extends StatelessWidget {
               reverse: true,
               itemCount: chatDocs.length,
               itemBuilder: (ctx, index) {
-               
-                if(chatDocs[index]["senderId"] ==
-                      FirebaseAuth.instance.currentUser.uid && chatDocs[index]["recieverId"]==MessageList.reciever.id ||chatDocs[index]["senderId"] ==MessageList.reciever.id&&chatDocs[index]["recieverId"]==FirebaseAuth.instance.currentUser.uid)
                   return MessageBuble(
-                  chatDocs[index]["text"],
-                  chatDocs[index]["userName"],
-                  chatDocs[index]["senderId"] ==
-                      FirebaseAuth.instance.currentUser.uid,
-                  key: ValueKey(chatDocs[index].documentID),
-                );
+                    comingMessage: chatDocs[index]["text"],
+                    comingImageMessage: chatDocs[index]["imageNotText"],
+                    userName: chatDocs[index]["userName"],
+                    senderId: chatDocs[index]["senderId"],
+                    recieverId: chatDocs[index]["recieverId"],
+                   userImage: chatDocs[index]["sender_image_url"] ,
+
+                    isMe: chatDocs[index]["senderId"] ==
+                        FirebaseAuth.instance.currentUser.uid,
+                    key: ValueKey(chatDocs[index].documentID),
+                  );
               });
         });
   }

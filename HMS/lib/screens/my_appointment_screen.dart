@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:HMS/moduls/reciever.dart';
+import 'package:HMS/widget/appointment/doctor-list.dart';
+import 'package:HMS/widget/appointment/listtile-doctor.dart';
 import 'package:HMS/widget/appointment/my_apointment.dart';
 import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
 import 'package:HMS/widget/main_drawer.dart';
@@ -7,16 +10,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyAppointmentScreen extends StatefulWidget {
-    static const nameRoute = "/my-appoint";
+  static const nameRoute = "/my-appoint";
   @override
   _MyAppointmentScreenState createState() => _MyAppointmentScreenState();
 }
 
 class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
+
   void shtx(BuildContext context) {
+
     showModalBottomSheet(
         context: context,
         builder: (ctx) {
+       
           return NewEditDeleteAppointment(
             changeTime: false,
             deleteAppoint: false,
@@ -42,7 +48,7 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
         title: Text("My Appointmets"),
       ),
       drawer: MainDrawer(),
-      body: MyAppointmenyt(),
+      body: MyAppointment(),
       //     SingleChildScrollView(
       //   child: Column(
       //     mainAxisSize: MainAxisSize.min, // Use children total size

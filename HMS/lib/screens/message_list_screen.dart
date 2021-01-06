@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../widget/chat/message-list.dart';
 import 'package:flutter/material.dart';
 
-class MessageListSreen extends StatefulWidget {
+class MessageListScreen extends StatefulWidget {
   static const nameRoute = '/message-list-screen';
 
   @override
-  _MessageListSreenState createState() => _MessageListSreenState();
+  _MessageListScreenState createState() => _MessageListScreenState();
 }
 
-class _MessageListSreenState extends State<MessageListSreen> {
+class _MessageListScreenState extends State<MessageListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

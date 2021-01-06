@@ -1,3 +1,5 @@
+import 'package:HMS/screens/doctors_home_screen.dart';
+import 'package:HMS/screens/doctors_list_screen%20copy.dart';
 import 'package:HMS/screens/message_list_screen.dart';
 
 import './screens/auth_screens.dart';
@@ -34,10 +36,10 @@ class MyApp01 extends StatelessWidget {
           if (userSnapshot.hasData) {
             return
                 //HistoryScreen();
-               PatientHome();
+                PatientHomeScreen();
             // MyAppointmentScreen();
             // ChatScreen();
-             // MessageListSreen();
+            // MessageListScreen();
           }
           return AuthScreen();
         },
@@ -57,11 +59,13 @@ class MyApp01 extends StatelessWidget {
         //     return AuthScreen();
         //   },
         // ),
-        PatientHome.nameRoute: (context) => PatientHome(),
+        PatientHomeScreen.nameRoute: (context) => PatientHomeScreen(),
+        DoctorsHomeScreen.nameRoute: (context) => DoctorsHomeScreen(),
         MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
         HistoryScreen.nameRoute: (context) => HistoryScreen(),
         ChatScreen.nameRoute: (context) => ChatScreen(),
-        MessageListSreen.nameRoute:(context)=>MessageListSreen(),
+        MessageListScreen.nameRoute: (context) => MessageListScreen(),
+        DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
       },
 
       //MyHomePage(),

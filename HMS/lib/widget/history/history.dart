@@ -9,9 +9,8 @@ class History extends StatelessWidget {
   Widget build(BuildContext context) {
     final _user = FirebaseAuth.instance.currentUser;
     return StreamBuilder(
-
         stream: FirebaseFirestore.instance
-            .collection("appointments/onePatient/" + _user.uid)
+            .collection("appointments")
             .orderBy("created At")
             .snapshots(),
         builder: (ctx, appointSnapshot) {
@@ -25,19 +24,21 @@ class History extends StatelessWidget {
               // shrinkWrap: true,
               itemCount: appointmentDocs.length ?? 0,
               itemBuilder: (ctx, index) {
-
-                return CardAppointment(
+                return CustomCard(
+                  senderPatientId: appointmentDocs[index]['senderPatientId'],
+                  //  recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
                   department: appointmentDocs[index]["department"],
                   doctor: appointmentDocs[index]["doctorOrAnlysisName"],
-                  time:appointmentDocs[index]["time_Reservation"],
-                  titleOfCardApp: "Clinic",
+                  senderpatientName: appointmentDocs[index]
+                      ["senderPatientName"],
+                  time: appointmentDocs[index]["time_Reservation"],
+                  titleOfCardApp: appointmentDocs[index]["title"],
                   date: appointmentDocs[index]["date_Reservation"],
+                  cardId: appointmentDocs[index]["cardID"],
+                  isAppointment: false,
                   diagnose: "",
                   treatment: "",
-
-                  isAppointment: false,
                 );
-
               });
         });
     // ],

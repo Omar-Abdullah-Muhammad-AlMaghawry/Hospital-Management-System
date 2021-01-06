@@ -1,19 +1,19 @@
-import './message_list_screen.dart';
+import 'message_list_screen.dart';
 
-import './chat_screen.dart';
-import './history_screen.dart';
+import 'chat_screen.dart';
+import 'history_screen.dart';
 import '../widget/patient_home/NiceButton.dart';
 import '../widget/main_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../screens/my_appointment_screen.dart';
+import 'my_appointment_screen.dart';
 
-class PatientHomeScreen extends StatelessWidget {
-  void moveToMyHistory(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(
-      HistoryScreen.nameRoute,
-    );
-  }
+class DoctorsHomeScreen extends StatelessWidget {
+  // void moveToMyHistory(BuildContext ctx) {
+  //   Navigator.of(ctx).pushNamed(
+  //     HistoryScreen.nameRoute,
+  //   );
+  // }
 
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
@@ -27,7 +27,7 @@ class PatientHomeScreen extends StatelessWidget {
     );
   }
 
-  static const nameRoute = "/patient-home";
+  static const nameRoute = "/doctor-home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,12 +58,12 @@ class PatientHomeScreen extends StatelessWidget {
               ),
             ),
           ),
-
           NiceButton(
             onPressed: null,
-            nameOfButton: "My Profile",
+            nameOfButton: "My Schedule",
             heightOfButton: 75,
           ),
+
           NiceButton(
             onPressed: moveToMyAppointment,
             nameOfButton: "My Appointments",
@@ -71,8 +71,8 @@ class PatientHomeScreen extends StatelessWidget {
             heightOfButton: 75,
           ),
           NiceButton(
-            onPressed: moveToMyHistory,
-            nameOfButton: "My Midical History",
+            onPressed: null,
+            nameOfButton: "My Statistics",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),
@@ -104,7 +104,7 @@ class PatientHomeScreen extends StatelessWidget {
         child: Icon(
           Icons.chat,
         ),
-        onPressed: () =>moveToChat(context),
+        onPressed: () => moveToChat(context),
       ),
     );
   }

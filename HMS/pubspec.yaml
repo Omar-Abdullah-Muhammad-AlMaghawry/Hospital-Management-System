@@ -35,6 +35,14 @@ dependencies:
   date_field: ^0.3.3
   datetime_picker_formfield: ^1.0.0
   firebase_analytics: ^6.3.0
+  image_picker: 0.6.2+3
+  firebase_storage: ^5.2.0
+  #image_picker: ^0.6.3+4
+  #image_picker: ^0.6.5+3
+  #image_picker: ^0.6.7+17
+
+
+
 
 dev_dependencies:
   flutter_test:
