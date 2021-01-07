@@ -6,6 +6,7 @@ import '../widgets/CustomFloatingActionButton.dart';
 import '../widgets/CustomAppBar.dart';
 import '../services/DbService.dart';
 
+//TODO add the doctor name and number and logout function for the appbar
 class DoctorSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
