@@ -11,7 +11,7 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-  final AuthService auth = AuthService();
+  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = '';
 
@@ -60,7 +60,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                        auth.resetPassword(email);
+                        _auth.resetPassword(email);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => SignIn()),
