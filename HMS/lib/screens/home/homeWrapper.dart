@@ -16,10 +16,11 @@ class HomeWrapper extends StatelessWidget {
     var ok = user.email;
     var index = ok.indexOf('@');
     if (ok.contains('d', index)) {
-      return Profile();
-    }
-    if (ok.contains('p', index)) {
-      return HomePatient();
+      return Profile() ?? Center();
+    } else if (ok.contains('p', index)) {
+      return HomePatient() ?? Center();
+    } else {
+      Center();
     }
   }
 }
