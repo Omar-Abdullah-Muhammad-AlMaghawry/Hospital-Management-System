@@ -98,7 +98,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
 // });
   }
 
-  void _submitResrvation() async {
+  void _submitReservation() async {
     x = cardID;
     FocusScope.of(context).unfocus();
     //  final _user = FirebaseAuth.instance.currentUser;
@@ -367,7 +367,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                               ? "Change"
                               : "Confirm"),
                       onPressed: !widget.changeTime & !widget.deleteAppoint
-                          ? _submitResrvation
+                          ? _submitReservation
                           : widget.changeTime
                               ? _changeDateAndTime
                               : _delete,

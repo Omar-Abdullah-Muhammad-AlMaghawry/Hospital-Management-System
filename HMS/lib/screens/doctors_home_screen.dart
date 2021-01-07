@@ -14,6 +14,12 @@ class DoctorsHomeScreen extends StatelessWidget {
   //     HistoryScreen.nameRoute,
   //   );
   // }
+  // void moveToMyStatistics(BuildContext ctx) {
+  //   Navigator.of(ctx).pushNamed(
+  //     MyAppointmentScreen.nameRoute,
+  //   );
+  // }
+
 
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(

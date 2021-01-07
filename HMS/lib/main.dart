@@ -17,6 +17,10 @@ import 'widget/CardHistoryWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/my_appointment_screen.dart';
+import 'package:authentication/models/user.dart';
+import 'package:authentication/screens/wraper.dart';
+import 'package:authentication/services/auth.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,6 +76,11 @@ class MyApp01 extends StatelessWidget {
       theme: ThemeData(
         backgroundColor: Color.fromRGBO(3, 95, 109, 1),
         // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+      ),
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),
       ),
     );
   }
