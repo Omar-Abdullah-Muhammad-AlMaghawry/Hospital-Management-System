@@ -46,7 +46,7 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
         .then((value) => value.path));
     final ref = FirebaseStorage.instance
         .ref()
-        .child('test')
+        .child(widget.titleOfCardApp)
         .child(widget.cardId + '.jpg');
     await ref.putFile(_pickedImageFile);
     String url = await ref.getDownloadURL();
