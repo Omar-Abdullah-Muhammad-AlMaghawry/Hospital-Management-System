@@ -1,3 +1,5 @@
+import 'package:HMS/screens/home/MyProfile.dart';
+
 import './message_list_screen.dart';
 
 import './chat_screen.dart';
@@ -26,7 +28,11 @@ class PatientHomeScreen extends StatelessWidget {
       MessageListScreen.nameRoute,
     );
   }
-
+void moveToMyProfile(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MyProfile.nameRoute,
+    );
+  }
   static const nameRoute = "/patient-home";
   @override
   Widget build(BuildContext context) {
@@ -60,7 +66,7 @@ class PatientHomeScreen extends StatelessWidget {
           ),
 
           NiceButton(
-            onPressed: null,
+            onPressed: moveToMyProfile,
             nameOfButton: "My Profile",
             heightOfButton: 75,
           ),

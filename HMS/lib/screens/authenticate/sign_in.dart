@@ -1,7 +1,7 @@
-import 'package:authentication/screens/authenticate/ResetPassword.dart';
+import './ResetPassword.dart';
 import 'package:flutter/material.dart';
-import 'package:authentication/services/auth.dart';
-import 'package:authentication/shared/constants.dart';
+import '../../services/auth.dart';
+import '../../shared/constants.dart';
 
 class SignIn extends StatefulWidget {
   @override

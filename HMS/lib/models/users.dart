@@ -1,6 +1,6 @@
-class User {
+class Client {
   //final String uid;
   final String uid;
   final String email;
-  User({this.uid, this.email});
+  Client({this.uid, this.email});
 }

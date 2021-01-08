@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart'  ;
 
-void main() {
-  runApp(Statistics ());
-}
+// void main() {
+//   runApp(Statistics ());
+// }
 
 class Statistics extends StatefulWidget {
   // final  int MaxRate;
@@ -28,7 +28,7 @@ class _Statistics  extends State<Statistics> {
   }
 
   Widget rateBody (){
-    final  stars = List<Widget>.generate(this.widget.MaxRateStar, (index)
+    final  stars = List<Widget>.generate(this.widget.maxRateStar, (index)
     {
       return GestureDetector(
           child: rate(index ),
@@ -47,7 +47,7 @@ class _Statistics  extends State<Statistics> {
   @override
   Widget build(BuildContext context) {
 
-    return RateBody ();
+    return rateBody ();
 
   }
 }

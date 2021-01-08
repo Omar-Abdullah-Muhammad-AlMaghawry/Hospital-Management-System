@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:authentication/services/auth.dart';
+import '../../services/auth.dart';
 
-void main() {
-  runApp(Homepage());
-}
+// void main() {
+//   runApp(Homepage());
+// }
 
-class Homepage extends StatefulWidget {
+class FrontHome extends StatefulWidget {
   @override
-  _HomepageState createState() => _HomepageState();
+  _FrontHomeState createState() => _FrontHomeState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _FrontHomeState extends State<FrontHome> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@ Widget List() {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Homepage(),
+                builder: (context) => FrontHome(),
               ));
         },
       ),

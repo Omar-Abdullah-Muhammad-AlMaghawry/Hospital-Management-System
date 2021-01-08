@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:HMS/widget/auth/user_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:HMS/services/auth.dart';
 import 'package:HMS/shared/constants.dart';
 import 'package:HMS/shared/gender.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 //import '';
 
 class Register extends StatefulWidget {
@@ -22,7 +26,11 @@ class _RegisterState extends State<Register> {
   String userName = '';
   String phoneNumber = '';
   String address = '';
-  String _date = (DateTime.now()).toString();
+  String _date = DateFormat.yMMMd().format(DateTime.now());
+  File _userImageFile;
+  void _imagePickedfn(File image) {
+    _userImageFile = image;
+  }
 
   //RegisterState({this.userName, this.email, this.phoneNumber, this.address});
   @override
@@ -58,6 +66,7 @@ class _RegisterState extends State<Register> {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 10.0),
+                UserImagePicker(_imagePickedfn),
                 TextFormField(
                   decoration:
                       inputTextDecoration.copyWith(hintText: 'User Name'),
@@ -71,7 +80,14 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 10.0),
                 TextFormField(
                   decoration: inputTextDecoration.copyWith(hintText: 'Email'),
-                  validator: (val) => val.isEmpty ? 'Enter an Email' : null,
+                  validator: (val) {
+                    if (val.isEmpty) return 'Enter an Email';
+                    if (!(val.contains('d', val.indexOf("@")) ||
+                        val.contains('p', val.indexOf("@")) ||
+                        val.contains('f', val.indexOf("@"))))
+                      return "Please Enter Valid Email";
+                    return null;
+                  },
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -206,6 +222,16 @@ class _RegisterState extends State<Register> {
                           password: password,
                           phoneNumber: phoneNumber,
                           userName: userName);*/
+                    FocusScope.of(context).unfocus();
+                    if (_userImageFile == null) {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                          "You have to pick up an Image",
+                        ),
+                        backgroundColor: Theme.of(context).errorColor,
+                      ));
+                      return;
+                    }
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _auth.registerWithEmailAndPassword(
                           date: _date,
@@ -215,7 +241,8 @@ class _RegisterState extends State<Register> {
                           error: error,
                           password: password,
                           phoneNumber: phoneNumber,
-                          userName: userName);
+                          userName: userName,
+                          image: _userImageFile);
 
                       if (result == null) {
                         setState(() {

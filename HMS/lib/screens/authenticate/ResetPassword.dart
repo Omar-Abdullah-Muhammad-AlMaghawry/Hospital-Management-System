@@ -1,6 +1,6 @@
-import 'package:authentication/screens/authenticate/sign%20in.dart';
+import './sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:authentication/services/auth.dart';
+import '../../services/auth.dart';
 import 'package:HMS/shared/constants.dart';
 
 class ResetPassword extends StatefulWidget {

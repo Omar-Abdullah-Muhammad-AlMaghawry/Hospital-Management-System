@@ -176,6 +176,18 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "flutter_datetime_picker",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "flutter_spinkit",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -248,6 +260,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "provider",
+      "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/provider-3.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "quiver",
       "rootUri": "file:///D:/Collage/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-2.1.5",
       "packageUri": "lib/",
@@ -314,7 +332,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-01-07T01:33:40.115826Z",
+  "generated": "2021-01-07T23:55:49.711018Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

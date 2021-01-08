@@ -21,7 +21,7 @@ class _DoctorsListState extends State<DoctorsList> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("users").snapshots(),
+        stream: FirebaseFirestore.instance.collection("doctors").snapshots(),
         builder: (ctx, snapshots) {
           var nameMember = snapshots.data.documents??0;
           // if (nameMember == ConnectionState.waiting) {

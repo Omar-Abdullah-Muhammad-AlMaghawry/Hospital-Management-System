@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:authentication/shared/constants.dart';
+import '../shared/constants.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class NormalBeds extends StatefulWidget {

@@ -42,33 +42,21 @@ packages:
       name: cloud_firestore
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.14.4"
-=======
-    version: "0.13.7"
->>>>>>> fatma
   cloud_firestore_platform_interface:
     dependency: transitive
     description:
       name: cloud_firestore_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.2.1"
-=======
-    version: "1.1.2"
->>>>>>> fatma
   cloud_firestore_web:
     dependency: transitive
     description:
       name: cloud_firestore_web
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.2.1+2"
-=======
-    version: "0.1.1+2"
->>>>>>> fatma
   collection:
     dependency: transitive
     description:
@@ -125,7 +113,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.3.3"
-<<<<<<< HEAD
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -147,15 +134,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
-=======
->>>>>>> fatma
   firebase_auth:
     dependency: "direct main"
     description:
       name: firebase_auth
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.18.4+1"
   firebase_auth_platform_interface:
     dependency: transitive
@@ -171,38 +155,26 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.2+3"
-=======
-    version: "0.14.0+9"
->>>>>>> fatma
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.5.3"
-=======
-    version: "0.4.5"
->>>>>>> fatma
   firebase_core_platform_interface:
     dependency: transitive
     description:
       name: firebase_core_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.1.0"
-=======
-    version: "1.0.4"
->>>>>>> fatma
   firebase_core_web:
     dependency: transitive
     description:
       name: firebase_core_web
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.2.1+1"
   firebase_storage:
     dependency: "direct main"
@@ -225,9 +197,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1+1"
-=======
-    version: "0.1.1+2"
->>>>>>> fatma
   flutter:
     dependency: "direct main"
     description: flutter
@@ -271,7 +240,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
-<<<<<<< HEAD
   image_picker:
     dependency: "direct main"
     description:
@@ -286,19 +254,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
-=======
->>>>>>> fatma
   js:
     dependency: transitive
     description:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.6.2"
-=======
-    version: "0.6.3-nullsafety.2"
->>>>>>> fatma
   matcher:
     dependency: transitive
     description:
@@ -334,8 +296,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-<<<<<<< HEAD
-=======
   provider:
     dependency: "direct main"
     description:
@@ -343,7 +303,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.0"
->>>>>>> fatma
   quiver:
     dependency: transitive
     description:
@@ -414,8 +373,4 @@ packages:
     version: "2.1.0-nullsafety.3"
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
-<<<<<<< HEAD
   flutter: ">=1.20.0 <2.0.0"
-=======
-  flutter: ">=1.12.13+hotfix.4 <2.0.0"
->>>>>>> fatma

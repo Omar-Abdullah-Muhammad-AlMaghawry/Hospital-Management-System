@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:HMS/models/user.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import '../models/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
@@ -23,33 +26,33 @@ class AuthService {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   // we will create user object based on firebaseUser using a function
-  User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(email: user.email) : null;
+  Client _userFromFirebaseUser(User user) {
+    return user != null ? Client(email: user.email) : null;
   }
 
   // auth change user stream
-  Stream<User> get user {
+  Stream<Client> get user {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
   //sign in anon
-  Future signInAnon() async {
-    try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
+  // Future signInAnon() async {
+  //   try {
+  //     UserCredential result = await _auth.signInAnonymously();
+  //     FirebaseUser users = result.user;
+  //     return _userFromFirebaseUser(users);
+  //   } catch (e) {
+  //     print(e.toString());
+  //     return null;
+  //   }
+  // }
 
   //sign in with email and password
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      User user = result.user;
       print(user);
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -80,18 +83,48 @@ class AuthService {
       String userName,
       String phoneNumber,
       String address,
-      String date}) async {
+      String date,
+      File image}) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      final user = await FirebaseAuth.instance.currentUser();
-      FirebaseUser user0 = result.user;
-      await Firestore.instance.collection("users").document(user.uid).setData({
-        "username": userName,
-        "email": email,
-        "phoneNumber": phoneNumber,
-        "adress": address,
-        "date": date
+      final user = FirebaseAuth.instance.currentUser;
+      User user0 = result.user;
+      UserCredential userCredential;
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child("users_images")
+          .child(_auth.currentUser.uid + ".jpg");
+      await ref.putFile(image);
+      final url = await ref.getDownloadURL();
+
+      await FirebaseFirestore.instance
+          .collection("users")
+          .document(user.uid)
+          .set({
+        'userName': userName,
+        'email': email,
+        'image_url': url,
+        "birthDate": date,
+        "address": address,
+        " phoneNumber": phoneNumber,
+      });
+      await FirebaseFirestore.instance
+          .collection(email.contains("p", email.indexOf("@"))
+              ? "patients"
+              : email.contains("d", email.indexOf("@"))
+                  ? "doctors"
+                  : email.contains("f", email.indexOf("@"))
+                      ? "frontdesk"
+                      : "none")
+          .document(user.uid)
+          .set({
+        'userName': userName,
+        'email': email,
+        'image_url': url,
+        "birthDate": date,
+        "address": address,
+        " phoneNumber": phoneNumber,
       });
       return _userFromFirebaseUser(user0);
     } catch (e) {

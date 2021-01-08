@@ -1,25 +1,31 @@
-import 'package:authentication/screens/home/homeDoctor.dart';
+import '../../screens/doctors_home_screen.dart';
+import '../../screens/patients_home_screen.dart';
+
+import 'MyProfile.dart';
 import 'package:flutter/material.dart';
-import 'package:authentication/services/auth.dart';
+import '../../services/auth.dart';
 import 'package:provider/provider.dart';
-import 'package:authentication/models/user.dart';
-import 'package:authentication/screens/home/homePatient.dart';
-import 'package:authentication/screens/FrontDesk.dart/FrontHome.Dart';
+import '../../models/users.dart';
+import '../../screens/home/homePatient.dart';
+import '../../screens/FrontDesk.dart/FrontHome.Dart';
 
 class HomeWrapper extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<Client>(context);
     print(user);
     //return either doctor home or patient home widget
     var ok = user.email;
     var index = ok.indexOf('@');
     if (ok.contains('d', index)) {
-      return Profile() ?? Center();
+      return DoctorsHomeScreen() ?? Center();
     } else if (ok.contains('p', index)) {
-      return HomePatient() ?? Center();
-    } else {
+      return PatientHomeScreen() ?? Center();
+    }
+    else if (ok.contains('f', index)) {
+      return FrontHome() ?? Center();
+    } else if (ok.contains('g', index)){
       Center();
     }
   }
