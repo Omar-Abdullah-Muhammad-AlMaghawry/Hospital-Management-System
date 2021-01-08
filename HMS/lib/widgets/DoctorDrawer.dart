@@ -54,6 +54,26 @@ class DoctorDrawer extends StatelessWidget {
                 height: 50,
                 alignment: Alignment.center,
                 child: Text(
+                  'Announcments',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 15),
+            child: FlatButton(
+              color: Colors.blue[100],
+              onPressed: () => {},
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                alignment: Alignment.center,
+                child: Text(
                   'Outpatient Clinics',
                   textAlign: TextAlign.center,
                   style: TextStyle(
