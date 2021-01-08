@@ -192,14 +192,6 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
                             fontSize: 17,
                           ),
                         ),
-                        // if (!widget.isAppointment)
-                        // Text(
-                        //   "The treatment : " + widget.treatment,
-                        //   style: TextStyle(
-                        //     color: Color.fromRGBO(0, 0, 0, 1),
-                        //     fontSize: 17,
-                        //   ),
-                        // ),
                         SizedBox(
                           height: 8,
                         ),
