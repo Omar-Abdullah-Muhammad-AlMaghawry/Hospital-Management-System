@@ -1,6 +1,6 @@
 import '../widgets/DoctorAppointment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../widgets/CustomDrawer.dart';
+import '../widgets/DoctorDrawer.dart';
 import 'package:flutter/material.dart';
 import '../widgets/CustomFloatingActionButton.dart';
 import '../widgets/CustomAppBar.dart';
@@ -15,7 +15,7 @@ class DoctorSchedule extends StatelessWidget {
         builder: (context, snapshot) {
           return Scaffold(
             appBar: constructCustomAppBar(() {}, 'Suxess', '0123456789'),
-            drawer: CustomDrawer(),
+            drawer: DoctorDrawer(),
             floatingActionButton: CustomFloatingActionButton(() {}),
             backgroundColor: Color(0xFF035F6D),
             body: ListView.builder(
