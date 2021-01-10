@@ -83,7 +83,7 @@ class MyApp01 extends StatelessWidget {
         MessageListScreen.nameRoute: (context) => MessageListScreen(),
         DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
         MyProfile.nameRoute:(context)=>MyProfile(),
-        MyScuduleScreen.nameRoute:(context)=>MyScuduleScreen(),
+      
          MyStastisticScreen.nameRoute:(context)=>MyStastisticScreen(),
       },
 
