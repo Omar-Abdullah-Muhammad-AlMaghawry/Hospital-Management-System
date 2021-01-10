@@ -1,9 +1,7 @@
 import 'package:HMS/screens/MyScuduleScreen.dart';
 import 'package:HMS/screens/doctors_home_screen.dart';
-import 'package:HMS/screens/doctors_list_screen%20copy.dart';
-import 'package:HMS/screens/home/MyProfile.dart';
-import 'package:HMS/screens/message_list_screen.dart';
-import 'package:HMS/screens/stastistacs_screens.dart';
+import './screens/doctors_list_screen%20copy.dart';
+import './screens/message_list_screen.dart';
 
 import './screens/auth_screens.dart';
 import './screens/chat_screen.dart';
@@ -20,10 +18,6 @@ import 'widget/CardHistoryWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/my_appointment_screen.dart';
-import './models/users.dart';
-import './screens/wraper.dart';
-import './services/auth.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,31 +28,22 @@ void main() async {
 class MyApp01 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     return StreamProvider<Client>.value(
-        value: AuthService().user,
-        child: MaterialApp(
-          home: Wrapper(),
-    // MaterialApp(
+    return MaterialApp(
       title: 'HMS',
       //theme: ThemeData(primarySwatch:/*Color.fromARGB(1, 3, 95, 109)*/ ),
-       //home:
-      // StreamBuilder(
-      //   stream: FirebaseAuth.instance.onAuthStateChanged,
-      //   builder: (ctx, userSnapshot) {
-      //     if (userSnapshot.hasData) {
-      //       return
-      //           //HistoryScreen();
-      //           PatientHomeScreen();
-      //       // MyAppointmentScreen();
-      //       // ChatScreen();
-      //       // MessageListScreen();
-      //     }
-      //     return AuthScreen();
-      //   },
-      // ),
-      theme: ThemeData(
-        backgroundColor: Color.fromRGBO(3, 95, 109, 1),
-        // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.onAuthStateChanged,
+        builder: (ctx, userSnapshot) {
+          if (userSnapshot.hasData) {
+            return
+                //HistoryScreen();
+                PatientHomeScreen();
+            // MyAppointmentScreen();
+            // ChatScreen();
+            // MessageListScreen();
+          }
+          return AuthScreen();
+        },
       ),
       routes: {
         //   "/":(ctx)=>StreamBuilder(
@@ -82,15 +67,15 @@ class MyApp01 extends StatelessWidget {
         ChatScreen.nameRoute: (context) => ChatScreen(),
         MessageListScreen.nameRoute: (context) => MessageListScreen(),
         DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
-        MyProfile.nameRoute:(context)=>MyProfile(),
-      
-         MyStastisticScreen.nameRoute:(context)=>MyStastisticScreen(),
+        MyScuduleScreen.nameRoute:(context)=>MyScuduleScreen(),
       },
 
       //MyHomePage(),
-///fatma
-        )
-     );
+      theme: ThemeData(
+        backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+        // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+      ),
+    );
   }
 }
 

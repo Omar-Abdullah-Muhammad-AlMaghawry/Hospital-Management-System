@@ -28,7 +28,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
-              Navigator.of(context).pop();
               FirebaseAuth.instance.signOut();
             },
           )

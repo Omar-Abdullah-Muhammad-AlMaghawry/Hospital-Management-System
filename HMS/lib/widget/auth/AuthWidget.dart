@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../user_image_picker.dart';
+import 'package:HMS/widget/user_image_picker.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
