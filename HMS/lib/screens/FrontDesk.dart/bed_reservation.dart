@@ -20,33 +20,37 @@ class _BedReservationState extends State<BedReservation> {
   int busyi = 40;
   void _freen() {
     setState(() {
-      busyn++;
-      freen = totaln - busyn;
-      if (freen == 0) freen = 0;
+      if (busyn < 300) {
+        busyn++;
+        freen = totaln - busyn;
+      }
     });
   }
 
   void _freen1() {
     setState(() {
-      busyn--;
-      freen = totaln - busyn;
-      if (freen == 0) freen = 0;
+      if (busyn > 0) {
+        busyn--;
+        freen = totaln - busyn;
+      }
     });
   }
 
   void _freei() {
     setState(() {
-      busyi++;
-      freei = totali - busyi;
-      if (freei == 0) freei = 0;
+      if (busyi < 50) {
+        busyi++;
+        freei = totali - busyi;
+      }
     });
   }
 
   void _freei1() {
     setState(() {
-      busyi--;
-      freei = totali - busyi;
-      if (freei == 0) freei = 0;
+      if (busyi > 0) {
+        busyi--;
+        freei = totali - busyi;
+      }
     });
   }
 
@@ -258,37 +262,37 @@ class _BedReservationState extends State<BedReservation> {
                       color: Colors.black,
                     ),
                   ),
-                  DataTable(
-                    columns: const <DataColumn>[
-                      DataColumn(
-                        label: Text('Name'),
-                      ),
-                      DataColumn(
-                        label: Text(' jgj'),
-                      ),
-                      DataColumn(
-                        label: Text(' mm'),
-                      ),
-                    ],
-                    rows: const <DataRow>[
-                      DataRow(
-                        cells: <DataCell>[
-                          // DataCell(Text(snapshot.data[index]['username']
-                          //,style: TextStyle(fontSize: 20),
-                          //),),
-                          DataCell(
-                            Text('02222100'),
-                          ),
-                          DataCell(
-                            Text('knhi '),
-                          ),
-                          DataCell(
-                            Text('ooo'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
+                  // DataTable(
+                  //   columns: const <DataColumn>[
+                  //     DataColumn(
+                  //       label: Text('Name'),
+                  //     ),
+                  //     DataColumn(
+                  //       label: Text(' jgj'),
+                  //     ),
+                  //     DataColumn(
+                  //       label: Text(' mm'),
+                  //     ),
+                  //   ],
+                  //   rows: const <DataRow>[
+                  //     DataRow(
+                  //       cells: <DataCell>[
+                  //         // DataCell(Text(snapshot.data[index]['username']
+                  //         //,style: TextStyle(fontSize: 20),
+                  //         //),),
+                  //         DataCell(
+                  //           Text('02222100'),
+                  //         ),
+                  //         DataCell(
+                  //           Text('knhi '),
+                  //         ),
+                  //         DataCell(
+                  //           Text('ooo'),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
               ////////////////////////////
