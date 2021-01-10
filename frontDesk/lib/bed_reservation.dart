@@ -254,25 +254,7 @@ class _HomepageState extends State<Homepage> {
                       color: Colors.black,
                     ),
                   ),
-                  DataTable(
-                    columns  :const<DataColumn>[
-                      DataColumn(label: Text('Name'),),
-                      DataColumn(label: Text(' jgj'),),
-                      DataColumn(label: Text(' mm'),),
-                    ],
-                    rows  :const<DataRow>[
-                      DataRow(cells : <DataCell> [
-                        // DataCell(Text(snapshot.data[index]['username']
-                        //,style: TextStyle(fontSize: 20),
-                        //),),
-                        DataCell(Text('02222100'),),
-                        DataCell(Text('knhi '),),
-                        DataCell(Text('ooo'),),
-                      ],
-                      ),
-                    ],
 
-                  )
                 ],
               ),
               ////////////////////////////
