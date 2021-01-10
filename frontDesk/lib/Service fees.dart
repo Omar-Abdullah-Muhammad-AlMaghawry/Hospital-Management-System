@@ -89,7 +89,7 @@ class _ServiceFees extends State<ServiceFees> {
                     rows: <DataRow>[
                       DataRow(cells: <DataCell>[
 
-                        DataCell( Text( 'Dr ' + doc[index]['name']
+                        DataCell( Text( 'Dr ' + doc[index]['userName']
                           , style: TextStyle(fontSize: 20),
                         ),),
 

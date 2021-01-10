@@ -61,20 +61,23 @@ class _AccessData extends State<AccessData> {
                   // doc =
 
                   return ExpansionTile(
-                    title: Text( 'Dr ' + doc[index]['name']),
+                    title: Text( 'Dr ' + doc[index]['userName']),
                     children:<Widget> [
-                      Text('Phone Number : '+ doc[index]['phone  number'],
+                      Text('Phone Number : '+ doc[index]['phoneNumber'],
                         style: TextStyle(fontSize: 15),
                       ),
                       Text(  'E_mail : '   + doc[index]['email']
                         , style: TextStyle(fontSize: 15),
                       ),
-                      Text(  'Address :  ' + doc[index]['Adress']
+                      Text(  'Address :  ' + doc[index]['address']
                         , style: TextStyle(fontSize: 15),
                       ),
+                      /*
                       Text(  'Department :  ' + doc[index]['department']
                         , style: TextStyle(fontSize: 15),
                       ),
+                      */
+
                       Text( 'Salary :  '+doc[index]["fees"] +'  LE' ,
                         style: TextStyle(fontSize: 15),
                       ),
