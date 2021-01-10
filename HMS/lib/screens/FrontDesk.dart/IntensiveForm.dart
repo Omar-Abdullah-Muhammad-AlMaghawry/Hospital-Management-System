@@ -1,3 +1,5 @@
+import 'package:HMS/screens/FrontDesk.dart/bed_reservation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:HMS/shared/constants.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -23,21 +25,6 @@ class _IntensiveBedsState extends State<IntensiveBeds> {
           backgroundColor: Colors.teal[700],
           elevation: 0.0,
           title: Text('Intensive beds reservation form'),
-          actions: [
-            FlatButton.icon(
-              icon: Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-              ),
-              label: Text(
-                '',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-                //widget.toggleView();
-              },
-            )
-          ],
         ),
         body: Container(
             width: double.infinity,
@@ -129,7 +116,20 @@ class _IntensiveBedsState extends State<IntensiveBeds> {
                         'Reserve ',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        FirebaseFirestore.instance
+                            .collection("beds")
+                            .document("0")
+                            .collection("intensive-bed")
+                            .add({
+                          "patientName": patientName,
+                          "bedIDIntensive": bedIDIntensive,
+                          "date": _date,
+                        });
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context)=>BedReservation()
+                        ),);
+                      },
                     ),
                     SizedBox(height: 12.0),
                     Text(

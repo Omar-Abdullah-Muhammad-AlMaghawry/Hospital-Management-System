@@ -1,3 +1,6 @@
+import 'MyScuduleScreen.dart';
+import '../screens/stastistacs_screens.dart';
+
 import 'message_list_screen.dart';
 
 import 'chat_screen.dart';
@@ -26,7 +29,16 @@ class DoctorsHomeScreen extends StatelessWidget {
       MyAppointmentScreen.nameRoute,
     );
   }
-
+   void moveToMyScudule(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MyScuduleScreen.nameRoute,
+    );
+  }
+ void moveToMyStastistic(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+     MyStastisticScreen.nameRoute,
+    );
+  }
   void moveToChat(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
       MessageListScreen.nameRoute,
@@ -65,7 +77,7 @@ class DoctorsHomeScreen extends StatelessWidget {
             ),
           ),
           NiceButton(
-            onPressed: null,
+            onPressed: moveToMyScudule,
             nameOfButton: "My Schedule",
             heightOfButton: 75,
           ),
@@ -77,7 +89,7 @@ class DoctorsHomeScreen extends StatelessWidget {
             heightOfButton: 75,
           ),
           NiceButton(
-            onPressed: null,
+            onPressed:  moveToMyStastistic,
             nameOfButton: "My Statistics",
             widthOfButton: double.infinity,
             heightOfButton: 75,

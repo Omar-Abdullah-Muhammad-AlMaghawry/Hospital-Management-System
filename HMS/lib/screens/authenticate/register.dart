@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:HMS/widget/auth/user_image_picker.dart';
+import 'package:HMS/widget/user_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:HMS/services/auth.dart';
 import 'package:HMS/shared/constants.dart';
@@ -28,6 +28,16 @@ class _RegisterState extends State<Register> {
   String address = '';
   String _date = DateFormat.yMMMd().format(DateTime.now());
   File _userImageFile;
+  final List<String> userType = [
+    'Doctor',
+    'Patient',
+    'Lab Specialist',
+    'Radiology',
+    'Front Desk'
+  ];
+  String currentUser = "";
+  final List<String> gender = ["Male", "Female"];
+  String currentGender = '';
   void _imagePickedfn(File image) {
     _userImageFile = image;
   }
@@ -130,6 +140,18 @@ class _RegisterState extends State<Register> {
                   },
                 ),
                 SizedBox(height: 10.0),
+                // DropdownButtonFormField(
+                //   decoration: inputTextDecoration,
+                //   value: currentUser ?? 'Select user type',
+                //   items: userType.map((userType) {
+                //     return DropdownMenuItem(
+                //       value: userType,
+                //       child: Text('$userType'),
+                //     );
+                //   }).toList(),
+                //   onChanged: (val) => setState(() => currentUser =val),
+                // ),
+                // SizedBox(height: 10.0),
                 TextFormField(
                   decoration:
                       inputTextDecoration.copyWith(hintText: 'Phone Number'),
@@ -151,6 +173,18 @@ class _RegisterState extends State<Register> {
                     });
                   },
                 ),
+                SizedBox(height: 10.0),
+                // DropdownButtonFormField(
+                //   decoration: inputTextDecoration,
+                //   value: currentGender ?? 'Gender',
+                //   items: gender.map((gender) {
+                //     return DropdownMenuItem(
+                //       value: gender,
+                //       child: Text('$gender'),
+                //     );
+                //   }).toList(),
+                //   onChanged: (val) => setState(() => currentGender=val),
+                // ),
                 SizedBox(height: 10.0),
                 Padding(
                     padding: EdgeInsets.only(bottom: 10),

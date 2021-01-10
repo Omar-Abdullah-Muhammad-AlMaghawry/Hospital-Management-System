@@ -16,13 +16,10 @@ class MyAppointmentScreen extends StatefulWidget {
 }
 
 class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
-
   void shtx(BuildContext context) {
-
     showModalBottomSheet(
         context: context,
         builder: (ctx) {
-       
           return NewEditDeleteAppointment(
             changeTime: false,
             deleteAppoint: false,
@@ -41,6 +38,7 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
+              Navigator.of(context).pop();
               FirebaseAuth.instance.signOut();
             },
           )

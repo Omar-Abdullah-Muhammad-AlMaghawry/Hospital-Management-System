@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:HMS/shared/constants.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -133,7 +134,21 @@ class _NormalBedsState extends State<NormalBeds> {
                         'Reserve ',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        FirebaseFirestore.instance
+                            .collection("beds")
+                            .document("1")
+                            .collection("normal-bed")
+                            .add({
+                          "patientName": patientName,
+                          "bedIDIntensive": bedIDNormal,
+                          "date": _date,
+                        });
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => BedReservation()),
+                        );
+                      },
                     ),
                     SizedBox(height: 12.0),
                     Text(

@@ -1,7 +1,9 @@
+import 'package:HMS/screens/MyScuduleScreen.dart';
 import 'package:HMS/screens/doctors_home_screen.dart';
 import 'package:HMS/screens/doctors_list_screen%20copy.dart';
 import 'package:HMS/screens/home/MyProfile.dart';
 import 'package:HMS/screens/message_list_screen.dart';
+import 'package:HMS/screens/stastistacs_screens.dart';
 
 import './screens/auth_screens.dart';
 import './screens/chat_screen.dart';
@@ -18,7 +20,7 @@ import 'widget/CardHistoryWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/my_appointment_screen.dart';
-import 'models/users.dart';
+import './models/users.dart';
 import './screens/wraper.dart';
 import './services/auth.dart';
 import 'package:provider/provider.dart';
@@ -81,6 +83,8 @@ class MyApp01 extends StatelessWidget {
         MessageListScreen.nameRoute: (context) => MessageListScreen(),
         DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
         MyProfile.nameRoute:(context)=>MyProfile(),
+        MyScuduleScreen.nameRoute:(context)=>MyScuduleScreen(),
+         MyStastisticScreen.nameRoute:(context)=>MyStastisticScreen(),
       },
 
       //MyHomePage(),

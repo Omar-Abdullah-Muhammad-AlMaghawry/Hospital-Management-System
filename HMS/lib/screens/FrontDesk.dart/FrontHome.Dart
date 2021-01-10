@@ -1,9 +1,9 @@
+
+import 'package:HMS/screens/FrontDesk.dart/Acess%20Data.dart';
+import 'package:HMS/screens/FrontDesk.dart/Service_fees.dart';
+import 'package:HMS/screens/FrontDesk.dart/bed_reservation.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
-
-// void main() {
-//   runApp(Homepage());
-// }
 
 class FrontHome extends StatefulWidget {
   @override
@@ -47,7 +47,7 @@ class _FrontHomeState extends State<FrontHome> {
             ),
           ],
         ),
-        body: List(),
+        body: list(context),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_comment_rounded),
           onPressed: () {
@@ -62,7 +62,7 @@ class _FrontHomeState extends State<FrontHome> {
   }
 }
 
-Widget List() {
+Widget list(BuildContext context) {
   var list = ListView(
     children: <Widget>[
       ListTile(
@@ -75,22 +75,29 @@ Widget List() {
       ListTile(
         title: Text('service fees '),
         trailing: Icon(Icons.accessibility_new_outlined),
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => ServiceFees()),
+          );
+        },
       ),
       ListTile(
         title: Text("Access Data"),
         trailing: Icon(Icons.account_circle_rounded),
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AccessData()),
+          );
+        },
       ),
       ListTile(
         title: Text('Bed Reservation'),
         trailing: Icon(Icons.add_to_photos_rounded),
         onTap: () {
-          BuildContext context;
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => FrontHome(),
+                builder: (context) => BedReservation(),
               ));
         },
       ),
