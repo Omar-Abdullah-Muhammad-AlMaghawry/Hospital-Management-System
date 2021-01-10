@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../widget/scudule.dart';
@@ -22,7 +23,8 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
         FirebaseStorage.instance.ref().child("Scudule").child("Scudule.jpg");
     await _ref.putFile(pickedImageFile);
     final _imageUrl = await _ref.getDownloadURL();
-
+    await
+// await FirebaseFirestore.instance.collection("doctors").document()
     setState(() {
       _imageScUrl = _imageUrl;
     });

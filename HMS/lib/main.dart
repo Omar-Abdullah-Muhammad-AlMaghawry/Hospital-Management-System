@@ -1,5 +1,9 @@
+import 'package:HMS/models/users.dart';
 import 'package:HMS/screens/MyScuduleScreen.dart';
 import 'package:HMS/screens/doctors_home_screen.dart';
+import 'package:HMS/screens/wraper.dart';
+import 'package:HMS/services/auth.dart';
+import 'package:provider/provider.dart';
 import './screens/doctors_list_screen%20copy.dart';
 import './screens/message_list_screen.dart';
 
@@ -31,49 +35,55 @@ class MyApp01 extends StatelessWidget {
     return MaterialApp(
       title: 'HMS',
       //theme: ThemeData(primarySwatch:/*Color.fromARGB(1, 3, 95, 109)*/ ),
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.onAuthStateChanged,
-        builder: (ctx, userSnapshot) {
-          if (userSnapshot.hasData) {
-            return
-                //HistoryScreen();
-                PatientHomeScreen();
-            // MyAppointmentScreen();
-            // ChatScreen();
-            // MessageListScreen();
-          }
-          return AuthScreen();
-        },
-      ),
-      routes: {
-        //   "/":(ctx)=>StreamBuilder(
-        //   stream: FirebaseAuth.instance.onAuthStateChanged,
-        //   builder: (ctx, userSnapshot) {
-        //     if (userSnapshot.hasData) {
-        //       return
-        //      //HistoryScreen();
-        //     PatientHome();
-        //      // MyAppointmentScreen();
-        //       //ChatScreen();
+      home: StreamProvider<Client>.value(
+        value: AuthService().user,
+        child: MaterialApp(
+          home: Wrapper(),
+          // StreamBuilder(
+          //   stream: FirebaseAuth.instance.onAuthStateChanged,
+          //   builder: (ctx, userSnapshot) {
+          //     if (userSnapshot.hasData) {
+          //       return
+          //           //HistoryScreen();
+          //           PatientHomeScreen();
+          //       // MyAppointmentScreen();
+          //       // ChatScreen();
+          //       // MessageListScreen();
+          //     }
+          //     return AuthScreen();
+          //   },
+          // ),
+          routes: {
+            //   "/":(ctx)=>StreamBuilder(
+            //   stream: FirebaseAuth.instance.onAuthStateChanged,
+            //   builder: (ctx, userSnapshot) {
+            //     if (userSnapshot.hasData) {
+            //       return
+            //      //HistoryScreen();
+            //     PatientHome();
+            //      // MyAppointmentScreen();
+            //       //ChatScreen();
 
-        //     }
-        //     return AuthScreen();
-        //   },
-        // ),
-        PatientHomeScreen.nameRoute: (context) => PatientHomeScreen(),
-        DoctorsHomeScreen.nameRoute: (context) => DoctorsHomeScreen(),
-        MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
-        HistoryScreen.nameRoute: (context) => HistoryScreen(),
-        ChatScreen.nameRoute: (context) => ChatScreen(),
-        MessageListScreen.nameRoute: (context) => MessageListScreen(),
-        DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
-        MyScuduleScreen.nameRoute:(context)=>MyScuduleScreen(),
-      },
+            //     }
+            //     return AuthScreen();
+            //   },
+            // ),
+            PatientHomeScreen.nameRoute: (context) => PatientHomeScreen(),
+            DoctorsHomeScreen.nameRoute: (context) => DoctorsHomeScreen(),
+            MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
+            HistoryScreen.nameRoute: (context) => HistoryScreen(),
+            ChatScreen.nameRoute: (context) => ChatScreen(),
+            MessageListScreen.nameRoute: (context) => MessageListScreen(),
+            DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
+            MyScuduleScreen.nameRoute: (context) => MyScuduleScreen(),
+          },
 
-      //MyHomePage(),
-      theme: ThemeData(
-        backgroundColor: Color.fromRGBO(3, 95, 109, 1),
-        // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+          //MyHomePage(),
+          theme: ThemeData(
+            backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+            // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+          ),
+        ),
       ),
     );
   }
