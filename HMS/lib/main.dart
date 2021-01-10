@@ -1,6 +1,7 @@
+import 'package:HMS/screens/MyScuduleScreen.dart';
 import 'package:HMS/screens/doctors_home_screen.dart';
-import 'package:HMS/screens/doctors_list_screen%20copy.dart';
-import 'package:HMS/screens/message_list_screen.dart';
+import './screens/doctors_list_screen%20copy.dart';
+import './screens/message_list_screen.dart';
 
 import './screens/auth_screens.dart';
 import './screens/chat_screen.dart';
@@ -66,6 +67,7 @@ class MyApp01 extends StatelessWidget {
         ChatScreen.nameRoute: (context) => ChatScreen(),
         MessageListScreen.nameRoute: (context) => MessageListScreen(),
         DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
+        MyScuduleScreen.nameRoute:(context)=>MyScuduleScreen(),
       },
 
       //MyHomePage(),
