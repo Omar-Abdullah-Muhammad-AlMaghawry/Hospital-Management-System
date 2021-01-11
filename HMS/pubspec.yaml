@@ -41,7 +41,7 @@ dependencies:
   syncfusion_flutter_charts: ^18.4.33
   #image_picker: ^0.6.3+4
   #image_picker: ^0.6.5+3
-  #image_picker: ^0.6.7+17
+  # image_picker: ^0.6.7+17
 
   provider: ^3.1.0
   flutter_spinkit: "^4.1.2"

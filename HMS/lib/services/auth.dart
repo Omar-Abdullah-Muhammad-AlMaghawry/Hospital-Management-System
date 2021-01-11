@@ -107,7 +107,7 @@ class AuthService {
         'image_url': url,
         "birthDate": date,
         "address": address,
-        " phoneNumber": phoneNumber,
+        "phoneNumber": phoneNumber,
       });
       await FirebaseFirestore.instance
           .collection(email.contains("p", email.indexOf("@"))

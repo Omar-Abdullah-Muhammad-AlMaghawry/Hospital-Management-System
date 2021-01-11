@@ -53,6 +53,7 @@ class MyApp01 extends StatelessWidget {
           //     return AuthScreen();
           //   },
           // ),
+          // initialRoute: ,
           routes: {
             //   "/":(ctx)=>StreamBuilder(
             //   stream: FirebaseAuth.instance.onAuthStateChanged,

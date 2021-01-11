@@ -39,16 +39,16 @@ class _ServiceFees extends State<ServiceFees> {
         //  Firebase val = Firebase.instance();
 
         body: StreamBuilder<QuerySnapshot>(
-            stream: Firestore.instance.collection("doctors ").snapshots(),
+            stream: Firestore.instance.collection("doctors").snapshots(),
             builder: (context, snapshot) {
               final doc = snapshot.data.documents;
-              if (snapshot.hasData == null) {
-                return Center(child: CircularProgressIndicator());
-              }
+              // if (snapshot.hasData == null) {
+              //   return Center(child: CircularProgressIndicator());
+              // }
 
-              if (snapshot.data == null) {
-                return Center(child: CircularProgressIndicator());
-              }
+              // if (snapshot.data == null) {
+              //   return Center(child: CircularProgressIndicator());
+              // }
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator();
               }
@@ -88,7 +88,7 @@ class _ServiceFees extends State<ServiceFees> {
                         cells: <DataCell>[
                           DataCell(
                             Text(
-                              'Dr ' + doc[index]['name'],
+                              'Dr ' + doc[index]['userName'],
                               style: TextStyle(fontSize: 20),
                             ),
                           ),
