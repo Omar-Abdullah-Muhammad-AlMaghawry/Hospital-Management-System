@@ -16,6 +16,7 @@ class MyScuduleScreen extends StatefulWidget {
 
 class _MyScuduleScreenState extends State<MyScuduleScreen> {
   String _imageScUrl;
+  final _user = FirebaseAuth.instance.currentUser;
   void _pickImage() async {
     final pickedImageFile = await ImagePicker.pickImage(
         source: ImageSource.camera, imageQuality: 50, maxWidth: 300);
@@ -23,8 +24,12 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
         FirebaseStorage.instance.ref().child("Scudule").child("Scudule.jpg");
     await _ref.putFile(pickedImageFile);
     final _imageUrl = await _ref.getDownloadURL();
-    await
-// await FirebaseFirestore.instance.collection("doctors").document()
+    await FirebaseFirestore.instance
+        .collection("doctors")
+        .document(_user.uid)
+        .update({
+      "sceduleImageUrl": _imageUrl,
+    });
     setState(() {
       _imageScUrl = _imageUrl;
     });
@@ -45,7 +50,15 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
           )
         ],
       ),
-      body: Scudule(_imageScUrl),
+      body: FutureBuilder(
+          future: FirebaseFirestore.instance
+              .collection("doctors")
+              .document(_user.uid)
+              .get(),
+          builder: (context, snapshot) {
+            final doctorDocs = snapshot.data;
+            return Scudule(doctorDocs["sceduleImageUrl"]);
+          }),
 
       /// drawer: ,
       floatingActionButton: FloatingActionButton(
