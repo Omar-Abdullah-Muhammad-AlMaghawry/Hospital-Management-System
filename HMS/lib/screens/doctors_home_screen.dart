@@ -1,4 +1,4 @@
-import 'package:HMS/screens/MyScuduleScreen.dart';
+import '../screens/MyScuduleScreen.dart';
 
 import 'message_list_screen.dart';
 
@@ -8,7 +8,7 @@ import '../widget/patient_home/NiceButton.dart';
 import '../widget/main_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'my_appointment_screen.dart';
+import './my_appointment_screen.dart';
 
 class DoctorsHomeScreen extends StatelessWidget {
   // void moveToMyHistory(BuildContext ctx) {
@@ -16,7 +16,6 @@ class DoctorsHomeScreen extends StatelessWidget {
   //     HistoryScreen.nameRoute,
   //   );
   // }
-
   void moveToMySchedule(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
       MyScuduleScreen.nameRoute,
@@ -67,7 +66,7 @@ class DoctorsHomeScreen extends StatelessWidget {
             ),
           ),
           NiceButton(
-            onPressed: null,
+            onPressed: moveToMySchedule,
             nameOfButton: "My Schedule",
             heightOfButton: 75,
           ),
