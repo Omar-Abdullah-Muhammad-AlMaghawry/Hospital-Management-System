@@ -9,7 +9,7 @@ import './screens/doctors_list_screen%20copy.dart';
 import './screens/message_list_screen.dart';
 
 import './screens/auth_screens.dart';
-import './screens/chat_screen.dart';
+import 'screens/chat0_screen.dart';
 import './screens/history_screen.dart';
 import './screens/my_appointment_screen.dart';
 import './screens/patients_home_screen.dart';

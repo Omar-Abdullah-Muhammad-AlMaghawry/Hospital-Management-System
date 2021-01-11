@@ -1,4 +1,4 @@
-import 'package:HMS/screens/chat_screen.dart';
+import 'package:HMS/screens/chat0_screen.dart';
 import 'package:HMS/screens/my_appointment_screen.dart';
 import 'package:HMS/widget/appointment/doctor-list.dart';
 import 'package:HMS/widget/chat/message-list.dart';

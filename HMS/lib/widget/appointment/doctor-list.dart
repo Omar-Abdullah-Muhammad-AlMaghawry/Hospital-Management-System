@@ -1,5 +1,5 @@
 import 'package:HMS/moduls/reciever.dart';
-import 'package:HMS/screens/chat_screen.dart';
+import 'package:HMS/screens/chat0_screen.dart';
 import 'package:HMS/widget/appointment/listtile-doctor.dart';
 import 'package:HMS/widget/chat/listtile-chat.dart';
 import 'package:HMS/widget/chat/messages.dart';
