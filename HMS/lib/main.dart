@@ -1,4 +1,5 @@
 import 'package:HMS/models/users.dart';
+import 'package:HMS/pages/masterHome.dart';
 import 'package:HMS/screens/MyScuduleScreen.dart';
 import 'package:HMS/screens/doctors_home_screen.dart';
 import 'package:HMS/screens/wraper.dart';
@@ -53,7 +54,7 @@ class MyApp01 extends StatelessWidget {
           //     return AuthScreen();
           //   },
           // ),
-          // initialRoute: ,
+          initialRoute: Homepage.nameRoute,
           routes: {
             //   "/":(ctx)=>StreamBuilder(
             //   stream: FirebaseAuth.instance.onAuthStateChanged,
@@ -69,6 +70,7 @@ class MyApp01 extends StatelessWidget {
             //     return AuthScreen();
             //   },
             // ),
+            Homepage.nameRoute: (context) => Homepage(),
             PatientHomeScreen.nameRoute: (context) => PatientHomeScreen(),
             DoctorsHomeScreen.nameRoute: (context) => DoctorsHomeScreen(),
             MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
