@@ -1,3 +1,5 @@
+import 'package:HMS/screens/MyScuduleScreen.dart';
+
 import 'message_list_screen.dart';
 
 import 'chat_screen.dart';
@@ -14,7 +16,11 @@ class DoctorsHomeScreen extends StatelessWidget {
   //     HistoryScreen.nameRoute,
   //   );
   // }
-
+void moveToMySchedule(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MyScuduleScreen.nameRoute,
+    );
+  }
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
       MyAppointmentScreen.nameRoute,
@@ -59,7 +65,7 @@ class DoctorsHomeScreen extends StatelessWidget {
             ),
           ),
           NiceButton(
-            onPressed: null,
+            onPressed:moveToMySchedule,
             nameOfButton: "My Schedule",
             heightOfButton: 75,
           ),
