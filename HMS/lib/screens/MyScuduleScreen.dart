@@ -57,10 +57,12 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
               .get(),
           builder: (context, snapshot) {
             final doctorDocs = snapshot.data;
-            if (doctorDocs["sceduleImageUrl"] != null)
+            // if (doctorDocs["sceduleImageUrl"] != null)
+            try {
               return Scudule(doctorDocs["sceduleImageUrl"]);
-            else
-              Center();
+            } catch (err) {
+              return Container();
+            }
           }),
 
       /// drawer: ,
