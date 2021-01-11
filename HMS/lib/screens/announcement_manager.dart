@@ -6,7 +6,6 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/intl_browser.dart';
 
 
 
@@ -63,25 +62,24 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
          child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircleAvatar(
-                       //child: Image.asset('images/image.jpg'),
-                       //to be clipped in a circluar shape
-                       backgroundImage: AssetImage('images/image.jpg'),
-                       radius: 30,
-                      ),
-
+                  
                       SizedBox(
-                        width:7,
+                        width:5,
                       ),
+                      
                       Expanded(
-                        child: TextField(
+                        child:
+                         TextField(
                         controller: textfieldcontroller,
+                        autofocus: true,
+                        
                           onChanged: (value){
                             setState(() {
                               post = value;                        
                             });                        
                           },
                           cursorWidth: 1,
+                          maxLines: null,
                           cursorColor: Colors.white,
                           decoration: InputDecoration(
                             border:OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -106,10 +104,9 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
                         color: Color(0XFF424242),
                         onPressed:
                             (){
+                              FocusScope.of(context).requestFocus(new FocusNode());
 
-                            ///delete message from textfield
                             textfieldcontroller.clear();
-                            ///make the keyboard disappear after pressing the send button
                             FocusScope.of(context).unfocus();
                             FirebaseFirestore.instance.collection('announcements').add({
                               'createdat': Timestamp.now(),
@@ -159,7 +156,7 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
                                itemCount: posts.length,
                                itemBuilder:(ctx,index)=>PostBubble(
                                  post:posts[index]['text'],  
-                                 date: posts[index]['createdat']   
+                                 date: posts[index]['createdat'].toDate(),  
                                ) ,
                            );
                            }                 
@@ -191,14 +188,16 @@ class PostBubble extends StatelessWidget {
   
   PostBubble({this.post,this.date});
   final String post;
-  final Timestamp date;
-  DateFormat x;
+  //final Timestamp date;
+  final DateTime date;
+  
   @override
  
   Widget build(BuildContext context) {
     return  
      Padding(
        padding: const EdgeInsets.all(8.0),
+       
        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -207,32 +206,51 @@ class PostBubble extends StatelessWidget {
             
              
              children: [
-                    CircleAvatar(
-              backgroundImage: AssetImage('images/image.jpg'),
-              radius: 10,
-            ),
-          SizedBox(width:3),
-         // format.format(DateTime.now());
-         // DateFormat.yMEd().add_jms().format(DateTime.now())
-         //
-        // DateTime now = DateTime.now();
-          //String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
-          Text(DateFormat('yyyy-MM-dd – kk:mm').format(date.toDate()) ),
-        // Text('shjk' ),
+               SizedBox(width:3),
+               Text('Announced At:',
+                style: TextStyle(fontSize: 15,
+               
+               )
+               ),
+
+               SizedBox(width:3),
+
+              Text(DateFormat.jm().format(date),
+              style: TextStyle(fontSize: 15,
+        
+              ),
+              
+              ),
+          
+        
 
              ],
              
             ),
-            SizedBox(height:5,),
+            SizedBox(height:2,),
 
-            Container(
-              padding: EdgeInsets.all(10),
+            Material(
+              elevation: 20,
+                          child: Container(
+                padding: EdgeInsets.all(10),
            decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+           color: Colors.white,
+
           ),
-              
-              child: Text(post)),
+                
+                child:Text(post,
+                style: TextStyle(
+                   fontSize: 20,
+                   fontWeight:FontWeight.w300,
+                  
+
+                ),
+                
+                
+                ),
+                 ),
+            ),
             SizedBox(height:15,),
         
 

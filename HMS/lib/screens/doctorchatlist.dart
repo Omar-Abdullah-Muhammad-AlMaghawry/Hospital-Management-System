@@ -1,12 +1,17 @@
 ///chatlist of doctors
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flash_chat/screens/chat_screen.dart';
+import 'package:HMS/screens/chatscreen.dart';
 import 'package:flutter/material.dart';
 import'package:firebase_auth/firebase_auth.dart';
 import'package:cloud_firestore/cloud_firestore.dart';
+import 'package:HMS/screens/searchbyusername.dart';
+import 'package:HMS/screens/helpingfunctions.dart';
+
+
 
 class DoctorChatList extends StatefulWidget {
   static const String id = 'DoctorChat_List';
+  String listid = 'doctors';
   @override
   _DoctorChatListState createState() => _DoctorChatListState();
 }
@@ -17,35 +22,9 @@ class _DoctorChatListState extends State<DoctorChatList> {
   User loggedinuser;
   String user1;
   String user2;
-  String temp1;
-  String temp2;
-  String temp3;
   String x;
-  
   String chatteduser;
-    Future getroomid()async{
-    temp1 = user1 + "-" + user2;
-    print('temp1');print(temp1);
-    temp2 = user2 + "-" + user1;
-    print('temp2');print(temp2);
-    var chatroomid1 =await Firestore.instance.collection('chatrooms/$temp1/messages').getDocuments().then((value) {
-      if(value.docs.length>0){
-        temp3 = temp1;
-        print('temp1exist');
-        ///print collectoin here
-      }
-      else{
-        temp3=temp2;
-        print('temp1NOEXISTANCE');
-      }
-      
-
-    });
-
-   
-    return temp3;
-
-  }
+  
 
   void GetCurrentUser()async{
     try{
@@ -87,6 +66,21 @@ class _DoctorChatListState extends State<DoctorChatList> {
       appBar:AppBar(
         title: Text('Chat'),
         backgroundColor: Color(0xFFD6D6D6),
+        actions: [
+          IconButton(
+
+          icon:Icon(Icons.search),
+          onPressed: (){
+            //Navigator.pushNamed(context,SearchByName.id);
+              Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>SearchByName(listid: widget.listid,),
+                          ),
+                        );
+            
+          },
+        ),],
       ),
       body:
       Container(
@@ -113,59 +107,33 @@ class _DoctorChatListState extends State<DoctorChatList> {
                         ,style: TextStyle(fontSize: 20),
                       ),
                       onPressed: ()async{
-
                         user2 = await snapshot.data[index]['email'];
                         print('WHEN USER2 SELECTED');
-
-                           x= await getroomid();
-       
-                        
-                      
-                            
-                        print('the ROOOOOM ID :');
-                        print(x);
+                         x= await getroomid(user1,user2);           
+                         print('the ROOOOOM ID :');
+                         print(x);
 
       
-         print('navigating...');
-           Navigator.push(
+                     print('navigating...');
+                     Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => Chat(roomid: x,),
                           ),
                         );
                         
-                        
-                     
-
-                        // Navigator.pushNamed(context, ChatScreen.id);
-
-                       /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Chat(roomid: temp3,),
-                          ),
-                        );*/
 
                       },
                     ),
                   );
                 },
                   itemCount:snapshot.data.length,
-                  //scrollDirection: Axis.vertical,
-
-
 
                 );
-
               }
             }
-
         ),
-
       ),
-
-
-
     );
   }
 }

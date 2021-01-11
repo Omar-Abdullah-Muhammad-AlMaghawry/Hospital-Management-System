@@ -1,4 +1,4 @@
-///chatlist of Front desk
+///chatlist of doctors
 import 'package:firebase_core/firebase_core.dart';
 import 'package:HMS/screens/chatscreen.dart';
 import 'package:flutter/material.dart';
@@ -7,16 +7,14 @@ import'package:cloud_firestore/cloud_firestore.dart';
 import 'package:HMS/screens/searchbyusername.dart';
 import 'package:HMS/screens/helpingfunctions.dart';
 
-
-
-class FrontChatList extends StatefulWidget {
-  static const String id = 'FrontChat_List';
-  String listid = 'frontdisk';
+class PatientChatList extends StatefulWidget {
+  static const String id = 'PatientChat_List';
+   String listid = 'patients';
   @override
-  _FrontChatListState createState() => _FrontChatListState();
+  _PatientChatListState createState() => _PatientChatListState();
 }
 
-class _FrontChatListState extends State<FrontChatList> {
+class _PatientChatListState extends State<PatientChatList> {
   String sender;
   String message1;
   User loggedinuser;
@@ -24,7 +22,6 @@ class _FrontChatListState extends State<FrontChatList> {
   String user2;
   String x;
   String chatteduser;
-  
 
   void GetCurrentUser()async{
     try{
@@ -32,7 +29,7 @@ class _FrontChatListState extends State<FrontChatList> {
       if(user!= null){
         loggedinuser = user;
         user1 = loggedinuser.email;
-        print('INSIDE front CHATLIST');
+        print('INSIDE DOCTOR CHATLIST');
         print(user1);
       }
     }
@@ -44,15 +41,15 @@ class _FrontChatListState extends State<FrontChatList> {
   }
 
 
-  Future getdoctornames()async{
+  Future getpatientnames()async{
     final _firestore = FirebaseFirestore.instance;
-    var doc = await _firestore.collection('frontdisk').getDocuments();
+    var doc = await _firestore.collection('patients').getDocuments();
     return doc.documents;
   }
 
  void initState(){
       super.initState();
-      getdoctornames();
+      getpatientnames();
       GetCurrentUser();
 
     }
@@ -71,13 +68,14 @@ class _FrontChatListState extends State<FrontChatList> {
 
           icon:Icon(Icons.search),
           onPressed: (){
-              Navigator.push(
+           // Navigator.pushNamed(context,SearchByName.id);
+           Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>SearchByName(listid: widget.listid,),
                           ),
                         );
-            
+
           },
         ),],
       ),
@@ -87,7 +85,7 @@ class _FrontChatListState extends State<FrontChatList> {
 
         child:
         FutureBuilder(
-            future:getdoctornames() ,
+            future:getpatientnames() ,
             builder:(context,snapshot){
               if(snapshot.connectionState== ConnectionState.waiting){
                 return Center(
@@ -106,21 +104,22 @@ class _FrontChatListState extends State<FrontChatList> {
                         ,style: TextStyle(fontSize: 20),
                       ),
                       onPressed: ()async{
+
                         user2 = await snapshot.data[index]['email'];
                         print('WHEN USER2 SELECTED');
-                         x= await getroomid(user1,user2);           
-                         print('the ROOOOOM ID :');
-                         print(x);
+
+                           x= await getroomid(user1,user2);                                                  
+                        print('the ROOOOOM ID :');
+                        print(x);
 
       
-                     print('navigating...');
-                     Navigator.push(
+         print('navigating...');
+           Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => Chat(roomid: x,),
                           ),
                         );
-                        
 
                       },
                     ),
@@ -129,10 +128,16 @@ class _FrontChatListState extends State<FrontChatList> {
                   itemCount:snapshot.data.length,
 
                 );
+
               }
             }
+
         ),
+
       ),
+
+
+
     );
   }
 }
