@@ -126,9 +126,7 @@ class _IntensiveBedsState extends State<IntensiveBeds> {
                           "bedIDIntensive": bedIDIntensive,
                           "date": _date,
                         });
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context)=>BedReservation()
-                        ),);
+                        Navigator.of(context).pop();
                       },
                     ),
                     SizedBox(height: 12.0),

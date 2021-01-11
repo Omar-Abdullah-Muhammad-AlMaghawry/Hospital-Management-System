@@ -1,3 +1,5 @@
+import 'package:HMS/screens/FrontDesk.dart/IntensiveForm.dart';
+import 'package:HMS/screens/FrontDesk.dart/NormalForm.dart';
 //////////////// bed reservation
 
 import 'package:flutter/material.dart';
@@ -100,7 +102,11 @@ class _BedReservationState extends State<BedReservation> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   RaisedButton(
-                    onPressed: _freen,
+                    onPressed: () {
+                      _freen();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => NormalBeds()));
+                    },
                     //////////////////////////////////////////////////////////////
                     elevation: 10,
                     shape: CircleBorder(),
@@ -194,7 +200,11 @@ class _BedReservationState extends State<BedReservation> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   RaisedButton(
-                    onPressed: _freei,
+                    onPressed: () {
+                      _freei();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => IntensiveBeds()));
+                    },
                     //////////////////////////////////////////////////////////////
                     elevation: 10,
                     shape: CircleBorder(),

@@ -144,10 +144,7 @@ class _NormalBedsState extends State<NormalBeds> {
                           "bedIDIntensive": bedIDNormal,
                           "date": _date,
                         });
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => BedReservation()),
-                        );
+                        Navigator.of(context).pop();
                       },
                     ),
                     SizedBox(height: 12.0),
