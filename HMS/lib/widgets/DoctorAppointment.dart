@@ -36,7 +36,6 @@ class DoctorAppointment extends StatefulWidget {
 
 class _DoctorAppointmentState extends State<DoctorAppointment> {
   File _pickedImage;
-
   void addTreatment() async {
     File _pickedImageFile = File(
         await ImagePicker.pickImage(source: ImageSource.camera)
