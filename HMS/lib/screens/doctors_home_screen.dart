@@ -2,7 +2,7 @@ import '../screens/MyScuduleScreen.dart';
 
 import './doctorchatlist.dart';
 import 'message_list_screen.dart';
-
+import '../widgets/DoctorDrawer.dart';
 import './chat0_screen.dart';
 import 'history_screen.dart';
 import '../widget/patient_home/NiceButton.dart';
@@ -51,7 +51,7 @@ class DoctorsHomeScreen extends StatelessWidget {
         ],
         title: Text("Home"),
       ),
-     // drawer:Docto,
+      drawer: DoctorDrawer(),
       // MainDrawer(),
       body: ListView(
         children: [
@@ -113,12 +113,12 @@ class DoctorsHomeScreen extends StatelessWidget {
         child: Icon(
           Icons.chat,
         ),
-        onPressed:() => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DoctorChatList(),
-                ),
-              ),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoctorChatList(),
+          ),
+        ),
         // () => moveToChat(context),
       ),
     );
