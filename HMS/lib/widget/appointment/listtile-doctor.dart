@@ -20,7 +20,6 @@ class ListTileOfDoctors extends StatelessWidget {
         ListTileOfDoctors.isChoosed = true;
         DoctorsList.reciever = rec;
         Navigator.of(context).pop();
-        
       },
     );
   }

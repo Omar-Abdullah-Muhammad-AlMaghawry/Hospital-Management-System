@@ -1,3 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../screens/Laboratory.dart';
+import '../screens/radiology.dart';
+
+import '../screens/outpatient.dart';
 import 'package:flutter/material.dart';
 
 //TODO bind drawer buttons to the pages the point to.
@@ -11,17 +18,36 @@ class PatientDrawer extends StatelessWidget {
             width: double.infinity,
             color: Color(0xFF8F0026),
             padding: EdgeInsets.symmetric(vertical: 40),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.person,
-                  size: 65,
-                ),
-                Text(
-                  'Omar الجامد',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: FutureBuilder(
+              future: FirebaseFirestore.instance
+                  .collection("users")
+                  .document(FirebaseAuth.instance.currentUser.uid)
+                  .get(),
+              builder: (context, snapshots) {
+                final userDocs = snapshots.data;
+                if (snapshots.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      backgroundImage: NetworkImage(userDocs['image_url']),
+                      radius: 50,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      userDocs['userName'],
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           Container(
@@ -48,7 +74,8 @@ class PatientDrawer extends StatelessWidget {
             padding: EdgeInsets.only(top: 15),
             child: FlatButton(
               color: Colors.blue[100],
-              onPressed: () => {},
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Departments())),
               child: Container(
                 width: double.infinity,
                 height: 50,
@@ -68,7 +95,8 @@ class PatientDrawer extends StatelessWidget {
             padding: EdgeInsets.only(top: 15),
             child: FlatButton(
               color: Colors.blue[100],
-              onPressed: () => {},
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Laboratory())),
               child: Container(
                 width: double.infinity,
                 height: 50,
@@ -88,7 +116,8 @@ class PatientDrawer extends StatelessWidget {
             padding: EdgeInsets.only(top: 15),
             child: FlatButton(
               color: Colors.blue[100],
-              onPressed: () => {},
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Radiology())),
               child: Container(
                 width: double.infinity,
                 height: 50,

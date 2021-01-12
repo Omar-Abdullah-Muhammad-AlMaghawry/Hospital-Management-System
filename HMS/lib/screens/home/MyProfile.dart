@@ -13,7 +13,7 @@ class MyProfile extends StatelessWidget {
   var phoneNumber = '';
   var birthDate = '';
   String image_url;
-static const nameRoute = "/my-profile";
+  static const nameRoute = "/my-profile";
   var result;
   final AuthService _auth = AuthService();
   final current = FirebaseAuth.instance.currentUser;
@@ -52,6 +52,7 @@ static const nameRoute = "/my-profile";
             label: Text('Log out',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () async {
+              Navigator.of(context).pop();
               await _auth.signOut();
             },
           )
@@ -64,53 +65,64 @@ static const nameRoute = "/my-profile";
               .get(),
           builder: (context, snapshots) {
             final userDocs = snapshots.data;
+            if (snapshots.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             return Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-              child: Column(children: <Widget>[
-                Container(
-                  width: 100,
-                  height: 100,
-                  child: Stack(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.bottomRight,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.bottomRight,
+                  ),
+                  Center(
+                    child: Container(
+                      // width: 200,
+                      // height: 200,
+
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        backgroundImage: NetworkImage(userDocs['image_url']),
+                        radius: 80,
                       ),
-                      Center(
-                        // width: 100,
-                        // height: 100,
-               
-                          child: CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            backgroundImage:  NetworkImage(userDocs['image_url'])
-                              ,
-                            radius: 150,
-                          ),
-                          // Icon(
-                          //   Icons.account_circle_outlined,
-                          //   size: 80.0,
-                          // ),
-                        ),
-               
+                      // Icon(
+                      //   Icons.account_circle_outlined,
+                      //   size: 80.0,
+                      // ),
+                    ),
+                  ),
+                  SizedBox(height: 30.0),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('User Name :' + userDocs['userName'],
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0)),
+                      SizedBox(height: 20.0),
+                      Text('Email :' + userDocs['email'],
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0)),
+                      SizedBox(height: 20.0),
+                      Text('Address :' + userDocs["address"],
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0)),
+                      SizedBox(height: 20.0),
+                      Text('Phone Number :' + userDocs["phoneNumber"],
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0)),
+                      SizedBox(height: 20.0),
+                      Text('Birth date :' + userDocs["birthDate"],
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0)),
                     ],
                   ),
-                ),
-                SizedBox(height: 30.0),
-                Text('User Name :' + userDocs['userName'],
-                    style: TextStyle(color: Colors.white, fontSize: 30.0)),
-                SizedBox(height: 20.0),
-                Text('Email :' + userDocs['email'],
-                    style: TextStyle(color: Colors.white, fontSize: 30.0)),
-                SizedBox(height: 20.0),
-                Text('Address :' + userDocs["address"],
-                    style: TextStyle(color: Colors.white, fontSize: 30.0)),
-                SizedBox(height: 20.0),
-                Text('Phone Number :' + userDocs["phoneNumber"],
-                    style: TextStyle(color: Colors.white, fontSize: 30.0)),
-                SizedBox(height: 20.0),
-                Text('Birth date :' + userDocs["birthDate"],
-                    style: TextStyle(color: Colors.white, fontSize: 30.0)),
-              ]),
+                ],
+              ),
             );
           }),
     );

@@ -16,7 +16,7 @@ class History extends StatelessWidget {
         builder: (ctx, appointSnapshot) {
           final appointmentDocs = appointSnapshot.data.documents;
           if (appointSnapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
           return ListView.builder(
 

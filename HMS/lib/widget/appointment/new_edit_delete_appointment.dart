@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:HMS/moduls/reciever.dart';
-import 'package:HMS/screens/doctors_list_screen%20copy.dart';
-import 'package:HMS/widget/appointment/doctor-list.dart';
-import 'package:HMS/widget/appointment/doctors_dropdown_list.dart';
-import 'package:HMS/widget/appointment/listtile-doctor.dart';
-import 'package:HMS/widget/appointment/my_apointment.dart';
+import '../../moduls/reciever.dart';
+import '../../screens/doctors_list_screen%20copy.dart';
+import './doctor-list.dart';
+import './doctors_dropdown_list.dart';
+import './listtile-doctor.dart';
+import './my_apointment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -54,7 +54,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
     //     await FirebaseFirestore.instance.collection("appointments").doc().get();
     _isChange = true;
     var _isValid = _formKeyA.currentState.validate();
-    if (_isValid ) {
+    if (_isValid) {
       //this condition with its else is reciently added
       _formKeyA.currentState.save();
       await FirebaseFirestore.instance
@@ -66,7 +66,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
       });
       Navigator.of(context).pop();
     } else {
-     // Navigator.of(context).pop();
+      // Navigator.of(context).pop();
       Scaffold.of(context).showSnackBar(SnackBar(
         content: Text(
           "You have to full up the data above",
@@ -104,7 +104,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
     //  final _user = FirebaseAuth.instance.currentUser;
 
     var _isValid = _formKeyA.currentState.validate();
-    if (_isValid ) {
+    if (_isValid) {
       //this condition with its else is reciently added
       _formKeyA.currentState.save();
       // _isLoading = true;
@@ -137,6 +137,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
         "cardID": cardID,
       });
       _isLoading = false;
+      // ListTileOfDoctors.isChoosed = false;
       Navigator.of(context).pop();
       _controller1.clear();
       _controller2.clear();
@@ -219,42 +220,63 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                     if (!widget.changeTime)
                       if (_isClinic)
                         Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
                           height: 50,
                           decoration: BoxDecoration(
-                              border: Border.fromBorderSide(BorderSide.none)),
-                          child: InkWell(
-                            focusColor: Colors.green,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  !_isChoosed
-                                      ? "Choose The Doctor you Want to Reserve"
-                                      : DoctorsList.reciever.name,
-                                  style: !_isChoosed
-                                      ? TextStyle(color: Colors.black54)
-                                      : TextStyle(color: Colors.black),
+                            // border:Border.fromBorderSide(BorderSide(color: Colors.black38)),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Doctor Name :",
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.blueAccent),
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              InkWell(
+                                focusColor: Colors.green,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      !_isChoosed
+                                          ? "Choose The Doctor you Want to Reserve"
+                                          : DoctorsList.reciever.name,
+                                      style: !_isChoosed
+                                          ? TextStyle(color: Colors.black54)
+                                          : TextStyle(color: Colors.black),
+                                    ),
+                                    Icon(Icons.change_history_rounded)
+                                  ],
                                 ),
-                                Icon(Icons.change_history_rounded)
-                              ],
-                            ),
-                            onTap: () {
-                              setState(() {
-                                if (ListTileOfDoctors.isChoosed)
-                                  _isState = !_isState;
-                                Navigator.of(context).pushNamed(
-                                  DoctorsListScreen.nameRoute,
-                                );
-                              });
+                                onTap: () {
+                                  // _isState = !_isState;
+                                  Navigator.of(context)
+                                      .pushNamed(
+                                    DoctorsListScreen.nameRoute,
+                                  )
+                                      .then((value) {
+                                    setState(() {
+                                      _isState = !_isState;
+                                    });
+                                  });
 
-                              //     .then((result) {
-                              //   _isChoosed = result;
-                              //   print(result);
-                              // }
-                              // );
-                            },
+                                  //     .then((result) {
+                                  //   _isChoosed = result;
+                                  //   print(result);
+                                  // }
+                                  // );
+                                },
+                              ),
+                            ],
                           ),
                         ),
+
                   if (!(widget.deleteAppoint))
                     if (!widget.changeTime)
                       if (!_isClinic)
@@ -295,7 +317,6 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
 
                   if (!(widget.deleteAppoint))
                     DateTimeField(
-                     
                         key: ValueKey("Date"),
                         validator: (value) {
                           if (value == null) return "please Choose The Date";
@@ -327,8 +348,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                         }),
                   if (!(widget.deleteAppoint))
                     DateTimeField(
-                     
-                       validator: (value) {
+                        //  initialValue: DateTime(),
+                        validator: (value) {
                           if (value == null) return "please Choose The Time";
                           return null;
                         },

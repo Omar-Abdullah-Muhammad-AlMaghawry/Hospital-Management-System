@@ -40,7 +40,7 @@ class MyAppointment extends StatelessWidget {
         // }
 
         if (appointSnapshots.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
         return ListView.builder(
           // scrollDirection: Axis.vertical,

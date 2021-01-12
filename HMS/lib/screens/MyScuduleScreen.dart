@@ -57,6 +57,11 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
               .get(),
           builder: (context, snapshot) {
             final doctorDocs = snapshot.data;
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             // if (doctorDocs["sceduleImageUrl"] != null)
             try {
               return Scudule(doctorDocs["sceduleImageUrl"]);

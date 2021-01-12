@@ -21,28 +21,30 @@ class _DoctorsListState extends State<DoctorsList> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("users").snapshots(),
+        stream: FirebaseFirestore.instance.collection("doctors").snapshots(),
         builder: (ctx, snapshots) {
-          var nameMember = snapshots.data.documents??0;
+          var nameMember = snapshots.data.documents ?? 0;
           // if (nameMember == ConnectionState.waiting) {
           //   return Center(
           //     child: CircularProgressIndicator(),
           //   );
           // }
-
+          if (snapshots.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
           return ListView.builder(
-            itemCount: nameMember.length??0,
+            itemCount: nameMember.length ?? 0,
             itemBuilder: (ctx, index) {
-              id = nameMember[index].id??0;
-              userName = nameMember[index]["userName"]??0;
-              
+              id = nameMember[index].id ?? 0;
+              userName = nameMember[index]["userName"] ?? 0;
+
               // Messages(
               //   id: id,
               // );
               // ChatScreen(
               //   userName: userName,
               // );
-              return ListTileOfDoctors(rec: Reciever(id: id,name: userName));
+              return ListTileOfDoctors(rec: Reciever(id: id, name: userName));
               // ListTile(
 
               //   key: Key(id),
