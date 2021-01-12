@@ -1,5 +1,6 @@
 import '../screens/MyScuduleScreen.dart';
 
+import './doctorchatlist.dart';
 import 'message_list_screen.dart';
 
 import 'chat0_screen.dart';
@@ -111,7 +112,13 @@ class DoctorsHomeScreen extends StatelessWidget {
         child: Icon(
           Icons.chat,
         ),
-        onPressed: () => moveToChat(context),
+        onPressed:() => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DoctorChatList(),
+                ),
+              ),
+        // () => moveToChat(context),
       ),
     );
   }

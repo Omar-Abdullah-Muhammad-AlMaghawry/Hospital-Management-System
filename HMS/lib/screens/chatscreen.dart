@@ -5,7 +5,7 @@ import 'dart:core';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:flash_chat/screens/testimage.dart';
+
 
 
 
@@ -28,11 +28,12 @@ class _ChatState extends State<Chat> {
   String sender;
   String message1;
   User loggedinuser;
-  ///get the image
-  File _image;
+ 
   Stream<QuerySnapshot> _stream;
  
 void UploadImage()async{
+   ///get the image
+  File _image;
 
     await ImagePicker.pickImage(source: ImageSource.camera).then((value) {
       _image =  value;
@@ -54,7 +55,7 @@ void UploadImage()async{
                         });
                         }
 
-  Future getCurrentUser()async{
+  Future GetCurrentUser()async{
     try{
       final user = FirebaseAuth.instance.currentUser;
       if(user!= null){
@@ -75,37 +76,11 @@ void UploadImage()async{
   void initState(){
     super.initState();
 
-    getCurrentUser();
+    GetCurrentUser();
     print('check before making temp on user1');
     print(user1);
     _stream = FirebaseFirestore.instance.collection('/chatrooms/${widget.roomid}/messages').orderBy('createdat',descending: true).snapshots();
     
-  
-   /*  Firestore.instance.collection('chatrooms/${widget.roomid}/messages/temp').add({
-  
-      'text':'uuu',
-      'sender':user1,
-      'createdat':Timestamp.now(),
-      'type':'text',
-    });
-    */
-  /*  Firestore.instance.collection('chatrooms/${widget.roomid}/messages').doc('temp').set(
-      {
-  
-      'text':'empty',
-      'sender':user1,
-      'createdat':Timestamp.now(),
-      'type':'text',
-    }
-    );
-  
-     
-         print('done888888888888888888888');
-         FirebaseFirestore.instance.collection('chatrooms/${widget.roomid}/messages').doc('temp').delete();
-
-     */
-      
-     
  
   }
   @override

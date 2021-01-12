@@ -105,7 +105,7 @@ static const nameRoute = "/my-profile";
                 Text('Address :' + userDocs["address"],
                     style: TextStyle(color: Colors.white, fontSize: 30.0)),
                 SizedBox(height: 20.0),
-                Text('Phone Number :' + userDocs[" phoneNumber"],
+                Text('Phone Number :' + userDocs["phoneNumber"],
                     style: TextStyle(color: Colors.white, fontSize: 30.0)),
                 SizedBox(height: 20.0),
                 Text('Birth date :' + userDocs["birthDate"],

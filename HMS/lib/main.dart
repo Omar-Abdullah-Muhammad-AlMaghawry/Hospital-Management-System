@@ -1,9 +1,11 @@
-import 'package:HMS/models/users.dart';
-import 'package:HMS/pages/masterHome.dart';
-import 'package:HMS/screens/MyScuduleScreen.dart';
-import 'package:HMS/screens/doctors_home_screen.dart';
-import 'package:HMS/screens/wraper.dart';
-import 'package:HMS/services/auth.dart';
+import 'package:HMS/screens/home/MyProfile.dart';
+
+import './models/users.dart';
+import './pages/masterHome.dart';
+import './screens/MyScuduleScreen.dart';
+import './screens/doctors_home_screen.dart';
+import './screens/wraper.dart';
+import './services/auth.dart';
 import 'package:provider/provider.dart';
 import './screens/doctors_list_screen%20copy.dart';
 import './screens/message_list_screen.dart';
@@ -79,6 +81,7 @@ class MyApp01 extends StatelessWidget {
             MessageListScreen.nameRoute: (context) => MessageListScreen(),
             DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
             MyScuduleScreen.nameRoute: (context) => MyScuduleScreen(),
+             MyProfile.nameRoute: (context) => MyProfile(),
           },
 
           //MyHomePage(),

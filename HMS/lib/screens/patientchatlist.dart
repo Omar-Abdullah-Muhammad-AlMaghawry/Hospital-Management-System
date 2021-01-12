@@ -1,22 +1,20 @@
 ///chatlist of doctors
 import 'package:firebase_core/firebase_core.dart';
-import '../screens/chatscreen.dart';
+import 'package:HMS/screens/chatscreen.dart';
 import 'package:flutter/material.dart';
 import'package:firebase_auth/firebase_auth.dart';
 import'package:cloud_firestore/cloud_firestore.dart';
-import '../screens/searchbyusername.dart';
-import '../screens/helpingfunctions.dart';
+import 'package:HMS/screens/searchbyusername.dart';
+import 'package:HMS/screens/helpingfunctions.dart';
 
-
-
-class DoctorChatList extends StatefulWidget {
-  static const String id = 'DoctorChat_List';
-  String listid = 'doctors';
+class PatientChatList extends StatefulWidget {
+  static const String id = 'PatientChat_List';
+   String listid = 'patients';
   @override
-  _DoctorChatListState createState() => _DoctorChatListState();
+  _PatientChatListState createState() => _PatientChatListState();
 }
 
-class _DoctorChatListState extends State<DoctorChatList> {
+class _PatientChatListState extends State<PatientChatList> {
   String sender;
   String message1;
   User loggedinuser;
@@ -24,9 +22,8 @@ class _DoctorChatListState extends State<DoctorChatList> {
   String user2;
   String x;
   String chatteduser;
-  
 
-  void getCurrentUser()async{
+  void GetCurrentUser()async{
     try{
       final user =await FirebaseAuth.instance.currentUser;
       if(user!= null){
@@ -44,16 +41,16 @@ class _DoctorChatListState extends State<DoctorChatList> {
   }
 
 
-  Future getdoctornames()async{
+  Future getpatientnames()async{
     final _firestore = FirebaseFirestore.instance;
-    var doc = await _firestore.collection('doctors').getDocuments();
+    var doc = await _firestore.collection('patients').getDocuments();
     return doc.documents;
   }
 
  void initState(){
       super.initState();
-      getdoctornames();
-      getCurrentUser();
+      getpatientnames();
+      GetCurrentUser();
 
     }
 
@@ -71,14 +68,14 @@ class _DoctorChatListState extends State<DoctorChatList> {
 
           icon:Icon(Icons.search),
           onPressed: (){
-            //Navigator.pushNamed(context,SearchByName.id);
-              Navigator.push(
+           // Navigator.pushNamed(context,SearchByName.id);
+           Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>SearchByName(listid: widget.listid,),
                           ),
                         );
-            
+
           },
         ),],
       ),
@@ -88,7 +85,7 @@ class _DoctorChatListState extends State<DoctorChatList> {
 
         child:
         FutureBuilder(
-            future:getdoctornames() ,
+            future:getpatientnames() ,
             builder:(context,snapshot){
               if(snapshot.connectionState== ConnectionState.waiting){
                 return Center(
@@ -107,21 +104,22 @@ class _DoctorChatListState extends State<DoctorChatList> {
                         ,style: TextStyle(fontSize: 20),
                       ),
                       onPressed: ()async{
+
                         user2 = await snapshot.data[index]['email'];
                         print('WHEN USER2 SELECTED');
-                         x= await getroomid(user1,user2);           
-                         print('the ROOOOOM ID :');
-                         print(x);
+
+                           x= await getroomid(user1,user2);                                                  
+                        print('the ROOOOOM ID :');
+                        print(x);
 
       
-                     print('navigating...');
-                     Navigator.push(
+         print('navigating...');
+           Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => Chat(roomid: x,),
                           ),
                         );
-                        
 
                       },
                     ),
@@ -130,10 +128,16 @@ class _DoctorChatListState extends State<DoctorChatList> {
                   itemCount:snapshot.data.length,
 
                 );
+
               }
             }
+
         ),
+
       ),
+
+
+
     );
   }
 }

@@ -1,3 +1,6 @@
+import 'package:HMS/screens/home/MyProfile.dart';
+import 'package:HMS/widgets/PatientDrawer.dart';
+
 import './message_list_screen.dart';
 
 import 'chat0_screen.dart';
@@ -7,6 +10,7 @@ import '../widget/main_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../screens/my_appointment_screen.dart';
+import './frontchatlist.dart';
 
 class PatientHomeScreen extends StatelessWidget {
   void moveToMyHistory(BuildContext ctx) {
@@ -25,6 +29,14 @@ class PatientHomeScreen extends StatelessWidget {
     Navigator.of(ctx).pushNamed(
       MessageListScreen.nameRoute,
     );
+  
+  }
+
+  void moveToMyProfile(BuildContext ctx) {
+    // Navigator.of(ctx).pushNamed(
+    //   MessageListScreen.nameRoute,
+    // );
+    Navigator.of(ctx).pushNamed(MyProfile.nameRoute);
   }
 
   static const nameRoute = "/patient-home";
@@ -43,7 +55,8 @@ class PatientHomeScreen extends StatelessWidget {
         ],
         title: Text("Home"),
       ),
-      drawer: MainDrawer(),
+      drawer: PatientDrawer(),
+     // MainDrawer(),
       body: ListView(
         children: [
           Container(
@@ -60,7 +73,7 @@ class PatientHomeScreen extends StatelessWidget {
           ),
 
           NiceButton(
-            onPressed: null,
+            onPressed: moveToMyProfile,
             nameOfButton: "My Profile",
             heightOfButton: 75,
           ),
@@ -101,11 +114,19 @@ class PatientHomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.chat,
-        ),
-        onPressed: () =>moveToChat(context),
-      ),
+          child: Icon(
+            Icons.chat,
+          ),
+          onPressed:
+            // () => moveToChat(context),
+           () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FrontChatList(),
+                ),
+              )
+        
+          ),
     );
   }
 }

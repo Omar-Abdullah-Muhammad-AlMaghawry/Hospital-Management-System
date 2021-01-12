@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import'package:firebase_auth/firebase_auth.dart';
 import'package:cloud_firestore/cloud_firestore.dart';
@@ -6,19 +8,18 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/intl_browser.dart';
 
 
 
 
 
-class AnnounceManagerScreen extends StatefulWidget {
+
+class AnnouncedoctorScreen extends StatefulWidget {
   @override
-  _AnnounceManagerScreenState createState() => _AnnounceManagerScreenState();
+  _AnnouncedoctorScreenState createState() => _AnnouncedoctorScreenState();
 }
 
-class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
-  final textfieldcontroller = TextEditingController();
+class _AnnouncedoctorScreenState extends State<AnnouncedoctorScreen> {
   Stream<QuerySnapshot>_stream;
   String post;
   @override
@@ -48,51 +49,59 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
           
       ),
       body: SafeArea(child: 
-      Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children:<Widget> [
-          Padding(padding: EdgeInsets.fromLTRB(5, 5, 10, 3),
-          child:       
-           Expanded(
-                  child: Container(
-                    color: Color(0xFFB3E5FC),
-                    child:
-                    StreamBuilder<QuerySnapshot>(
-                      ///here i am gonna pass two vars of both logged in&chatted usernames
-                      stream:_stream,
-
-                      builder:(context,snapshot) {
-                        if (!snapshot.hasData ) {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              backgroundColor:Color(0XFF0277BD),
-                            ),
-                          );
-                          
-                         }
-                       
-                         final posts = snapshot.data.docs;
+      Expanded(
+              child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children:<Widget> [
+            Padding(padding: EdgeInsets.fromLTRB(5, 5, 10, 3),
+            child:       
+             Expanded(
+                    child: Container(
+                      color: Color(0xFFB3E5FC),
+                      child:
+                      StreamBuilder<QuerySnapshot>(
                         
-                             return ListView.builder(
-                               //reverse: true,
-                               itemCount: posts.length,
-                               itemBuilder:(ctx,index)=>PostBubble(
-                                 post:posts[index]['text'],  
-                                 date: posts[index]['createdat']   
-                               ) ,
-                           );
-                           
-                            }              
-                            ),
+                        stream:_stream,
 
+                        builder:(context,snapshot) {
+                          if (!snapshot.hasData ) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                backgroundColor:Color(0XFF0277BD),
+                              ),
+                            );
+                            
+                           }
+                         
+                           final posts = snapshot.data.docs;
+                          
+                               return
+                                Expanded(
+                                 child: SizedBox(
+                                    height: 600,
+                                    child: ListView.builder(
+                                     //reverse: true,
+                                     itemCount: posts.length,
+                                     itemBuilder:(ctx,index)=>PostBubble(
+                                       post:posts[index]['text'],  
+                                       date: posts[index]['createdat'].toDate(),  
+                                     ) ,
+                             ),
+                                  ),
+                                );
+                             
+                              }              
+                              ),
+
+                    ),
                   ),
-                ),
-          ),
-        ],
+            ),
+          ],
 
 
 
+        ),
       ),
       ),
       ),
@@ -113,14 +122,16 @@ class PostBubble extends StatelessWidget {
   
   PostBubble({this.post,this.date});
   final String post;
-  final Timestamp date;
-  DateFormat x;
+  //final Timestamp date;
+  final DateTime date;
+  
   @override
  
   Widget build(BuildContext context) {
     return  
      Padding(
        padding: const EdgeInsets.all(8.0),
+       
        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -129,32 +140,51 @@ class PostBubble extends StatelessWidget {
             
              
              children: [
-                    CircleAvatar(
-              backgroundImage: AssetImage('images/image.jpg'),
-              radius: 10,
-            ),
-          SizedBox(width:3),
-         // format.format(DateTime.now());
-         // DateFormat.yMEd().add_jms().format(DateTime.now())
-         //
-        // DateTime now = DateTime.now();
-          //String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
-         // Text(DateFormat('yyyy-MM-dd – kk:mm').format(date.toDate()) ),
-         Text('shjk' ),
+               SizedBox(width:3),
+               Text('Announced At:',
+                style: TextStyle(fontSize: 15,
+               
+               )
+               ),
+
+               SizedBox(width:3),
+
+              Text(DateFormat.jm().format(date),
+              style: TextStyle(fontSize: 15,
+        
+              ),
+              
+              ),
+          
+        
 
              ],
              
             ),
-            SizedBox(height:5,),
+            SizedBox(height:2,),
 
-            Container(
-              padding: EdgeInsets.all(10),
+            Material(
+              elevation: 20,
+                          child: Container(
+                padding: EdgeInsets.all(10),
            decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+           color: Colors.white,
+
           ),
-              
-              child: Text(post)),
+                
+                child:Text(post,
+                style: TextStyle(
+                   fontSize: 20,
+                   fontWeight:FontWeight.w300,
+                  
+
+                ),
+                
+                
+                ),
+                 ),
+            ),
             SizedBox(height:15,),
         
 

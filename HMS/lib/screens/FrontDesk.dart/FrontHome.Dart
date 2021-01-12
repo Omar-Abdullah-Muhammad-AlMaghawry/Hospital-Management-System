@@ -1,9 +1,10 @@
-
 import 'package:HMS/screens/FrontDesk.dart/Acess%20Data.dart';
 import 'package:HMS/screens/FrontDesk.dart/Service_fees.dart';
 import 'package:HMS/screens/FrontDesk.dart/bed_reservation.dart';
+import 'package:HMS/screens/patientchatlist.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
+import '../frontchatlist.dart';
 
 class FrontHome extends StatefulWidget {
   @override
@@ -49,10 +50,13 @@ class _FrontHomeState extends State<FrontHome> {
         ),
         body: list(context),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add_comment_rounded),
-          onPressed: () {
-            debugPrint("Hello world");
-          },
+          child: Icon(Icons.message),
+          onPressed:  () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PatientChatList(),
+                ),
+              ),
           splashColor: Colors.lightBlueAccent,
           elevation: 10,
           tooltip: "Chat",
