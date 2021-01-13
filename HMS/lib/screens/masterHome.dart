@@ -96,9 +96,8 @@ class _MasterHomeState extends State<MasterHome> {
                         bottomRight: Radius.circular(50.00),
                         bottomLeft: Radius.circular(50.00)),
                     image: DecorationImage(
-                      image: AssetImage(
-                        "assets/images/hospital.jpg"),
-                         // 'http://www.wilsonchiros.com/blog/wp-content/uploads/2015/12/hospital.jpg'),
+                      image: AssetImage("assets/images/hospital.jpg"),
+                      // 'http://www.wilsonchiros.com/blog/wp-content/uploads/2015/12/hospital.jpg'),
                       //  borderRadius: BorderRadius.only(bottomRight:Radius.circular(50.00) ,bottomLeft:Radius.circular(50.00) ),
                       fit: BoxFit.fill,
                     ),
