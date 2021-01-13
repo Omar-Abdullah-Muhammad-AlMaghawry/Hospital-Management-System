@@ -2,6 +2,7 @@ import 'package:HMS/screens/patient/outpatient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../screens/Laboratory.dart';
+import '../screens/map.dart';
 import '../screens/radiology.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,6 @@ class PatientDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       child: Container(
         color: Theme.of(context).backgroundColor,
         child: ListView(
@@ -46,8 +46,8 @@ class PatientDrawer extends StatelessWidget {
                       ),
                       Text(
                         userDocs['userName'],
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   );
@@ -78,8 +78,8 @@ class PatientDrawer extends StatelessWidget {
               padding: EdgeInsets.only(top: 15),
               child: FlatButton(
                 color: Colors.blue[100],
-                onPressed: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Departments())),
+                onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Departments())),
                 child: Container(
                   width: double.infinity,
                   height: 50,
@@ -99,8 +99,8 @@ class PatientDrawer extends StatelessWidget {
               padding: EdgeInsets.only(top: 15),
               child: FlatButton(
                 color: Colors.blue[100],
-                onPressed: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Laboratory())),
+                onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Laboratory())),
                 child: Container(
                   width: double.infinity,
                   height: 50,
@@ -141,7 +141,10 @@ class PatientDrawer extends StatelessWidget {
               padding: EdgeInsets.only(top: 15),
               child: FlatButton(
                 color: Colors.blue[100],
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => HospitalMap()))
+                },
                 child: Container(
                   width: double.infinity,
                   height: 50,
@@ -169,10 +172,9 @@ class PatientDrawer extends StatelessWidget {
                   Text(
                     'Contact us:',
                     style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                    ),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                   Text(
                     'Phone: 07775000',

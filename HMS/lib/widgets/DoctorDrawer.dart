@@ -1,9 +1,10 @@
-
 import 'package:HMS/screens/doctors/announcement_doctors.dart';
 import 'package:HMS/screens/doctors/doctors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/map.dart';
 
 //TODO bind drawer buttons to the pages the point to.
 class DoctorDrawer extends StatelessWidget {
@@ -160,7 +161,10 @@ class DoctorDrawer extends StatelessWidget {
               padding: EdgeInsets.only(top: 15),
               child: FlatButton(
                 color: Colors.blue[100],
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => HospitalMap()))
+                },
                 child: Container(
                   width: double.infinity,
                   height: 50,
