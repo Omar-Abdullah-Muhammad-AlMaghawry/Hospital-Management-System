@@ -1,42 +1,12 @@
 import 'dart:io';
-
 import './masterHome.dart';
 import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../services/auth.dart';
-import './authenticate/register.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 class MyProfile extends StatelessWidget {
-  var userName = '';
-  var email = '';
-  var adresss = '';
-  var phoneNumber = '';
-  var birthDate = '';
-  String image_url;
   static const nameRoute = "/my-profile";
-  var result;
-  final AuthService _auth = AuthService();
   final current = FirebaseAuth.instance.currentUser;
-  //String userName = RegisterState().userName;
-  // Future mm() async {
-  //   final current = await FirebaseAuth.instance.currentUser;
-  //   FutureBuilder(
-  //     future: FirebaseFirestore.instance
-  //         .collection("users")
-  //         .document(current.uid)
-  //         .get(),
-  //     builder: (context, snapshots) {
-  //       final userDocs = snapshots.data;
-  //       return;
-  //     },
-  //   );
-  //   //return
-  //   return current;
-  //   // );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

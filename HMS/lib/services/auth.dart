@@ -15,32 +15,26 @@ class AuthService {
   String phoneNumber = '';
   String address = '';
   String date = "";
-  AuthService(
-      {this.date,
-      this.email,
-      this.address,
-      this.confirmpassword,
-      this.error,
-      this.password,
-      this.phoneNumber,
-      this.userName,
-      this.auth0});
-  final FirebaseAuth auth0;
+  AuthService({
+    this.date,
+    this.email,
+    this.address,
+    this.confirmpassword,
+    this.error,
+    this.password,
+    this.phoneNumber,
+    this.userName,
+  });
+  //final FirebaseAuth auth0;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   // we will create user object based on firebaseUser using a function
   Client _userFromFirebaseUser(User user) {
     return user != null ? Client(email: user.email) : null;
   }
- 
+
   // auth change user stream
   Stream<Client> get user {
-
-    if (_auth != null)
-      return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
-    else
-      return (auth0 != null)
-          ? auth0.onAuthStateChanged.map(_userFromFirebaseUser)
-          : null;
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
   //sign in anon
@@ -57,52 +51,29 @@ class AuthService {
 
   //sign in with email and password
   Future signInWithEmailAndPassword(String email, String password) async {
-    if (_auth != null)
-      try {
-        UserCredential result = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-        User user = result.user;
-        print(user);
-        return _userFromFirebaseUser(user);
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
-    else
-      try {
-        UserCredential result = await auth0.signInWithEmailAndPassword(
-            email: email, password: password);
-        User user = result.user;
-        print(user);
-        return _userFromFirebaseUser(user);
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      print(user);
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 
 //
   Future resetPassword(email) async {
-    if (_auth != null)
-      try {
-        String email;
-        await _auth.sendPasswordResetEmail(email: email);
-        //FirebaseUser user = result.user;
-        // return _userFromFirebaseUser(user);
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
-    else
-      try {
-        String email;
-        await auth0.sendPasswordResetEmail(email: email);
-        //FirebaseUser user = result.user;
-        // return _userFromFirebaseUser(user);
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
+    try {
+      String email;
+      await _auth.sendPasswordResetEmail(email: email);
+      //FirebaseUser user = result.user;
+      // return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 
   //register with email and password
@@ -116,119 +87,61 @@ class AuthService {
       String address,
       String date,
       File image}) async {
-    if (_auth != null)
-      try {
-        UserCredential result = await _auth.createUserWithEmailAndPassword(
-            email: email, password: password);
-        final user = FirebaseAuth.instance.currentUser;
-        User user0 = result.user;
-        UserCredential userCredential;
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child("users_images")
-            .child(_auth.currentUser.uid + ".jpg");
-        await ref.putFile(image);
-        final url = await ref.getDownloadURL();
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      final user = FirebaseAuth.instance.currentUser;
+      User user0 = result.user;
+      UserCredential userCredential;
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child("users_images")
+          .child(_auth.currentUser.uid + ".jpg");
+      await ref.putFile(image);
+      final url = await ref.getDownloadURL();
 
-        await FirebaseFirestore.instance
-            .collection("users")
-            .document(user.uid)
-            .set({
-          'userName': userName,
-          'email': email,
-          'image_url': url,
-          "birthDate": date,
-          "address": address,
-          "phoneNumber": phoneNumber,
-        });
-        await FirebaseFirestore.instance
-            .collection(email.contains("p", email.indexOf("@"))
-                ? "patients"
-                : email.contains("d", email.indexOf("@"))
-                    ? "doctors"
-                    : email.contains("f", email.indexOf("@"))
-                        ? "frontdesk"
-                        : "none")
-            .document(user.uid)
-            .set({
-          'userName': userName,
-          'email': email,
-          'image_url': url,
-          "birthDate": date,
-          "address": address,
-          " phoneNumber": phoneNumber,
-        });
-        return _userFromFirebaseUser(user0);
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
-    else
-      try {
-        UserCredential result = await auth0.createUserWithEmailAndPassword(
-            email: email, password: password);
-        final user = FirebaseAuth.instance.currentUser;
-        User user0 = result.user;
-        UserCredential userCredential;
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child("users_images")
-            .child(auth0.currentUser.uid + ".jpg");
-        await ref.putFile(image);
-        final url = await ref.getDownloadURL();
-
-        await FirebaseFirestore.instance
-            .collection("users")
-            .document(user.uid)
-            .set({
-          'userName': userName,
-          'email': email,
-          'image_url': url,
-          "birthDate": date,
-          "address": address,
-          "phoneNumber": phoneNumber,
-        });
-        await FirebaseFirestore.instance
-            .collection(email.contains("p", email.indexOf("@"))
-                ? "patients"
-                : email.contains("d", email.indexOf("@"))
-                    ? "doctors"
-                    : email.contains("f", email.indexOf("@"))
-                        ? "frontdesk"
-                        : "none")
-            .document(user.uid)
-            .set({
-          'userName': userName,
-          'email': email,
-          'image_url': url,
-          "birthDate": date,
-          "address": address,
-          " phoneNumber": phoneNumber,
-          "isManger":false,
-        });
-          // return _userFromFirebaseUser(user0);
-       return "success";
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
+      await FirebaseFirestore.instance
+          .collection("users")
+          .document(user.uid)
+          .set({
+        'userName': userName,
+        'email': email,
+        'image_url': url,
+        "birthDate": date,
+        "address": address,
+        "phoneNumber": phoneNumber,
+      });
+      await FirebaseFirestore.instance
+          .collection(email.contains("p", email.indexOf("@"))
+              ? "patients"
+              : email.contains("d", email.indexOf("@"))
+                  ? "doctors"
+                  : email.contains("f", email.indexOf("@"))
+                      ? "frontdesk"
+                      : "none")
+          .document(user.uid)
+          .set({
+        'userName': userName,
+        'email': email,
+        'image_url': url,
+        "birthDate": date,
+        "address": address,
+        " phoneNumber": phoneNumber,
+      });
+      return _userFromFirebaseUser(user0);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 
   //sign out
   Future signOut() async {
-    if (_auth != null)
-      try {
-        return await _auth.signOut();
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
-    else
-      try {
-        return await auth0.signOut();
-      } catch (e) {
-        print(e.toString());
-        return null;
-      }
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 }

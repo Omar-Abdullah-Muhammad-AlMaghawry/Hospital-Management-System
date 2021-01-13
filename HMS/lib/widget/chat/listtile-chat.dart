@@ -1,7 +1,7 @@
 import '../../screens/chat/chat0_screen.dart';
 import 'package:HMS/widget/chat/message-list.dart';
 import 'package:flutter/material.dart';
-import 'package:HMS/moduls/reciever.dart';
+import '../../moduls/reciever.dart';
 
 class ListTileOfChat extends StatelessWidget {
   //var nameOftile = '';
