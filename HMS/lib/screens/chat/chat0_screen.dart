@@ -1,10 +1,10 @@
-import 'package:HMS/pages/masterHome.dart';
+import '../masterHome.dart';
 import 'package:HMS/widget/chat/messages.dart';
 import 'package:HMS/widget/chat/new_message.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../moduls/reciever.dart';
+import '../../moduls/reciever.dart';
 
 class ChatScreen extends StatefulWidget {
   var userName = '';

@@ -1,3 +1,4 @@
+import 'package:HMS/screens/doctors/doctors_home_screen.dart';
 import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:flutter/material.dart';
 import'package:firebase_auth/firebase_auth.dart';
@@ -38,14 +39,20 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
             // backgroundColor:  Color(0xFFD6D6D6),
             title: Text('Announcements'),
             actions: [
-              IconButton(
-                icon:Icon(Icons.close,
-                  color: Colors.white,
-                ),
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-              ),
+               FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+          
+     
+               Navigator.popUntil(context, ModalRoute.withName(DoctorsHomeScreen.nameRoute));
+
+            },
+          )
             ],
           
       ),

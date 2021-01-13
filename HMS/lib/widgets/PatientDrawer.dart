@@ -1,10 +1,8 @@
+import 'package:HMS/screens/patient/outpatient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../screens/Laboratory.dart';
 import '../screens/radiology.dart';
-
-import '../screens/outpatient.dart';
 import 'package:flutter/material.dart';
 
 //TODO bind drawer buttons to the pages the point to.

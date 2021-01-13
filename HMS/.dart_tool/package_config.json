@@ -194,6 +194,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "firebase_auth_mocks",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_mocks-0.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "firebase_auth_platform_interface",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_platform_interface-2.1.4",
       "packageUri": "lib/",
@@ -494,7 +500,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-01-13T02:37:47.401197Z",
+  "generated": "2021-01-13T13:01:34.157808Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

@@ -1,28 +1,35 @@
-import 'package:HMS/pages/masterHome.dart';
-import 'package:HMS/screens/home/MyProfile.dart';
-import 'package:HMS/widgets/PatientDrawer.dart';
+import '../masterHome.dart';
+import '../MyProfile.dart';
+import './my_appointment_doctors_screen.dart';
 
-import './message_list_screen.dart';
+import './MyScuduleScreen.dart';
 
-import 'chat0_screen.dart';
-import './history_screen.dart';
-import '../widget/patient_home/NiceButton.dart';
-import '../widget/main_drawer.dart';
+import '../chat/doctorchatlist.dart';
+import '../chat/message_list_screen.dart';
+import '../../widgets/DoctorDrawer.dart';
+import '../chat/chat0_screen.dart';
+import '../patient/history_screen.dart';
+import '../../widget/patient_home/NiceButton.dart';
+import '../../widget/main_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../screens/my_appointment_screen.dart';
-import './frontchatlist.dart';
 
-class PatientHomeScreen extends StatelessWidget {
-  void moveToMyHistory(BuildContext ctx) {
+
+class DoctorsHomeScreen extends StatelessWidget {
+  // void moveToMyHistory(BuildContext ctx) {
+  //   Navigator.of(ctx).pushNamed(
+  //     HistoryScreen.nameRoute,
+  //   );
+  // }
+  void moveToMySchedule(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      HistoryScreen.nameRoute,
+      MyScuduleScreen.nameRoute,
     );
   }
 
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      MyAppointmentScreen.nameRoute,
+      MyAppointmentDocScreen.nameRoute,
     );
   }
 
@@ -39,15 +46,15 @@ class PatientHomeScreen extends StatelessWidget {
     Navigator.of(ctx).pushNamed(MyProfile.nameRoute);
   }
 
-  static const nameRoute = "/patient-home";
+  static const nameRoute = "/doctor-home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      // backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+      backgroundColor:Theme.of(context).backgroundColor,
+    //  backgroundColor: Color.fromRGBO(3, 95, 109, 1),
       appBar: AppBar(
         actions: [
-          FlatButton.icon(
+        FlatButton.icon(
             icon: Icon(
               Icons.logout,
               color: Colors.white,
@@ -55,17 +62,15 @@ class PatientHomeScreen extends StatelessWidget {
             label: Text('Log out',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-              // Navigator.of(context).pop();
-              // Navigator.of(context).pop();
               FirebaseAuth.instance.signOut();
-              Navigator.popUntil(
-                  context, ModalRoute.withName(MasterHome.nameRoute));
+                 Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
             },
           )
         ],
         title: Text("Home"),
       ),
-      drawer: PatientDrawer(),
+      drawer: DoctorDrawer(),
       // MainDrawer(),
       body: ListView(
         children: [
@@ -77,19 +82,16 @@ class PatientHomeScreen extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(
-                    "assets/images/diabetesendroconolgoy_home_page_tabs_optimized.jpg"
-                    //      "assets/diabetesendroconolgoy_home_page_tabs_optimized.jpg"
-//  "https://images.app.goo.gl/rSXeg5xmyx91YQuZ9"
-
-                    //  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'
-                    // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tgh.org%2F&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAu"
-                    // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aarp.org%2Fhealth%2Fconditions-treatments%2Finfo-2020%2Fer-precautions-coronavirus&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAo"
+                  "assets/images/images (1).jpg"
+                    // 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'
+       // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aarp.org%2Fhealth%2Fconditions-treatments%2Finfo-2020%2Fer-precautions-coronavirus&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAo"
+                    
                     ),
               ),
             ),
           ),
-   SizedBox(
-            height: 15,
+          SizedBox(
+            height: 10,
           ),
           NiceButton(
             onPressed: moveToMyProfile,
@@ -97,14 +99,20 @@ class PatientHomeScreen extends StatelessWidget {
             heightOfButton: 75,
           ),
           NiceButton(
+            onPressed: moveToMySchedule,
+            nameOfButton: "My Schedule",
+            heightOfButton: 75,
+          ),
+
+          NiceButton(
             onPressed: moveToMyAppointment,
             nameOfButton: "My Appointments",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),
           NiceButton(
-            onPressed: moveToMyHistory,
-            nameOfButton: "My Midical History",
+            onPressed: null,
+            nameOfButton: "My Statistics",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),
@@ -133,17 +141,17 @@ class PatientHomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.chat,
+        child: Icon(
+          Icons.chat,
+        ),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoctorChatList(),
           ),
-          onPressed:
-              // () => moveToChat(context),
-              () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FrontChatList(),
-                    ),
-                  )),
+        ),
+        // () => moveToChat(context),
+      ),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:HMS/screens/doctors_home_screen.dart';
+import './doctors_home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -75,7 +75,7 @@ class FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor:Colors.white,
       appBar: AppBar(
         title: Text("Doctor Details"),
        // backgroundColor: Colors.teal,

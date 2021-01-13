@@ -1,12 +1,7 @@
 import 'package:HMS/screens/FrontDesk.dart/IntensiveForm.dart';
 import 'package:HMS/screens/FrontDesk.dart/NormalForm.dart';
-//////////////// bed reservation
-
 import 'package:flutter/material.dart';
 
-//void main() {
-//runApp(Homepage ());
-//}
 
 class BedReservation extends StatefulWidget {
   @override

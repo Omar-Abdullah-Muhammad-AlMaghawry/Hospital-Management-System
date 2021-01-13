@@ -204,6 +204,7 @@ class AuthService {
           "birthDate": date,
           "address": address,
           " phoneNumber": phoneNumber,
+          "isManger":false,
         });
           // return _userFromFirebaseUser(user0);
        return "success";

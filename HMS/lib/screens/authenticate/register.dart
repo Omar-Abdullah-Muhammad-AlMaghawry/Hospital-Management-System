@@ -1,10 +1,12 @@
 import 'dart:io';
 
-import 'package:HMS/widget/user_image_picker.dart';
+
+import '../doctors/Form_Screen.dart';
+import '../../widget/user_image_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:HMS/services/auth.dart';
-import 'package:HMS/shared/constants.dart';
-import 'package:HMS/shared/gender.dart';
+import '../../services/auth.dart';
+import '../../shared/constants.dart';
+import '../../shared/gender.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 //import '';
@@ -284,8 +286,9 @@ class _RegisterState extends State<Register> {
                       if (result == null) {
                         setState(() {
                           error = 'Please enter a vaild email ';
-                        });
+                        });   
                       }
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FormScreen()));
                     }
                   },
                 ),

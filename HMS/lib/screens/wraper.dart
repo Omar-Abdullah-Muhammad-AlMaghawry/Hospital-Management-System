@@ -1,11 +1,11 @@
 import '../models/users.dart';
 //import 'package:authentication/screens/NormalBeds.dart';
-import '../screens/home/homeWrapper.dart';
+import './homeWrapper.dart';
 import '../screens/authenticate/authenticate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:HMS/screens/home/MyProfile.dart';
+import './MyProfile.dart';
 
 class Wrapper extends StatelessWidget {
   @override

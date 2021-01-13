@@ -1,6 +1,4 @@
-import 'package:HMS/screens/my_appointment_screen.dart';
 import 'package:flutter/material.dart';
-
 class NiceButton extends StatelessWidget {
   final String nameOfButton;
   final double widthOfButton;

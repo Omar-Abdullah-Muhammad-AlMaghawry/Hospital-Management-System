@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import '../../moduls/reciever.dart';
-import '../../screens/doctors_list_screen%20copy.dart';
+import '../../screens/doctors/doctors_list_screen%20copy.dart';
 import './doctor-list.dart';
 import './doctors_dropdown_list.dart';
 import './listtile-doctor.dart';

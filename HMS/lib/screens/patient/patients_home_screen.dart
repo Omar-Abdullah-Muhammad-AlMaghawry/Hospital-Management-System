@@ -1,35 +1,28 @@
-import 'package:HMS/pages/masterHome.dart';
-import 'package:HMS/screens/home/MyProfile.dart';
-import 'package:HMS/screens/my_appointment_doctors_screen.dart';
+import '../masterHome.dart';
+import '../MyProfile.dart';
+import 'package:HMS/widgets/PatientDrawer.dart';
 
-import '../screens/MyScuduleScreen.dart';
+import '../chat/message_list_screen.dart';
 
-import './doctorchatlist.dart';
-import 'message_list_screen.dart';
-import '../widgets/DoctorDrawer.dart';
-import './chat0_screen.dart';
-import 'history_screen.dart';
-import '../widget/patient_home/NiceButton.dart';
-import '../widget/main_drawer.dart';
+import '../chat/chat0_screen.dart';
+import './history_screen.dart';
+import '../../widget/patient_home/NiceButton.dart';
+import '../../widget/main_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import './my_appointment_screen.dart';
+import '../chat/frontchatlist.dart';
 
-class DoctorsHomeScreen extends StatelessWidget {
-  // void moveToMyHistory(BuildContext ctx) {
-  //   Navigator.of(ctx).pushNamed(
-  //     HistoryScreen.nameRoute,
-  //   );
-  // }
-  void moveToMySchedule(BuildContext ctx) {
+class PatientHomeScreen extends StatelessWidget {
+  void moveToMyHistory(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      MyScuduleScreen.nameRoute,
+      HistoryScreen.nameRoute,
     );
   }
 
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      MyAppointmentDocScreen.nameRoute,
+      MyAppointmentScreen.nameRoute,
     );
   }
 
@@ -46,15 +39,15 @@ class DoctorsHomeScreen extends StatelessWidget {
     Navigator.of(ctx).pushNamed(MyProfile.nameRoute);
   }
 
-  static const nameRoute = "/doctor-home";
+  static const nameRoute = "/patient-home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Theme.of(context).backgroundColor,
-    //  backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+      backgroundColor: Theme.of(context).backgroundColor,
+      // backgroundColor: Color.fromRGBO(3, 95, 109, 1),
       appBar: AppBar(
         actions: [
-        FlatButton.icon(
+          FlatButton.icon(
             icon: Icon(
               Icons.logout,
               color: Colors.white,
@@ -63,14 +56,14 @@ class DoctorsHomeScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
               FirebaseAuth.instance.signOut();
-                 Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
-
+              Navigator.popUntil(
+                  context, ModalRoute.withName(MasterHome.nameRoute));
             },
           )
         ],
         title: Text("Home"),
       ),
-      drawer: DoctorDrawer(),
+      drawer: PatientDrawer(),
       // MainDrawer(),
       body: ListView(
         children: [
@@ -82,16 +75,12 @@ class DoctorsHomeScreen extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(
-                  "assets/images/images (1).jpg"
-                    // 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'
-       // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aarp.org%2Fhealth%2Fconditions-treatments%2Finfo-2020%2Fer-precautions-coronavirus&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAo"
-                    
-                    ),
+                    "assets/images/diabetesendroconolgoy_home_page_tabs_optimized.jpg"),
               ),
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 15,
           ),
           NiceButton(
             onPressed: moveToMyProfile,
@@ -99,20 +88,14 @@ class DoctorsHomeScreen extends StatelessWidget {
             heightOfButton: 75,
           ),
           NiceButton(
-            onPressed: moveToMySchedule,
-            nameOfButton: "My Schedule",
-            heightOfButton: 75,
-          ),
-
-          NiceButton(
             onPressed: moveToMyAppointment,
             nameOfButton: "My Appointments",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),
           NiceButton(
-            onPressed: null,
-            nameOfButton: "My Statistics",
+            onPressed: moveToMyHistory,
+            nameOfButton: "My Midical History",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),
@@ -141,17 +124,17 @@ class DoctorsHomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.chat,
-        ),
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DoctorChatList(),
+          child: Icon(
+            Icons.chat,
           ),
-        ),
-        // () => moveToChat(context),
-      ),
+          onPressed:
+              // () => moveToChat(context),
+              () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FrontChatList(),
+                    ),
+                  )),
     );
   }
 }

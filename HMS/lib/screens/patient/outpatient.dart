@@ -1,4 +1,6 @@
-import 'package:HMS/pages/masterHome.dart';
+import 'package:HMS/screens/patient/patients_home_screen.dart';
+
+import '../masterHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,21 +21,20 @@ class _DepartmentsState extends State<Departments> {
           "OutPatient Clinics",
           style: TextStyle(color: Colors.white, fontSize: 20.0),
         ),
-      //  backgroundColor: Colors.teal,
+        //  backgroundColor: Colors.teal,
         actions: [
           FlatButton.icon(
-              icon: Icon(
-                Icons.logout,
-                color: Colors.white,
-              ),
-              label: Text('Log out',
-                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
-              onPressed: () {
-                Navigator.popUntil(
-                    context, ModalRoute.withName(MasterHome.nameRoute));
-
-                FirebaseAuth.instance.signOut();
-              }),
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.popUntil(
+                  context, ModalRoute.withName(PatientHomeScreen.nameRoute));
+            },
+          )
         ],
       ),
       body: Center(
@@ -201,7 +202,7 @@ _getClinicsAppBar(BuildContext context) {
     preferredSize: Size.fromHeight(50),
     child: Container(
       alignment: Alignment.bottomCenter,
-        color: Colors.teal[700],
+      color: Colors.teal[700],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -258,7 +259,7 @@ class _InternalMedicineState extends State<InternalMedicine> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-    //   backgroundColor: Colors.teal,
+        //   backgroundColor: Colors.teal,
         title: Text(text),
         // leading: IconButton(
         //   icon: Icon(Icons.logout),
@@ -379,9 +380,8 @@ class _DermatologyState extends State<Dermatology> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-      //  backgroundColor: Colors.teal,
+        //  backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -484,9 +484,8 @@ class _SurgeryState extends State<Surgery> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-       // backgroundColor: Colors.teal,
+        // backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -590,9 +589,8 @@ class _CardiologyState extends State<Cardiology> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-   //     backgroundColor: Colors.teal,
+        //     backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -694,9 +692,8 @@ class _OrthopedicState extends State<Orthopedic> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-  //      backgroundColor: Colors.teal,
+        //      backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -798,9 +795,8 @@ class _ENTState extends State<ENT> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-   //     backgroundColor: Colors.teal,
+        //     backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -905,9 +901,8 @@ class _PediatricsState extends State<Pediatrics> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-  //      backgroundColor: Colors.teal,
+        //      backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

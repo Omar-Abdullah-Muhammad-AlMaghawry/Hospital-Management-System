@@ -1,8 +1,8 @@
-import 'package:HMS/screens/announcement_doctors.dart';
+
+import 'package:HMS/screens/doctors/announcement_doctors.dart';
+import 'package:HMS/screens/doctors/doctors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '../screens/doctors.dart';
 import 'package:flutter/material.dart';
 
 //TODO bind drawer buttons to the pages the point to.

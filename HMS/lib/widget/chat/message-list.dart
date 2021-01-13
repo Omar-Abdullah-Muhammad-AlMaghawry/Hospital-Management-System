@@ -1,6 +1,6 @@
-import 'package:HMS/moduls/reciever.dart';
-import 'package:HMS/screens/chat0_screen.dart';
-import 'package:HMS/widget/chat/listtile-chat.dart';
+import '../../moduls/reciever.dart';
+import '../../screens/chat/chat0_screen.dart';
+import '../../widget/chat/listtile-chat.dart';
 import 'package:HMS/widget/chat/messages.dart';
 import 'package:HMS/widget/chat/new_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -1,15 +1,16 @@
-import '../../screens/Form_Screen.dart';
+import './doctors/doctors_home_screen.dart';
 
-import '../../screens/doctors_home_screen.dart';
-import '../../screens/patients_home_screen.dart';
+import './doctors/Form_Screen.dart';
+
+import './doctors/doctors_home_screen.dart';
+import './patient/patients_home_screen.dart';
 
 import 'MyProfile.dart';
 import 'package:flutter/material.dart';
-import '../../services/auth.dart';
+import '../services/auth.dart';
 import 'package:provider/provider.dart';
-import '../../models/users.dart';
-import '../../screens/home/homePatient.dart';
-import '../../screens/FrontDesk.dart/FrontHome.Dart';
+import '../models/users.dart';
+import './FrontDesk.dart/FrontHome.Dart';
 
 class HomeWrapper extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -21,7 +22,7 @@ class HomeWrapper extends StatelessWidget {
     var ok = user.email;
     var index = ok.indexOf('@');
     if (ok.contains('d', index)) {
-      return FormScreen()??Center();
+      return DoctorsHomeScreen()??Center();
     } else if (ok.contains('p', index)) {
       return PatientHomeScreen() ?? Center();
     }

@@ -1,4 +1,4 @@
-import 'package:HMS/pages/masterHome.dart';
+import '../masterHome.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

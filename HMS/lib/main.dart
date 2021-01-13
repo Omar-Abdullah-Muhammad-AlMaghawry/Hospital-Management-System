@@ -1,31 +1,26 @@
-import 'package:HMS/screens/home/MyProfile.dart';
-import 'package:HMS/screens/my_appointment_doctors_screen.dart';
-
+import './screens//MyProfile.dart';
+import './screens/doctors/my_appointment_doctors_screen.dart';
 import './models/users.dart';
-import './pages/masterHome.dart';
-import './screens/MyScuduleScreen.dart';
-import './screens/doctors_home_screen.dart';
+import './screens/masterHome.dart';
+import './screens/doctors/MyScuduleScreen.dart';
+import './screens/doctors/doctors_home_screen.dart';
 import './screens/wraper.dart';
 import './services/auth.dart';
 import 'package:provider/provider.dart';
-import './screens/doctors_list_screen%20copy.dart';
-import './screens/message_list_screen.dart';
-
+import './screens/doctors/doctors_list_screen%20copy.dart';
+import './screens/chat/message_list_screen.dart';
 import './screens/auth_screens.dart';
-import 'screens/chat0_screen.dart';
-import './screens/history_screen.dart';
-import './screens/my_appointment_screen.dart';
-import './screens/patients_home_screen.dart';
+import './screens/chat/chat0_screen.dart';
+import './screens/patient/history_screen.dart';
+import './screens/patient/my_appointment_screen.dart';
+import './screens/patient/patients_home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-//import 'widget/NiceButton.dart';
 import 'widget/CardWidget.dart';
-//import 'package:intl/intl.dart';
 import 'widget/CardHistoryWidget.dart';
-//import 'widget/main_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import './screens/my_appointment_screen.dart';
+import './screens/patient/my_appointment_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

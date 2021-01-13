@@ -1,5 +1,7 @@
 // import '../screens/doctorlist.dart';
-import 'package:HMS/pages/masterHome.dart';
+import 'package:HMS/screens/doctors/doctors_home_screen.dart';
+
+import '../masterHome.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -182,37 +184,30 @@ _getClinicsAppBar(BuildContext context) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          // IconButton(
-          //   icon: Icon(Icons.menu),
-          //   color: Colors.white,
-          //   onPressed: () {
-          //     // Navigator.of(context).pop();
-          //     // Navigator.of(context).pop();
-
-          //     FirebaseAuth.instance.signOut();
-          //      Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
-
-          //   },
-          // ),
+          IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () {
+               Navigator.of(context).pop();
+             
+            },
+          ),
           Text(
-            "Departments",
+            "  Departments",
             style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
           FlatButton.icon(
             icon: Icon(
-              Icons.logout,
+              Icons.home,
               color: Colors.white,
             ),
-            label: Text('Log out',
+            label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-              // Navigator.of(context).pop();
-              // Navigator.of(context).pop();
-              FirebaseAuth.instance.signOut();
-              Navigator.popUntil(
-                  context, ModalRoute.withName(MasterHome.nameRoute));
+               Navigator.popUntil(context, ModalRoute.withName(DoctorsHomeScreen.nameRoute));
+
             },
-          ),
+          )
         ],
       ),
     ),

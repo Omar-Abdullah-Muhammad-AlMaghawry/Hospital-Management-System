@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:HMS/pages/masterHome.dart';
+import './masterHome.dart';
 import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../services/auth.dart';
-import '../authenticate/register.dart';
+import '../services/auth.dart';
+import './authenticate/register.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyProfile extends StatelessWidget {
@@ -49,15 +49,14 @@ class MyProfile extends StatelessWidget {
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(
-              Icons.logout,
+              Icons.home,
               color: Colors.white,
             ),
-            label: Text('Log out',
+            label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
-            onPressed: () async {
-             // Navigator.of(context).pop();
-              await _auth.signOut();
-               Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+            onPressed: () {
+               Navigator.of(context).pop();
+
             },
           )
         ],
@@ -130,6 +129,7 @@ class MyProfile extends StatelessWidget {
               ),
             );
           }),
+          
     );
   }
 }

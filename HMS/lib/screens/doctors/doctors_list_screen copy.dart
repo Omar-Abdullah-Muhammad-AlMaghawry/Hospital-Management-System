@@ -1,7 +1,7 @@
 import 'package:HMS/widget/appointment/doctor-list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../widget/chat/message-list.dart';
+import '../../widget/chat/message-list.dart';
 import 'package:flutter/material.dart';
 
 class DoctorsListScreen extends StatefulWidget {
