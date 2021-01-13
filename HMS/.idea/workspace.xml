@@ -1,36 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
   </component>
-  <component name="ToolWindowManager">
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-    </layout>
+  <component name="ChangeListManager">
+    <list default="true" id="30d1f5ee-5902-4906-b974-780cb600c199" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <option name="show-excluded-files" value="false" />
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1kAJjFXkGvmaqJC5WAjDhCxRQto" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30d1f5ee-5902-4906-b974-780cb600c199" name="Default Changelist" comment="" />
+      <created>1605137596169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605137596169</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="270" y="228" key="#PSD" timestamp="1605138074529">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="270" y="228" key="#PSD/0.0.1504.963@0.0.1504.963" timestamp="1605138074529" />
+    <state x="194" y="130" width="1532" height="781" key="AVDManager" timestamp="1609974236641">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="152" y="120" width="1200" height="723" key="AVDManager/0.0.1504.963@0.0.1504.963" timestamp="1605268151789" />
+    <state x="194" y="130" width="1532" height="781" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1609974236641" />
+    <state x="534" y="237" key="FileChooserDialogImpl" timestamp="1605138073038">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="534" y="237" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1605138073038" />
+    <state width="1340" height="241" key="GridCell.Tab.0.bottom" timestamp="1605226939630">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1340" height="241" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1605226939630" />
+    <state width="1340" height="241" key="GridCell.Tab.0.center" timestamp="1605226939629">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1340" height="241" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1605226939629" />
+    <state width="1340" height="241" key="GridCell.Tab.0.left" timestamp="1605226939628">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1340" height="241" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1605226939628" />
+    <state width="1340" height="241" key="GridCell.Tab.0.right" timestamp="1605226939629">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1340" height="241" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1605226939629" />
+    <state x="333" y="225" key="IDE.errors.dialog" timestamp="1605212182586">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="333" y="225" key="IDE.errors.dialog/0.0.1504.963@0.0.1504.963" timestamp="1605212182586" />
+    <state x="324" y="137" key="SettingsEditor" timestamp="1607799386215">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="254" y="127" key="SettingsEditor/0.0.1504.963@0.0.1504.963" timestamp="1605209388526" />
+    <state x="324" y="137" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607799386215" />
+    <state x="409" y="223" key="run.anything.popup" timestamp="1605138118748">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="409" y="223" key="run.anything.popup/0.0.1504.963@0.0.1504.963" timestamp="1605138118748" />
   </component>
 </project>

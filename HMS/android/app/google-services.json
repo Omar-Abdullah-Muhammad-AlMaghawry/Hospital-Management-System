@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "698950675970",
-    "project_id": "hmsp-34489",
-    "storage_bucket": "hmsp-34489.appspot.com"
+    "project_number": "136748821414",
+    "project_id": "hms-registration",
+    "storage_bucket": "hms-registration.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:698950675970:android:133face98b4b018333c11b",
+        "mobilesdk_app_id": "1:136748821414:android:89613da965e377535efd67",
         "android_client_info": {
-          "package_name": "com.Project.HMS"
+          "package_name": "com.example.first_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "698950675970-fj8r1oqjt2sqv64q073vsjspubrms2i4.apps.googleusercontent.com",
+          "client_id": "136748821414-38qtentqrl5s152cre5saeuv9aq08rcd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCqKsvcGPiweW-KI45TZPZSYw6he8CMnU4"
+          "current_key": "AIzaSyDTnr_HSFim8g-ai9XEtl2YHzOwrbpQa2w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "698950675970-fj8r1oqjt2sqv64q073vsjspubrms2i4.apps.googleusercontent.com",
+              "client_id": "136748821414-38qtentqrl5s152cre5saeuv9aq08rcd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
