@@ -31,8 +31,7 @@ class _DepartmentsState extends State<Departments> {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-              Navigator.popUntil(
-                  context, ModalRoute.withName(PatientHomeScreen.nameRoute));
+              Navigator.of(context).pop();
             },
           )
         ],

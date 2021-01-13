@@ -204,7 +204,7 @@ _getClinicsAppBar(BuildContext context) {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-               Navigator.popUntil(context, ModalRoute.withName(DoctorsHomeScreen.nameRoute));
+               Navigator.of(context).pop();
 
             },
           )

@@ -43,16 +43,15 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
       appBar: AppBar(
         title: Text("My Scudule"),
         actions: [
-           FlatButton.icon(
+            FlatButton.icon(
             icon: Icon(
-              Icons.logout,
+              Icons.home,
               color: Colors.white,
             ),
-            label: Text('Log out',
+            label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-
-               Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+               Navigator.of(context).pop();
 
             },
           )

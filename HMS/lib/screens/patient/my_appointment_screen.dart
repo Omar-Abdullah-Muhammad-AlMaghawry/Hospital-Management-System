@@ -35,7 +35,7 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
     //     ModalRoute.of(context).settings.arguments as Map<String, String>;
     // final named = niceArgs["named"];
     return Scaffold(
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         actions: [
           FlatButton.icon(
@@ -46,14 +46,13 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-               Navigator.popUntil(context, ModalRoute.withName(PatientHomeScreen.nameRoute));
-
+              Navigator.of(context).pop();
             },
           )
         ],
         title: Text("My Appointmets"),
       ),
- //     drawer: MainDrawer(),
+      //     drawer: MainDrawer(),
       body: MyAppointment(),
       //     SingleChildScrollView(
       //   child: Column(

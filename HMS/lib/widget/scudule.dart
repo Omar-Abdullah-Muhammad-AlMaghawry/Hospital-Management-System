@@ -34,6 +34,6 @@ class _ScuduleState extends State<Scudule> {
             ),
           );
     else
-      return Center();
+      return Center(child: Text("Take A photo for your Schedule"),);
   }
 }

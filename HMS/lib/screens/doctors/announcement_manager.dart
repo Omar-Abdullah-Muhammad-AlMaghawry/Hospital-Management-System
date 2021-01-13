@@ -39,7 +39,7 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
             // backgroundColor:  Color(0xFFD6D6D6),
             title: Text('Announcements'),
             actions: [
-               FlatButton.icon(
+       FlatButton.icon(
             icon: Icon(
               Icons.home,
               color: Colors.white,
@@ -47,9 +47,7 @@ class _AnnounceManagerScreenState extends State<AnnounceManagerScreen> {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-          
-     
-               Navigator.popUntil(context, ModalRoute.withName(DoctorsHomeScreen.nameRoute));
+               Navigator.of(context).pop();
 
             },
           )

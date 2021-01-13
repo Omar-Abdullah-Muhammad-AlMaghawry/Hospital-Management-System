@@ -38,18 +38,17 @@ class _AnnouncedoctorScreenState extends State<AnnouncedoctorScreen> {
           title: Text('Announcements'),
           actions: [
             FlatButton.icon(
-              icon: Icon(
-                Icons.home,
-                color: Colors.white,
-              ),
-              label: Text('Home',
-                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
-              onPressed: () {
-         
-                Navigator.popUntil(
-                    context, ModalRoute.withName(DoctorsHomeScreen.nameRoute));
-              },
-            )
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+               Navigator.of(context).pop();
+
+            },
+          )
           ],
         ),
         //  drawer: DoctorDrawer(false),

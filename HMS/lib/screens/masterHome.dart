@@ -78,7 +78,7 @@ class _MasterHomeState extends State<MasterHome> {
                       splashColor: Color(0xFD6D6D6),
                       elevation: 10,
                       shape: StadiumBorder(),
-                      child: Text('Sign in/up',
+                      child: Text('Continue',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.black,
@@ -96,8 +96,9 @@ class _MasterHomeState extends State<MasterHome> {
                         bottomRight: Radius.circular(50.00),
                         bottomLeft: Radius.circular(50.00)),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'http://www.wilsonchiros.com/blog/wp-content/uploads/2015/12/hospital.jpg'),
+                      image: AssetImage(
+                        "assets/images/hospital.jpg"),
+                         // 'http://www.wilsonchiros.com/blog/wp-content/uploads/2015/12/hospital.jpg'),
                       //  borderRadius: BorderRadius.only(bottomRight:Radius.circular(50.00) ,bottomLeft:Radius.circular(50.00) ),
                       fit: BoxFit.fill,
                     ),

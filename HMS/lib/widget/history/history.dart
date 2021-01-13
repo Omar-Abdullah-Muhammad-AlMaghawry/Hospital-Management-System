@@ -24,22 +24,26 @@ class History extends StatelessWidget {
               // shrinkWrap: true,
               itemCount: appointmentDocs.length ?? 0,
               itemBuilder: (ctx, index) {
-                return CustomCard(
-                  senderPatientId: appointmentDocs[index]['senderPatientId'],
-                  //  recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
-                  department: appointmentDocs[index]["department"],
-                  doctor: appointmentDocs[index]["doctorOrAnlysisName"],
-                  senderpatientName: appointmentDocs[index]
-                      ["senderPatientName"],
-                  time: appointmentDocs[index]["time_Reservation"],
-                  titleOfCardApp: appointmentDocs[index]["title"],
-                  date: appointmentDocs[index]["date_Reservation"],
-                  cardId: appointmentDocs[index]["cardID"],
-                  isAppointment: false,
-                  isDoctor: false,
-                  diagnose: appointmentDocs[index]["diagnosis"],
-                  treatment:  appointmentDocs[index]["treatment"],
-                );
+                try {
+                  return CustomCard(
+                    senderPatientId: appointmentDocs[index]['senderPatientId'],
+                    //  recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
+                    department: appointmentDocs[index]["department"],
+                    doctor: appointmentDocs[index]["doctorOrAnlysisName"],
+                    senderpatientName: appointmentDocs[index]
+                        ["senderPatientName"],
+                    time: appointmentDocs[index]["time_Reservation"],
+                    titleOfCardApp: appointmentDocs[index]["title"],
+                    date: appointmentDocs[index]["date_Reservation"],
+                    cardId: appointmentDocs[index]["cardID"],
+                    isAppointment: false,
+                    isDoctor: false,
+                    diagnose: appointmentDocs[index]["diagnosis"],
+                    treatment: appointmentDocs[index]["treatment"],
+                  );
+                } catch (err) {
+                  Center();
+                }
               });
         });
     // ],

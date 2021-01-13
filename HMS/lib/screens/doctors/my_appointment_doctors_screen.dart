@@ -43,7 +43,7 @@ class _MyAppointmentDocScreenState extends State<MyAppointmentDocScreen> {
       appBar: AppBar(
         
         actions: [
-         FlatButton.icon(
+        FlatButton.icon(
             icon: Icon(
               Icons.home,
               color: Colors.white,
@@ -51,11 +51,11 @@ class _MyAppointmentDocScreenState extends State<MyAppointmentDocScreen> {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-     
-               Navigator.popUntil(context, ModalRoute.withName(DoctorsHomeScreen.nameRoute));
+               Navigator.of(context).pop();
 
             },
           )
+         
         ],
         title: Text("My Appointmets"),
       ),
