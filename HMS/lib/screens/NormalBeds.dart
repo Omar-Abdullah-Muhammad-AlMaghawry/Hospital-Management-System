@@ -17,9 +17,10 @@ class _NormalBedsState extends State<NormalBeds> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.teal[500],
+      backgroundColor:Theme.of(context).backgroundColor,
+        // backgroundColor: Colors.teal[500],
         appBar: AppBar(
-          backgroundColor: Colors.teal[700],
+         // backgroundColor: Colors.teal[700],
           elevation: 0.0,
           title: Text('Normal beds reservation form'),
           actions: [

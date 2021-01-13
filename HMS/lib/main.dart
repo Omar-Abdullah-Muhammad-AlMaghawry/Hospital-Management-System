@@ -1,4 +1,5 @@
 import 'package:HMS/screens/home/MyProfile.dart';
+import 'package:HMS/screens/my_appointment_doctors_screen.dart';
 
 import './models/users.dart';
 import './pages/masterHome.dart';
@@ -56,7 +57,7 @@ class MyApp01 extends StatelessWidget {
           //     return AuthScreen();
           //   },
           // ),
-          initialRoute: Homepage.nameRoute,
+          initialRoute: MasterHome.nameRoute,
           routes: {
             //   "/":(ctx)=>StreamBuilder(
             //   stream: FirebaseAuth.instance.onAuthStateChanged,
@@ -72,7 +73,7 @@ class MyApp01 extends StatelessWidget {
             //     return AuthScreen();
             //   },
             // ),
-            Homepage.nameRoute: (context) => Homepage(),
+            MasterHome.nameRoute: (context) => MasterHome(),
             PatientHomeScreen.nameRoute: (context) => PatientHomeScreen(),
             DoctorsHomeScreen.nameRoute: (context) => DoctorsHomeScreen(),
             MyAppointmentScreen.nameRoute: (contexy) => MyAppointmentScreen(),
@@ -82,11 +83,14 @@ class MyApp01 extends StatelessWidget {
             DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
             MyScuduleScreen.nameRoute: (context) => MyScuduleScreen(),
              MyProfile.nameRoute: (context) => MyProfile(),
+             MyAppointmentDocScreen.nameRoute:(context)=>MyAppointmentDocScreen()
           },
 
           //MyHomePage(),
           theme: ThemeData(
-            backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+            backgroundColor:  Colors.teal[500],
+            appBarTheme: AppBarTheme(color:     Colors.teal[700], )
+            //Color.fromRGBO(3, 95, 109, 1),
             // primaryColor: Color.fromRGBO(3, 95, 109, 1),
           ),
         ),

@@ -1,5 +1,6 @@
 
 
+import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:flutter/material.dart';
 import'package:firebase_auth/firebase_auth.dart';
 import'package:cloud_firestore/cloud_firestore.dart';
@@ -31,23 +32,29 @@ class _AnnouncedoctorScreenState extends State<AnnouncedoctorScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFFB3E5FC),
+             backgroundColor : Colors.teal[500],
+      //  backgroundColor:Theme.of(context).backgroundColor,
+     //   backgroundColor: Color(0xFFB3E5FC),
         appBar:
         AppBar(
             backgroundColor:  Color(0xFFD6D6D6),
             title: Text('Announcements'),
             actions: [
-              IconButton(
-                icon:Icon(Icons.close,
-                  color: Colors.white,
-                ),
+          FlatButton.icon(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text('Log out',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
                 onPressed: (){
                   Navigator.pop(context);
                 },
               ),
             ],
-          
+        
       ),
+      //  drawer: DoctorDrawer(false),
       body: SafeArea(child: 
       Expanded(
               child: Column(

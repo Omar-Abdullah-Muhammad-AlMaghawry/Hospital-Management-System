@@ -12,8 +12,9 @@ class _RadiologyState extends State<Radiology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+       // backgroundColor: Colors.teal,
         title: Text('Rediological Tests'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

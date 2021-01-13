@@ -28,6 +28,7 @@ class _RegisterState extends State<Register> {
   String address = '';
   String _date = DateFormat.yMMMd().format(DateTime.now());
   File _userImageFile;
+  var _done = false;
   final List<String> userType = [
     'Doctor',
     'Patient',
@@ -40,13 +41,14 @@ class _RegisterState extends State<Register> {
   String currentGender = '';
   void _imagePickedfn(File image) {
     _userImageFile = image;
+    _done = true;
   }
 
   //RegisterState({this.userName, this.email, this.phoneNumber, this.address});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[500],
+     backgroundColor : Colors.teal[500],
       appBar: AppBar(
         backgroundColor: Colors.teal[700],
         elevation: 0.0,
@@ -89,6 +91,7 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 10.0),
                 TextFormField(
+                   keyboardType: TextInputType.emailAddress,
                   decoration: inputTextDecoration.copyWith(hintText: 'Email'),
                   validator: (val) {
                     if (val.isEmpty) return 'Enter an Email';
@@ -153,6 +156,7 @@ class _RegisterState extends State<Register> {
                 // ),
                 // SizedBox(height: 10.0),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   decoration:
                       inputTextDecoration.copyWith(hintText: 'Phone Number'),
                   validator: (val) =>
@@ -257,14 +261,13 @@ class _RegisterState extends State<Register> {
                           phoneNumber: phoneNumber,
                           userName: userName);*/
                     FocusScope.of(context).unfocus();
-                    if (_userImageFile == null) {
-                      Scaffold.of(context).showSnackBar(SnackBar(
+                    if (_done == false) {
+                      return Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(
                           "You have to pick up an Image",
                         ),
                         backgroundColor: Theme.of(context).errorColor,
                       ));
-                      return;
                     }
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _auth.registerWithEmailAndPassword(

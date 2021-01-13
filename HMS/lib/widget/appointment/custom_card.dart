@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:HMS/widget/appointment/my_apointment.dart';
 import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:photo_view/photo_view.dart';
 
 class CustomCard extends StatefulWidget {
   final String titleOfCardApp;
@@ -19,6 +24,7 @@ class CustomCard extends StatefulWidget {
   final String treatment;
   final String cardId;
   final bool isAppointment;
+  final bool isDoctor;
   //final Function delete;
   // final int vaildButtons;
   final ValueKey key;
@@ -35,13 +41,63 @@ class CustomCard extends StatefulWidget {
       this.doctor,
       this.time,
       this.diagnose,
-      this.treatment});
+      this.treatment,
+      this.isDoctor});
 
   @override
   _CustomCardState createState() => _CustomCardState();
 }
 
 class _CustomCardState extends State<CustomCard> {
+  File _pickedImage;
+  var isState = false;
+  void addTreatment() async {
+    File _pickedImageFile = File(
+        await ImagePicker.pickImage(source: ImageSource.camera)
+            .then((value) => value.path));
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child(widget.titleOfCardApp)
+        .child(widget.cardId + '.jpg');
+    await ref.putFile(_pickedImageFile);
+    String url = await ref.getDownloadURL();
+    FirebaseFirestore.instance
+        .collection('appointments')
+        .doc(widget.cardId)
+        .update({'treatment': url});
+    setState(() {
+      isState = !isState;
+    });
+  }
+
+  void addDiagnosis() {
+    showBottomSheet(
+      context: context,
+      builder: (ctx) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: 'Enter Diagnosis',
+            ),
+            onSubmitted: (diagnosis) {
+              FirebaseFirestore.instance
+                  .collection('appointments')
+                  .doc(widget.cardId)
+                  .update({'diagnosis': diagnosis});
+              Navigator.pop(ctx);
+            },
+          ),
+        );
+      },
+    );
+    // FirebaseFirestore.instance
+    //     .collection('abdo-partients-test')
+    //     .doc(widget.cardId)
+    //     .update({'diagnosis': 'asuism'});
+  }
+
+  void viewPatientHistory() {}
   void change(context) {
     showModalBottomSheet(
         context: context,
@@ -109,7 +165,7 @@ class _CustomCardState extends State<CustomCard> {
                         margin: EdgeInsets.only(left: 5, right: 5),
                         color: Color.fromRGBO(68, 204, 255, 1),
                         child: Text(
-                         DateFormat.yMMMd().format( widget.date.toDate()),
+                          DateFormat.yMMMd().format(widget.date.toDate()),
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 16,
@@ -152,7 +208,8 @@ class _CustomCardState extends State<CustomCard> {
                               fontSize: 17,
                             ),
                           ),
-                          if (!widget.isAppointment)
+                          if ((widget.isAppointment && widget.isDoctor) ||
+                              !widget.isAppointment)
                             Text(
                               "Diagnose the Disease : " + widget.diagnose,
                               style: TextStyle(
@@ -160,13 +217,39 @@ class _CustomCardState extends State<CustomCard> {
                                 fontSize: 17,
                               ),
                             ),
-                          if (!widget.isAppointment)
-                            Text(
-                              "The treatment : " + widget.treatment,
-                              style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                                fontSize: 17,
-                              ),
+                          if ((widget.isAppointment && widget.isDoctor) ||
+                              !widget.isAppointment)
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "The treatment : ",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontSize: 17,
+                                  ),
+                                ),
+                                Container(
+                                  width: 210,
+                                  padding: EdgeInsets.all(10),
+                                  child: widget.treatment != ''
+                                      ? Container(
+                                          height: 300,
+                                          child: PhotoView(
+                                              enableRotation: true,
+                                              imageProvider: NetworkImage(
+                                                  widget.treatment != ""
+                                                      ? widget.treatment
+                                                      : null)),
+                                        )
+                                      // Image.network(
+                                      //     widget.treatment,
+                                      //     fit: BoxFit.fill,
+
+                                      //   )
+                                      : null,
+                                ),
+                              ],
                             ),
                           SizedBox(
                             height: 8,
@@ -176,7 +259,7 @@ class _CustomCardState extends State<CustomCard> {
                     ),
                   ),
                 ),
-                if (widget.isAppointment)
+                if (widget.isAppointment && !widget.isDoctor)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // mainAxisSize: MainAxisSize.min,
@@ -222,6 +305,67 @@ class _CustomCardState extends State<CustomCard> {
                             ),
                           ),
                           onPressed: () => delete(context),
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                if (widget.isAppointment && widget.isDoctor)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          color: Color.fromRGBO(0, 153, 255, 1),
+                        ),
+                        child: FlatButton(
+                          child: Text(
+                            "Add diagnosis ",
+                            style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontSize: 10,
+                            ),
+                          ),
+                          onPressed: addDiagnosis,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          color: Color.fromRGBO(0, 153, 255, 1),
+                        ),
+                        child: FlatButton(
+                          child: Text(
+                            "Add treatment",
+                            style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontSize: 10,
+                            ),
+                          ),
+                          onPressed: addTreatment,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          color: Color.fromRGBO(0, 153, 255, 1),
+                        ),
+                        child: FlatButton(
+                          child: Text(
+                            "View history ",
+                            style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontSize: 10,
+                            ),
+                          ),
+                          onPressed: viewPatientHistory,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),

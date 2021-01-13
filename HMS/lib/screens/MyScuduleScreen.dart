@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:HMS/pages/masterHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -38,14 +39,22 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text("MyScudule"),
         actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
+           FlatButton.icon(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text('Log out',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-              Navigator.of(context).pop();
+              //   Navigator.of(context).pop();
               FirebaseAuth.instance.signOut();
+               Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
             },
           )
         ],

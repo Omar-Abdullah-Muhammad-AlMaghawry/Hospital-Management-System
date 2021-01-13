@@ -135,6 +135,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
         "title": _isClinic ? "Clinic" : _departmentName.trim(),
         "created At": Timestamp.now(),
         "cardID": cardID,
+        "diagnosis": "",
+        "treatment": "",
       });
       _isLoading = false;
       // ListTileOfDoctors.isChoosed = false;

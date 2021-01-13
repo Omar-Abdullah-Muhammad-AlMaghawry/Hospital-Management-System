@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 // import 'package:flutter/src/services/asset_bundle.dart';
 
-void main() => runApp(Homepage());
+// void main() => runApp(Homepage());
 
 // class hospitalimage extends StatelessWidget {
 //   @override
@@ -22,13 +22,13 @@ void main() => runApp(Homepage());
 //   }
 // }
 
-class Homepage extends StatefulWidget {
+class MasterHome extends StatefulWidget {
   static const nameRoute = '/masterHome';
   @override
-  _HomepageState createState() => _HomepageState();
+  _MasterHomeState createState() => _MasterHomeState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _MasterHomeState extends State<MasterHome> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

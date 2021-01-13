@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MyAppointment extends StatelessWidget {
+class MyAppointmentDoc extends StatelessWidget {
   bool isChange = false;
   var isdelete = false;
   var timeOfReservation = '';
   var dateOfReservation = '';
 
-  MyAppointment(
+  MyAppointmentDoc(
       {this.isChange,
       this.isdelete,
       this.dateOfReservation,
@@ -57,7 +57,7 @@ class MyAppointment extends StatelessWidget {
 //           Firestore.instance.runTransaction((Transaction myTransaction) async {
 //     await myTransaction.delete(appointSnapshot.data.documents[index].reference);
 // });
-try{
+ try{
             return Checker(
               senderPatientId: appointmentDocs[index]['senderPatientId'],
               recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
@@ -70,10 +70,12 @@ try{
               titleOfCardApp: appointmentDocs[index]["title"],
               date: appointmentDocs[index]["date_Reservation"],
               cardId: appointmentDocs[index]["cardID"],
+              diagnose: appointmentDocs[index]["diagnosis"] ?? "",
+              treatment: appointmentDocs[index]["treatment"] ?? "",
               isAppointment: true,
-              isDoctor: false,
+              isDoctor: true,
             ).check();
-                   }
+            }
             catch (err){
               Center();
             }

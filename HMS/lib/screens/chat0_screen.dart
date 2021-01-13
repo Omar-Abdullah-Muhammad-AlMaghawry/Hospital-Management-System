@@ -1,3 +1,4 @@
+import 'package:HMS/pages/masterHome.dart';
 import 'package:HMS/widget/chat/messages.dart';
 import 'package:HMS/widget/chat/new_message.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,8 @@ class _ChatScreenState extends State<ChatScreen> {
             onChanged: (itemIdentifer) {
               if (itemIdentifer == "logout") {
                 FirebaseAuth.instance.signOut();
+                             Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
               }
             },
           )

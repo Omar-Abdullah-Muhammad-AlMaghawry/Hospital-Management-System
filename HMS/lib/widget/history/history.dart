@@ -1,5 +1,5 @@
 import 'package:HMS/widget/CardWidget.dart';
-import 'package:HMS/widget/appointment/card_widget.dart';
+import 'package:HMS/widget/appointment/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,8 +36,9 @@ class History extends StatelessWidget {
                   date: appointmentDocs[index]["date_Reservation"],
                   cardId: appointmentDocs[index]["cardID"],
                   isAppointment: false,
-                  diagnose: "",
-                  treatment: "",
+                  isDoctor: false,
+                  diagnose: appointmentDocs[index]["diagnosis"],
+                  treatment:  appointmentDocs[index]["treatment"],
                 );
               });
         });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 import './user_image_picker.dart';
 
 class Scudule extends StatefulWidget {
@@ -13,15 +14,25 @@ class _ScuduleState extends State<Scudule> {
   Widget build(BuildContext context) {
     if (widget.imageScUrl != null)
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
-        height: 400,
-        width: double.maxFinite,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          fit: BoxFit.fill,
-          image: NetworkImage(widget.imageScUrl),
-        )),
-      );
+          margin: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+          height: 400,
+          width: double.maxFinite,
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //   fit: BoxFit.fill,
+          //   image: NetworkImage(widget.imageScUrl),
+          // )),
+          child: PhotoView(
+            imageProvider: NetworkImage(widget.imageScUrl),
+            // backgroundDecoration:
+            //   BoxDecoration(
+            //     image: DecorationImage(
+            //       fit: BoxFit.fill,
+            //       image: NetworkImage(widget.imageScUrl),
+            //     ),
+            //   ),
+            ),
+          );
     else
       return Center();
   }

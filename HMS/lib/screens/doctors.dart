@@ -1,4 +1,5 @@
 // import '../screens/doctorlist.dart';
+import 'package:HMS/pages/masterHome.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,7 +13,9 @@ class _DoctorListState extends State<DoctorList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _getClinicsAppBar(),
+      
+      backgroundColor:Theme.of(context).backgroundColor,
+      appBar: _getClinicsAppBar(context),
       body: Center(
         child: Container(
           child: Padding(
@@ -170,29 +173,44 @@ class _DoctorListState extends State<DoctorList> {
   }
 }
 
-_getClinicsAppBar() {
+_getClinicsAppBar(BuildContext context) {
   return PreferredSize(
     preferredSize: Size.fromHeight(50),
     child: Container(
       alignment: Alignment.bottomCenter,
-      color: Colors.red[900],
+       color: Colors.teal[700],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.menu),
-            color: Colors.white,
-            onPressed: () {},
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.menu),
+          //   color: Colors.white,
+          //   onPressed: () {
+          //     // Navigator.of(context).pop();
+          //     // Navigator.of(context).pop();
+
+          //     FirebaseAuth.instance.signOut();
+          //      Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
+          //   },
+          // ),
           Text(
             "Departments",
             style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
-          IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white,
+          FlatButton.icon(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text('Log out',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
               // Navigator.of(context).pop();
+              // Navigator.of(context).pop();
+              FirebaseAuth.instance.signOut();
+              Navigator.popUntil(
+                  context, ModalRoute.withName(MasterHome.nameRoute));
             },
           ),
         ],
@@ -216,8 +234,9 @@ class _InternalMedicineDoctorsState extends State<InternalMedicineDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+       // backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -228,7 +247,7 @@ class _InternalMedicineDoctorsState extends State<InternalMedicineDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ InternalMedicine').snapshots(),
+        stream: Firestore.instance.collection('/InternalMedicine').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -287,8 +306,10 @@ class _DermatologyDoctorsState extends State<DermatologyDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+       // backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -299,7 +320,7 @@ class _DermatologyDoctorsState extends State<DermatologyDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ Dermatology').snapshots(),
+        stream: Firestore.instance.collection('/Dermatology').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -359,8 +380,10 @@ class _SurgeryDoctorsState extends State<SurgeryDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+     //   backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -371,7 +394,7 @@ class _SurgeryDoctorsState extends State<SurgeryDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ Surgery').snapshots(),
+        stream: Firestore.instance.collection('/Surgery').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -431,8 +454,10 @@ class _CardiologyDoctorsState extends State<CardiologyDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+  //      backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -443,7 +468,7 @@ class _CardiologyDoctorsState extends State<CardiologyDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ Cardiology').snapshots(),
+        stream: Firestore.instance.collection('/Cardiology').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -500,8 +525,11 @@ class _OrthopedicDoctorsState extends State<OrthopedicDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+
+     //   backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -512,7 +540,7 @@ class _OrthopedicDoctorsState extends State<OrthopedicDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ Orthopedic').snapshots(),
+        stream: Firestore.instance.collection('/Orthopedic').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -569,8 +597,10 @@ class _ENTDoctorsState extends State<ENTDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+      //  backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -581,7 +611,7 @@ class _ENTDoctorsState extends State<ENTDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ ENT').snapshots(),
+        stream: Firestore.instance.collection('/ENT').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -639,8 +669,10 @@ class _PediatricsDoctorsState extends State<PediatricsDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+     //   backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -651,7 +683,7 @@ class _PediatricsDoctorsState extends State<PediatricsDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ Pediatrics').snapshots(),
+        stream: Firestore.instance.collection('/Pediatrics').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -702,8 +734,10 @@ class _LabDoctorsState extends State<LabDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.red[900],
+   //     backgroundColor: Colors.red[900],
         title: Text('Lab Doctors'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -773,8 +807,10 @@ class _RadiologyDoctorsState extends State<RadiologyDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.red[900],
+      //  backgroundColor: Colors.red[900],
         title: Text('Radiology Doctors'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

@@ -5,28 +5,32 @@ import 'package:HMS/pages/masterHome.dart';
 import 'package:HMS/widget/appointment/doctor-list.dart';
 import 'package:HMS/widget/appointment/listtile-doctor.dart';
 import 'package:HMS/widget/appointment/my_apointment.dart';
+import 'package:HMS/widget/appointment/my_apointment_doctors.dart';
 import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
 import 'package:HMS/widget/main_drawer.dart';
+import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class MyAppointmentScreen extends StatefulWidget {
-  static const nameRoute = "/my-appoint";
+class MyAppointmentDocScreen extends StatefulWidget {
+  static const nameRoute = "/my-appointd-doc";
   @override
-  _MyAppointmentScreenState createState() => _MyAppointmentScreenState();
+  _MyAppointmentDocScreenState createState() => _MyAppointmentDocScreenState();
 }
 
-class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
-  void shtx(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (ctx) {
-          return NewEditDeleteAppointment(
-            changeTime: false,
-            deleteAppoint: false,
-          );
-        });
-  }
+class _MyAppointmentDocScreenState extends State<MyAppointmentDocScreen> {
+  // void shtx(BuildContext context) {
+
+  //   showModalBottomSheet(
+  //       context: context,
+  //       builder: (ctx) {
+
+  //         return NewEditDeleteAppointment(
+  //           changeTime: false,
+  //           deleteAppoint: false,
+  //         );
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
       backgroundColor:Theme.of(context).backgroundColor,
       appBar: AppBar(
         actions: [
-          FlatButton.icon(
+         FlatButton.icon(
             icon: Icon(
               Icons.logout,
               color: Colors.white,
@@ -45,18 +49,17 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
             label: Text('Log out',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-              // Navigator.of(context).pop();
-              // Navigator.of(context).pop();
+          
               FirebaseAuth.instance.signOut();
-              Navigator.popUntil(
-                  context, ModalRoute.withName(MasterHome.nameRoute));
+               Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
             },
           )
         ],
         title: Text("My Appointmets"),
       ),
- //     drawer: MainDrawer(),
-      body: MyAppointment(),
+    //  drawer: DoctorDrawer(),
+      body: MyAppointmentDoc(),
       //     SingleChildScrollView(
       //   child: Column(
       //     mainAxisSize: MainAxisSize.min, // Use children total size
@@ -67,10 +70,10 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
       //      ),
       //      ),
       //bottomSheet: NewAppointment(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => shtx(context),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.add),
+      //   onPressed: () => shtx(context),
+      // ),
     );
   }
 }

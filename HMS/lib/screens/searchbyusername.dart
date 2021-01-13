@@ -68,7 +68,8 @@ class _SearchByNameState extends State<SearchByName> {
     return 
     MaterialApp(
           home: Scaffold(
-        backgroundColor: Color(0xFFB3E5FC),
+            backgroundColor:Theme.of(context).backgroundColor,
+    //    backgroundColor: Color(0xFFB3E5FC),
         appBar:AppBar(
           actions: [
              Expanded(
@@ -107,7 +108,7 @@ class _SearchByNameState extends State<SearchByName> {
           
           ],
           title: Text('Chat'),
-          backgroundColor: Color(0xFFD6D6D6),
+         // backgroundColor: Color(0xFFD6D6D6),
         ),
         body:
         Container(

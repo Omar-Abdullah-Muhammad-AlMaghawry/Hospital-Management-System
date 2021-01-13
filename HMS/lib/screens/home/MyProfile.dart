@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:HMS/pages/masterHome.dart';
+import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
@@ -38,7 +40,8 @@ class MyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[500],
+      backgroundColor:Theme.of(context).backgroundColor,
+      // Colors.teal[500],
       appBar: AppBar(
         title: Text('My Profile'),
         backgroundColor: Colors.teal[700],
@@ -52,12 +55,14 @@ class MyProfile extends StatelessWidget {
             label: Text('Log out',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () async {
-              Navigator.of(context).pop();
+             // Navigator.of(context).pop();
               await _auth.signOut();
+               Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
             },
           )
         ],
       ),
+     // drawer: DoctorDrawer(false) ,
       body: FutureBuilder(
           future: FirebaseFirestore.instance
               .collection("users")

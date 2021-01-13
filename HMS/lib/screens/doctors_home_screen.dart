@@ -1,3 +1,7 @@
+import 'package:HMS/pages/masterHome.dart';
+import 'package:HMS/screens/home/MyProfile.dart';
+import 'package:HMS/screens/my_appointment_doctors_screen.dart';
+
 import '../screens/MyScuduleScreen.dart';
 
 import './doctorchatlist.dart';
@@ -25,7 +29,7 @@ class DoctorsHomeScreen extends StatelessWidget {
 
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      MyAppointmentScreen.nameRoute,
+      MyAppointmentDocScreen.nameRoute,
     );
   }
 
@@ -35,17 +39,32 @@ class DoctorsHomeScreen extends StatelessWidget {
     );
   }
 
+  void moveToMyProfile(BuildContext ctx) {
+    // Navigator.of(ctx).pushNamed(
+    //   MessageListScreen.nameRoute,
+    // );
+    Navigator.of(ctx).pushNamed(MyProfile.nameRoute);
+  }
+
   static const nameRoute = "/doctor-home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+      backgroundColor:Theme.of(context).backgroundColor,
+    //  backgroundColor: Color.fromRGBO(3, 95, 109, 1),
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
+        FlatButton.icon(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text('Log out',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
               FirebaseAuth.instance.signOut();
+                 Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
             },
           )
         ],
@@ -62,10 +81,22 @@ class DoctorsHomeScreen extends StatelessWidget {
               shape: BoxShape.rectangle,
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+                image: AssetImage(
+                  "assets/images/images (1).jpg"
+                    // 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'
+       // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aarp.org%2Fhealth%2Fconditions-treatments%2Finfo-2020%2Fer-precautions-coronavirus&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAo"
+                    
+                    ),
               ),
             ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          NiceButton(
+            onPressed: moveToMyProfile,
+            nameOfButton: "My Profile",
+            heightOfButton: 75,
           ),
           NiceButton(
             onPressed: moveToMySchedule,

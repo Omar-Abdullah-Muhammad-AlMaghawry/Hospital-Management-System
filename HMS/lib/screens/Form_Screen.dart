@@ -1,3 +1,4 @@
+import 'package:HMS/screens/doctors_home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -74,9 +75,10 @@ class FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text("Doctor Details"),
-        backgroundColor: Colors.teal,
+       // backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -161,7 +163,7 @@ class FormScreenState extends State<FormScreen> {
                 ),
                 StreamBuilder<QuerySnapshot>(
                     stream: Firestore.instance
-                        .collection("/datedoctors")
+                        .collection("/DateDoctors")
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData)
@@ -219,7 +221,7 @@ class FormScreenState extends State<FormScreen> {
                 ),
                 StreamBuilder<QuerySnapshot>(
                     stream: Firestore.instance
-                        .collection("/datedoctors2")
+                        .collection("/DateDoctors2")
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData)
@@ -277,7 +279,7 @@ class FormScreenState extends State<FormScreen> {
                 ),
                 StreamBuilder<QuerySnapshot>(
                     stream: Firestore.instance
-                        .collection("/ClinicTimes")
+                        .collection("/ClinicsTime")
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData)
@@ -334,8 +336,11 @@ class FormScreenState extends State<FormScreen> {
                     style: TextStyle(color: Colors.teal, fontSize: 18),
                   ),
                   onPressed: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
+                    if (_formKey.currentState.validate()) {
+                      return Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DoctorsHomeScreen() ?? Center()));
                     }
 
                     _formKey.currentState.save();

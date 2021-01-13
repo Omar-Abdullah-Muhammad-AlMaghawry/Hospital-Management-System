@@ -18,8 +18,9 @@ class _LaboratoryState extends State<Laboratory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+   //     backgroundColor: Colors.teal,
         title: Text(' List of Analysis'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

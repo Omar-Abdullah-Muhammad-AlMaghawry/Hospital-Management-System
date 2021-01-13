@@ -2,6 +2,24 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "_fe_analyzer_shared",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-12.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "analyzer",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-0.40.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "args",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/args-1.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "async",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.5.0-nullsafety.1",
       "packageUri": "lib/",
@@ -12,6 +30,24 @@
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0-nullsafety.1",
       "packageUri": "lib/",
       "languageVersion": "2.10"
+    },
+    {
+      "name": "build",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/build-1.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.9"
+    },
+    {
+      "name": "built_collection",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/built_collection-4.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "built_value",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/built_value-7.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "characters",
@@ -38,6 +74,12 @@
       "languageVersion": "1.23"
     },
     {
+      "name": "cli_util",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0-nullsafety.1",
       "packageUri": "lib/",
@@ -60,6 +102,12 @@
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.2.1+2",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "code_builder",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/code_builder-3.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "collection",
@@ -86,6 +134,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "dart_style",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/dart_style-1.3.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.9"
+    },
+    {
       "name": "date_field",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/date_field-0.3.3",
       "packageUri": "lib/",
@@ -102,6 +156,12 @@
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0-nullsafety.1",
       "packageUri": "lib/",
       "languageVersion": "2.10"
+    },
+    {
+      "name": "file",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/file-5.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "firebase",
@@ -182,6 +242,12 @@
       "languageVersion": "2.7"
     },
     {
+      "name": "fixnum",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-0.10.11",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -210,6 +276,12 @@
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "glob",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/glob-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "http",
@@ -260,6 +332,30 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "mockito",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/mockito-4.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "node_interop",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/node_interop-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.9"
+    },
+    {
+      "name": "node_io",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/node_io-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "package_config",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-1.9.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "path",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0-nullsafety.1",
       "packageUri": "lib/",
@@ -270,6 +366,12 @@
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "photo_view",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/photo_view-0.10.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "plugin_platform_interface",
@@ -284,6 +386,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "pub_semver",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-1.4.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "quiver",
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-2.1.5",
       "packageUri": "lib/",
@@ -294,6 +402,12 @@
       "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "1.11"
+    },
+    {
+      "name": "source_gen",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/source_gen-0.9.10+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.10"
     },
     {
       "name": "source_span",
@@ -356,13 +470,31 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "watcher",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/watcher-0.9.7+15",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "yaml",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/yaml-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
+      "name": "zoom_widget",
+      "rootUri": "file:///D:/College/3rd%20Comp.%20and%20Sys/Software%20Engineering/The%20Project/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/zoom_widget-0.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "HMS",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-01-12T01:14:31.328214Z",
+  "generated": "2021-01-13T02:37:47.401197Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

@@ -1,3 +1,4 @@
+import 'package:HMS/pages/masterHome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../widget/chat/message-list.dart';
@@ -38,7 +39,11 @@ class _MessageListScreenState extends State<MessageListScreen> {
                 ),
               ],
               onChanged: (value) {
-                if (value == 'logout') FirebaseAuth.instance.signOut();
+                if (value == 'logout') {
+                  FirebaseAuth.instance.signOut();
+               Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
+                }
               })
         ],
       ),

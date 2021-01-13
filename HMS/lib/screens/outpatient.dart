@@ -1,3 +1,4 @@
+import 'package:HMS/pages/masterHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,17 +13,25 @@ class _DepartmentsState extends State<Departments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title:  Text(
-            "OutPatient Clinics",
-            style: TextStyle(color: Colors.white, fontSize: 20.0),
-          ),
-          backgroundColor: Colors.teal,
+        title: Text(
+          "OutPatient Clinics",
+          style: TextStyle(color: Colors.white, fontSize: 20.0),
+        ),
+      //  backgroundColor: Colors.teal,
         actions: [
-          IconButton(
-              icon: Icon(Icons.logout),
+          FlatButton.icon(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              label: Text('Log out',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.popUntil(
+                    context, ModalRoute.withName(MasterHome.nameRoute));
+
                 FirebaseAuth.instance.signOut();
               }),
         ],
@@ -192,29 +201,39 @@ _getClinicsAppBar(BuildContext context) {
     preferredSize: Size.fromHeight(50),
     child: Container(
       alignment: Alignment.bottomCenter,
-      color: Colors.teal,
+        color: Colors.teal[700],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.menu),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
+          // IconButton(
+          //   icon: Icon(Icons.menu),
+          //   color: Colors.white,
+          //   onPressed: () {
+          //     // Navigator.of(context).pop();
+          //     // Navigator.of(context).pop();
 
-              FirebaseAuth.instance.signOut();
-            },
-          ),
+          //     FirebaseAuth.instance.signOut();
+          //      Navigator.popUntil(context, ModalRoute.withName(MasterHome.nameRoute));
+
+          //   },
+          // ),
           Text(
             "OutPatient Clinics",
             style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
-          IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white,
+          FlatButton.icon(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text('Log out',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
               // Navigator.of(context).pop();
+              // Navigator.of(context).pop();
+              FirebaseAuth.instance.signOut();
+              Navigator.popUntil(
+                  context, ModalRoute.withName(MasterHome.nameRoute));
             },
           ),
         ],
@@ -237,10 +256,11 @@ class _InternalMedicineState extends State<InternalMedicine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+    //   backgroundColor: Colors.teal,
         title: Text(text),
-       // leading: IconButton(
+        // leading: IconButton(
         //   icon: Icon(Icons.logout),
         //   color: Colors.white,
         //   onPressed: () {
@@ -358,8 +378,10 @@ class _DermatologyState extends State<Dermatology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+      //  backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -461,8 +483,10 @@ class _SurgeryState extends State<Surgery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+       // backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -565,8 +589,10 @@ class _CardiologyState extends State<Cardiology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+   //     backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -667,8 +693,10 @@ class _OrthopedicState extends State<Orthopedic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+  //      backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -769,8 +797,10 @@ class _ENTState extends State<ENT> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+   //     backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -874,8 +904,10 @@ class _PediatricsState extends State<Pediatrics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+  //      backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

@@ -88,9 +88,10 @@ void UploadImage()async{
     return
       MaterialApp(
         home: Scaffold(
-          backgroundColor: Color(0xFFB3E5FC),
+          backgroundColor: Theme.of(context).backgroundColor,
+          //Color(0xFFB3E5FC),
           appBar:AppBar(
-            backgroundColor:  Color(0xFFD6D6D6),
+         //   backgroundColor:  Color(0xFFD6D6D6),
             title: Text('⚡️Chat'),
             actions: [
               IconButton(
@@ -99,7 +100,7 @@ void UploadImage()async{
                   color: Colors.white,
                 ),
                 onPressed: (){
-                  //_auth.signOut();
+                FirebaseAuth.instance.signOut();
                   Navigator.pop(context);
                 },
               ),

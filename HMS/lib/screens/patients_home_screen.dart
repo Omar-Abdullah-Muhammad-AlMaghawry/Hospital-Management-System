@@ -1,3 +1,4 @@
+import 'package:HMS/pages/masterHome.dart';
 import 'package:HMS/screens/home/MyProfile.dart';
 import 'package:HMS/widgets/PatientDrawer.dart';
 
@@ -29,7 +30,6 @@ class PatientHomeScreen extends StatelessWidget {
     Navigator.of(ctx).pushNamed(
       MessageListScreen.nameRoute,
     );
-  
   }
 
   void moveToMyProfile(BuildContext ctx) {
@@ -43,20 +43,30 @@ class PatientHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(3, 95, 109, 1),
+      backgroundColor: Theme.of(context).backgroundColor,
+      // backgroundColor: Color.fromRGBO(3, 95, 109, 1),
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
+          FlatButton.icon(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text('Log out',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
+              // Navigator.of(context).pop();
+              // Navigator.of(context).pop();
               FirebaseAuth.instance.signOut();
+              Navigator.popUntil(
+                  context, ModalRoute.withName(MasterHome.nameRoute));
             },
           )
         ],
         title: Text("Home"),
       ),
       drawer: PatientDrawer(),
-     // MainDrawer(),
+      // MainDrawer(),
       body: ListView(
         children: [
           Container(
@@ -66,12 +76,21 @@ class PatientHomeScreen extends StatelessWidget {
               shape: BoxShape.rectangle,
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+                image: AssetImage(
+                    "assets/images/diabetesendroconolgoy_home_page_tabs_optimized.jpg"
+                    //      "assets/diabetesendroconolgoy_home_page_tabs_optimized.jpg"
+//  "https://images.app.goo.gl/rSXeg5xmyx91YQuZ9"
+
+                    //  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'
+                    // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tgh.org%2F&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAu"
+                    // "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aarp.org%2Fhealth%2Fconditions-treatments%2Finfo-2020%2Fer-precautions-coronavirus&psig=AOvVaw1OFovfkSNQvLM2UAcQvrBe&ust=1610589040353000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiu-ojml-4CFQAAAAAdAAAAABAo"
+                    ),
               ),
             ),
           ),
-
+   SizedBox(
+            height: 15,
+          ),
           NiceButton(
             onPressed: moveToMyProfile,
             nameOfButton: "My Profile",
@@ -118,15 +137,13 @@ class PatientHomeScreen extends StatelessWidget {
             Icons.chat,
           ),
           onPressed:
-            // () => moveToChat(context),
-           () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FrontChatList(),
-                ),
-              )
-        
-          ),
+              // () => moveToChat(context),
+              () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FrontChatList(),
+                    ),
+                  )),
     );
   }
 }

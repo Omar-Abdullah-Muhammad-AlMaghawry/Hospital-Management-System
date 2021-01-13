@@ -1,3 +1,5 @@
+import '../../screens/Form_Screen.dart';
+
 import '../../screens/doctors_home_screen.dart';
 import '../../screens/patients_home_screen.dart';
 
@@ -19,12 +21,12 @@ class HomeWrapper extends StatelessWidget {
     var ok = user.email;
     var index = ok.indexOf('@');
     if (ok.contains('d', index)) {
-      return DoctorsHomeScreen() ?? Center();
+      return FormScreen()??Center();
     } else if (ok.contains('p', index)) {
       return PatientHomeScreen() ?? Center();
     }
     else if (ok.contains('f', index)) {
-      return FrontHome() ?? Center();
+      return DoctorsHomeScreen() ?? Center();
     } else if (ok.contains('g', index)){
       Center();
     }
