@@ -1,20 +1,27 @@
+import 'package:clinic/widget/LabDate.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 
-class Rediology extends StatefulWidget {
+class Radiology extends StatefulWidget {
   @override
-  _RediologyState createState() => _RediologyState();
+  _RadiologyState createState() => _RadiologyState();
 }
 
-class _RediologyState extends State<Rediology> {
+class _RadiologyState extends State<Radiology> {
+  Future<DateTime> _selectDateTime(BuildContext context) => showDatePicker(
+        context: context,
+        initialDate: DateTime.now().add(Duration(seconds: 1)),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2100),
+      );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text('Rediological Tests'),
+        title: Text('Radiological Tests'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
@@ -24,7 +31,7 @@ class _RediologyState extends State<Rediology> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/Radiology').snapshots(),
+        stream: Firestore.instance.collection('/Rediology').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -50,16 +57,21 @@ class _RediologyState extends State<Rediology> {
                     RaisedButton(
                       color: Colors.teal,
                       child: Text('Book'),
-                      onPressed: () {
-                        Firestore.instance
-                            .collection('/appoiment')
-                            .document('1') //user id
-                            .setData({
-                          'price': documents[index]['price'],
-                          'name': documents[index]['name'],
-                          'depart': 'Radiology'
-                       
-                        });
+                      onPressed: () async {
+                        final selectedDate = await _selectDateTime(context);
+                        print(selectedDate);
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Date(documents[index]['name'],
+                              documents[index]['price'], 'Ahmed'),
+                        ));
+                        // Firestore.instance
+                        //     .collection('/LabReservation')
+                        //     .document('1') //user id
+                        //     .setData({
+                        //   'price': documents[index]['price'],
+                        //   'name': documents[index]['name'],
+                        //   'depart': 'Analysis'
+                        // });
                       },
                     ),
                   ],
