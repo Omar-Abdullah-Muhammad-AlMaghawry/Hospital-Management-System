@@ -20,13 +20,13 @@ class ListTileOfDoctorsForManger extends StatelessWidget {
       key: Key(rec.id),
       title: Text(rec.name),
       onTap: () async {
-        // FirebaseFirestore.instance.collection('none').get().then((value) => {
-        //       value.docs.forEach((element) {
-        //         element.data()["isManger"] = false;
+        FirebaseFirestore.instance.collection('none').get().then((value) => {
+              value.docs.forEach((element) {
+                element.data()["isManger"] = false;
 
-        //         ///the v is right //tested
-        //       })
-        //     });
+                ///the v is right //tested
+              })
+            });
         ListTileOfDoctorsForManger.isChoosedMan = true;
         DoctorsListForManger.recieverManger = rec;
         await FirebaseFirestore.instance.collection("none").doc(rec.id).update(

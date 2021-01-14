@@ -377,7 +377,7 @@ class _CustomCardState extends State<CustomCard> {
                         ),
                         child: FlatButton(
                           child: Text(
-                            isClinic ? "The treatment" : "The result ",
+                            isClinic ? "Add treatment" : "Add result ",
                             style: TextStyle(
                               color: Color.fromRGBO(255, 255, 255, 1),
                               fontSize: 10,

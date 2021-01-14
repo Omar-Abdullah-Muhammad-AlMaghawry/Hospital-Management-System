@@ -46,7 +46,7 @@ class _DoctorChatListState extends State<DoctorChatList> {
 
   Future getdoctornames()async{
     final _firestore = FirebaseFirestore.instance;
-    var doc = await _firestore.collection('doctors').getDocuments();
+    var doc = await _firestore.collection('none').getDocuments();
     return doc.documents;
   }
 

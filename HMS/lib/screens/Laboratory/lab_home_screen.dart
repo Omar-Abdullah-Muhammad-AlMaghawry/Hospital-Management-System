@@ -167,7 +167,7 @@ class LabHomeScreen extends StatelessWidget {
 
   void moveToMyAppointment(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-     LabAppointmentScreen.nameRoute,
+      LabAppointmentScreen.nameRoute,
     );
   }
 
@@ -235,29 +235,29 @@ class LabHomeScreen extends StatelessWidget {
             nameOfButton: "My Profile",
             heightOfButton: 75,
           ),
-           NiceButton(
+          NiceButton(
             onPressed: (context) async {
-                print('pRESSSSSSS');
+              print('pRESSSSSSS');
 
-                x = await getnumofbloodbags();
-                print(x);
-                print('navigating');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Bloodbank(
-                      aplus: xaplus,
-                      bplus: xbplus,
-                      oplus: xoplus,
-                      abplus: xabplus,
-                      abneg: xabneg,
-                      aneg: xaneg,
-                      bneg: xbneg,
-                      oneg: xoneg,
-                    ),
+              x = await getnumofbloodbags();
+              print(x);
+              print('navigating');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Bloodbank(
+                    aplus: xaplus,
+                    bplus: xbplus,
+                    oplus: xoplus,
+                    abplus: xabplus,
+                    abneg: xabneg,
+                    aneg: xaneg,
+                    bneg: xbneg,
+                    oneg: xoneg,
                   ),
-                );
-              },
+                ),
+              );
+            },
             nameOfButton: "BLOOD BANK",
             heightOfButton: 75,
           ),
@@ -265,28 +265,28 @@ class LabHomeScreen extends StatelessWidget {
           //   child: FlatButton(
           //     child: Text('BLOOD BANK'),
           //     color: Colors.green,
-              // onPressed: () async {
-              //   print('pRESSSSSSS');
+          // onPressed: () async {
+          //   print('pRESSSSSSS');
 
-              //   x = await getnumofbloodbags();
-              //   print(x);
-              //   print('navigating');
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => Bloodbank(
-              //         aplus: xaplus,
-              //         bplus: xbplus,
-              //         oplus: xoplus,
-              //         abplus: xabplus,
-              //         abneg: xabneg,
-              //         aneg: xaneg,
-              //         bneg: xbneg,
-              //         oneg: xoneg,
-              //       ),
-              //     ),
-              //   );
-              // },
+          //   x = await getnumofbloodbags();
+          //   print(x);
+          //   print('navigating');
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => Bloodbank(
+          //         aplus: xaplus,
+          //         bplus: xbplus,
+          //         oplus: xoplus,
+          //         abplus: xabplus,
+          //         abneg: xabneg,
+          //         aneg: xaneg,
+          //         bneg: xbneg,
+          //         oneg: xoneg,
+          //       ),
+          //     ),
+          //   );
+          // },
           //   ),
           // ),
           NiceButton(
