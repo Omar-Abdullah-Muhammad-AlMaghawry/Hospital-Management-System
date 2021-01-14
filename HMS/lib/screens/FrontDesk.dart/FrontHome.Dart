@@ -3,6 +3,7 @@ import 'package:HMS/screens/FrontDesk.dart/Service_fees.dart';
 import 'package:HMS/screens/FrontDesk.dart/bed_reservation.dart';
 import 'package:HMS/screens/FrontDesk.dart/choose_manger.dart';
 import 'package:HMS/screens/FrontDesk.dart/initialFeesScreen.dart';
+import 'package:HMS/screens/chat/move-to-transaction-screesn.dart';
 import '../chat/patientchatlist.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
@@ -48,7 +49,7 @@ class _FrontHomeState extends State<FrontHome> {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PatientChatList(),
+              builder: (context) => FrontNavigator(),
             ),
           ),
           splashColor: Colors.lightBlueAccent,

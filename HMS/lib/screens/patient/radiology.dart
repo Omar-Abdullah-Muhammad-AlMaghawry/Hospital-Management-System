@@ -64,7 +64,7 @@ class _RadiologyState extends State<Radiology> {
                     ),
                     SizedBox(height: 12),
                     RaisedButton(
-                      color: Colors.teal,
+                      color: Theme.of(context).appBarTheme.color,
                       child: Text('Book'),
                       onPressed: () async {
                         // final selectedDate = await _selectDateTime(context);

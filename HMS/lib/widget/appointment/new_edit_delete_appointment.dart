@@ -125,7 +125,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
           .set({
         'senderPatientId': _user.uid,
         'senderPatientName': userDate["userName"],
-        'department':_isClinic ? _departmentName.trim(): _doctorOrAnlysisName.trim(),
+        'department':
+            _isClinic ? _departmentName.trim() : _doctorOrAnlysisName.trim(),
         // 'doctorOrAnlysisName': _isClinic
         //     ? "Doctor : " + _doctorOrAnlysisName.trim()
         //     : "Name : " + _doctorOrAnlysisName.trim(),
@@ -135,7 +136,11 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
         'recieverDoctorId': _isClinic ? DoctorsList.reciever.id : _type,
         'date_Reservation': _dateOfReservation,
         'time_Reservation': _timeOfReservation,
-        "title": _isClinic ? "Clinic" : _type=="lab"?"Blood Test Lab":"Radiology",
+        "title": _isClinic
+            ? "Clinic"
+            : _type == "lab"
+                ? "Blood Test Lab"
+                : "Radiology",
         "created At": Timestamp.now(),
         "cardID": cardID,
         "diagnosis": "",
@@ -159,6 +164,12 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
       ));
       return;
     }
+  }
+
+  @override
+  initState() {
+    super.initState();
+    _doctorOrAnlysisName = DoctorsList.reciever.name;
   }
 
   @override
@@ -232,8 +243,12 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                           height: 50,
                           width: double.infinity,
                           child: DropdownButton(
-                            hint: Text(_type==""?"Choose The Department":_type,
-                            style: TextStyle(color:_type==""?Colors.black54:Colors.black ),
+                            hint: Text(
+                              _type == "" ? "Choose The Department" : _type,
+                              style: TextStyle(
+                                  color: _type == ""
+                                      ? Colors.black54
+                                      : Colors.black),
                             ),
                             disabledHint: Text("$_type"),
                             isExpanded: true,
@@ -272,10 +287,10 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                               ),
                             ],
                             onChanged: (itemIdentifer) {
-                            setState(() {
-                               _type = itemIdentifer;
-
-                            });                             },
+                              setState(() {
+                                _type = itemIdentifer;
+                              });
+                            },
                           ),
                         ),
                   if (!(widget.deleteAppoint))
@@ -326,6 +341,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                                     setState(() {
                                       _isState = !_isState;
                                     });
+
+                                    ;
                                   });
 
                                   //     .then((result) {

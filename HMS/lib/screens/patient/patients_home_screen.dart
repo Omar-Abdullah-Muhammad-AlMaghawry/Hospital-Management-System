@@ -134,7 +134,7 @@ class PatientHomeScreen extends StatelessWidget {
               () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>FrontNavigator(),
+                      builder: (context) =>FrontChatList(),
                     ),
                   )),
     );
