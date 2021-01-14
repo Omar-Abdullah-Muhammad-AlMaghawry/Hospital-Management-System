@@ -123,9 +123,9 @@ class AuthService {
               : email.contains("d", email.indexOf("@"))
                   ? "doctors"
                   : email.contains("l", email.indexOf("@"))
-                      ? "laboratory"
+                      ? "lab"
                       : email.contains("r", email.indexOf("@"))
-                          ? "radiology"
+                          ? "rad"
                           : email.contains("f", email.indexOf("@"))
                               ? "frontdesk"
                               : "none")
@@ -139,7 +139,7 @@ class AuthService {
         "address": address,
         "phoneNumber": phoneNumber,
         "isManger": false,
-        "salary":"10000",
+        "salary": "10000",
       });
       await FirebaseFirestore.instance
           .collection(
