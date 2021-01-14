@@ -128,7 +128,7 @@ class AuthService {
                           ? "rad"
                           : email.contains("f", email.indexOf("@"))
                               ? "frontdesk"
-                              : "none")
+                              : "xxxx")
           .document(user.uid)
           .set({
         'userName': userName,
