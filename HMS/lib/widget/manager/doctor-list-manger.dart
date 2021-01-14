@@ -22,7 +22,7 @@ class _DoctorsListForMangerState extends State<DoctorsListForManger> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("doctors").snapshots(),
+        stream: FirebaseFirestore.instance.collection("none").snapshots(),
         builder: (ctx, snapshots) {
           var nameMember = snapshots.data.documents ?? 0;
           // if (nameMember == ConnectionState.waiting) {
@@ -45,7 +45,8 @@ class _DoctorsListForMangerState extends State<DoctorsListForManger> {
               // ChatScreen(
               //   userName: userName,
               // );
-              return ListTileOfDoctorsForManger(rec: Reciever(id: id, name: userName));
+              return ListTileOfDoctorsForManger(
+                  rec: Reciever(id: id, name: userName));
               // ListTile(
 
               //   key: Key(id),

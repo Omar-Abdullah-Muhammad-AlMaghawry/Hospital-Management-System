@@ -42,6 +42,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   var _isDelete = false;
   var _isClinic = true;
   var _isState = false;
+  var _type = "";
 
   var _isChoosed = ListTileOfDoctors.isChoosed;
 
@@ -124,17 +125,17 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
           .set({
         'senderPatientId': _user.uid,
         'senderPatientName': userDate["userName"],
-        'department': _departmentName.trim(),
+        'department':_isClinic ? _departmentName.trim(): _doctorOrAnlysisName.trim(),
         // 'doctorOrAnlysisName': _isClinic
         //     ? "Doctor : " + _doctorOrAnlysisName.trim()
         //     : "Name : " + _doctorOrAnlysisName.trim(),
         'doctorOrAnlysisName': _isClinic
             ? "Doctor : " + DoctorsList.reciever.name
             : "Name : " + _doctorOrAnlysisName.trim(),
-        'recieverDoctorId': _isClinic ? DoctorsList.reciever.id : null,
+        'recieverDoctorId': _isClinic ? DoctorsList.reciever.id : _type,
         'date_Reservation': _dateOfReservation,
         'time_Reservation': _timeOfReservation,
-        "title": _isClinic ? "Clinic" : _departmentName.trim(),
+        "title": _isClinic ? "Clinic" : _type=="lab"?"Blood Test Lab":"Radiology",
         "created At": Timestamp.now(),
         "cardID": cardID,
         "diagnosis": "",
@@ -204,24 +205,79 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                   //     }),
                   if (!(widget.deleteAppoint))
                     if (!(widget.changeTime))
-                      TextFormField(
-                        key: ValueKey("Department"),
-                        controller: _controller1,
-                        validator: (value) {
-                          if (value.isEmpty)
-                            return "Please Enter The Department";
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            labelText: _isClinic
-                                ? "Which department do you want make your Reservation ..?"
-                                : "Analysis or Radiation, Which one do you want"),
-                        onSaved: (value) {
-                          setState(() {
-                            _departmentName = value;
-                          });
-                        },
-                      ),
+                      if (_isClinic)
+                        TextFormField(
+                          key: ValueKey("Department"),
+                          controller: _controller1,
+                          validator: (value) {
+                            if (value.isEmpty)
+                              return "Please Enter The Department";
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              labelText: _isClinic
+                                  ? "Which department do you want make your Reservation ..?"
+                                  : "Analysis or Radiation, Which one do you want"),
+                          onSaved: (value) {
+                            setState(() {
+                              _departmentName = value;
+                            });
+                          },
+                        ),
+                  if (!(widget.deleteAppoint))
+                    if (!widget.changeTime)
+                      if (!_isClinic)
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          height: 50,
+                          width: double.infinity,
+                          child: DropdownButton(
+                            hint: Text(_type==""?"Choose The Department":_type,
+                            style: TextStyle(color:_type==""?Colors.black54:Colors.black ),
+                            ),
+                            disabledHint: Text("$_type"),
+                            isExpanded: true,
+                            icon: Icon(
+                              Icons.more_vert,
+                              color: Theme.of(context).appBarTheme.color,
+                            ),
+                            items: [
+                              DropdownMenuItem(
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      // Icon(Icons.),
+                                      // SizedBox(
+                                      //   width: 8,
+                                      // ),
+                                      Text("Blood Testing Lab")
+                                    ],
+                                  ),
+                                ),
+                                value: 'lab',
+                              ),
+                              DropdownMenuItem(
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      // Icon(Icons.logout),
+                                      // SizedBox(
+                                      //   width: 8,
+                                      //   ),
+                                      Text("Radiology")
+                                    ],
+                                  ),
+                                ),
+                                value: 'rad',
+                              ),
+                            ],
+                            onChanged: (itemIdentifer) {
+                            setState(() {
+                               _type = itemIdentifer;
+
+                            });                             },
+                          ),
+                        ),
                   if (!(widget.deleteAppoint))
                     if (!widget.changeTime)
                       if (_isClinic)

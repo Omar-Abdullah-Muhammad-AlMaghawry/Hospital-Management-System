@@ -20,7 +20,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-      //    backgroundColor: Colors.teal[700],
+          //    backgroundColor: Colors.teal[700],
           elevation: 0.0,
           title: Text('Reset Password'),
         ),
@@ -34,7 +34,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        'E-mail',
+                        'Buckup E-mail',
                         style: TextStyle(fontSize: 20.0, color: Colors.white),
                         textAlign: TextAlign.left,
                       ),
@@ -42,8 +42,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                     ),
                     SizedBox(height: 10.0),
                     TextFormField(
-                      decoration:
-                          inputTextDecoration.copyWith(hintText: 'Email'),
+                      decoration: inputTextDecoration.copyWith(
+                          hintText: 'Enater Your Buckup Email'),
                       validator: (val) => val.isEmpty ? 'Enter an Email' : null,
                       onChanged: (val) {
                         setState(() {
@@ -54,7 +54,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     SizedBox(height: 20.0),
                     SizedBox(height: 20.0),
                     RaisedButton(
-                       color: Color.fromRGBO(0, 153, 255, 1),
+                      color: Color.fromRGBO(0, 153, 255, 1),
                       child: Text(
                         'Send Request ',
                         style: TextStyle(color: Colors.white),

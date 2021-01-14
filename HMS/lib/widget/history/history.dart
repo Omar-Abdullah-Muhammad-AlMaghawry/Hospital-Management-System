@@ -1,3 +1,5 @@
+import 'package:HMS/moduls/checker_appointments.dart';
+import 'package:HMS/moduls/reciever.dart';
 import 'package:HMS/widget/CardWidget.dart';
 import 'package:HMS/widget/appointment/custom_card.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class History extends StatelessWidget {
+  Reciever sender;
+  History({this.sender});
   @override
   Widget build(BuildContext context) {
     final _user = FirebaseAuth.instance.currentUser;
@@ -25,7 +29,7 @@ class History extends StatelessWidget {
               itemCount: appointmentDocs.length ?? 0,
               itemBuilder: (ctx, index) {
                 try {
-                  return CustomCard(
+                  return Checker(
                     senderPatientId: appointmentDocs[index]['senderPatientId'],
                     //  recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
                     department: appointmentDocs[index]["department"],
@@ -40,7 +44,9 @@ class History extends StatelessWidget {
                     isDoctor: false,
                     diagnose: appointmentDocs[index]["diagnosis"],
                     treatment: appointmentDocs[index]["treatment"],
-                  );
+                    id: sender.id,
+                    // isClinic:appointmentDocs[index]['recieverDoctorId']as String ,
+                  ).checkHistory();
                 } catch (err) {
                   Center();
                 }

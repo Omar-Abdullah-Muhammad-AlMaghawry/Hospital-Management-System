@@ -30,8 +30,8 @@ class _AnnouncedoctorScreenState extends State<AnnouncedoctorScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal[500],
-        //  backgroundColor:Theme.of(context).backgroundColor,
+       // backgroundColor: Colors.teal[500],
+         backgroundColor:Theme.of(context).backgroundColor,
         //   backgroundColor: Color(0xFFB3E5FC),
         appBar: AppBar(
           //    backgroundColor: Color(0xFFD6D6D6),

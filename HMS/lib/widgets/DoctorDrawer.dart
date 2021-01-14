@@ -142,12 +142,13 @@ class DoctorDrawer extends StatelessWidget {
                 color: Colors.blue[100],
                 onPressed: () async {
                   var user = FirebaseAuth.instance.currentUser;
-                  var docDoc = await FirebaseFirestore.instance
-                      .collection("doctors")
+                  var docNone = await FirebaseFirestore.instance
+                      .collection("none")
                       .doc(user.uid)
                       .get();
-                  var isManger = docDoc.data()["isManger"];
-                  if (!isManger)
+                    
+                  var isMangerN = docNone.data()["isManger"];
+                  if (!isMangerN)
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AnnouncedoctorScreen()));
                   else 
@@ -217,7 +218,7 @@ class DoctorDrawer extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Address: شارع الشهيد ميكي ماوس',
+                    'Address: شارع ميكي ماوس',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,

@@ -59,10 +59,11 @@ class _PatientChatListState extends State<PatientChatList> {
    
 
     return Scaffold(
-      backgroundColor: Color(0xFFB3E5FC),
+    //  backgroundColor: Color(0xFFB3E5FC),
+           backgroundColor: Theme.of(context).backgroundColor,
       appBar:AppBar(
         title: Text('Chat'),
-        backgroundColor: Color(0xFFD6D6D6),
+       // backgroundColor: Color(0xFFD6D6D6),
         actions: [
           IconButton(
 

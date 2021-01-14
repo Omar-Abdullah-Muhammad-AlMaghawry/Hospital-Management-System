@@ -2,7 +2,6 @@ import 'package:HMS/screens/FrontDesk.dart/IntensiveForm.dart';
 import 'package:HMS/screens/FrontDesk.dart/NormalForm.dart';
 import 'package:flutter/material.dart';
 
-
 class BedReservation extends StatefulWidget {
   @override
   _BedReservationState createState() => _BedReservationState();
@@ -55,21 +54,24 @@ class _BedReservationState extends State<BedReservation> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFFE1F5FE),
+        //  backgroundColor: Color(0xFFE1F5FE),
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          title: Text(
-            'Bed reservation ',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
-            ),
-          ),
-          backgroundColor: Color(0xFD6D6D6),
+          title: Text('Bed reservation ',
+              style: TextStyle(color: Colors.white, fontSize: 30.0)),
+          //     backgroundColor: Color(0xFD6D6D6),
           actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[],
-            ),
+            FlatButton.icon(
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              label: Text('Home',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
           ],
         ),
         body: Container(

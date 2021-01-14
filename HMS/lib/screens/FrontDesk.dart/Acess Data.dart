@@ -118,17 +118,31 @@ class _AccessData extends State<AccessData> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFFE1F5FE),
+        backgroundColor: Theme.of(context).backgroundColor,
+        // backgroundColor: Color(0xFFE1F5FE),
         appBar: AppBar(
+          actions: [
+            FlatButton.icon(
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              label: Text('Home',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
           title: Text(
             'Access Data',
             style: TextStyle(
               fontSize: 20,
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          backgroundColor: Color(0xFD6D6D6),
+          //     backgroundColor: Color(0xFD6D6D6),
         ),
         //  Firebase val = Firebase.instance();
 
@@ -175,7 +189,7 @@ class _AccessData extends State<AccessData> {
                       */
 
                       Text(
-                        'Salary :  ' + doc[index]["fees"] + '  LE',
+                        'Salary :  ' + doc[index]["salary"] + '  LE',
                         style: TextStyle(fontSize: 15),
                       ),
                     ],

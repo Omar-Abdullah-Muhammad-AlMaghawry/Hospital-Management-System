@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MyAppointment extends StatelessWidget {
+class LabAppointment extends StatelessWidget {
   bool isChange = false;
   var isdelete = false;
   var timeOfReservation = '';
   var dateOfReservation = '';
 
-  MyAppointment(
+  LabAppointment(
       {this.isChange,
       this.isdelete,
       this.dateOfReservation,
@@ -57,10 +57,10 @@ class MyAppointment extends StatelessWidget {
 //           Firestore.instance.runTransaction((Transaction myTransaction) async {
 //     await myTransaction.delete(appointSnapshot.data.documents[index].reference);
 // });
-try{
+//  try{
             return Checker(
               senderPatientId: appointmentDocs[index]['senderPatientId'],
-              recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
+              recieverDoctorId: appointmentDocs[index]["recieverDoctorId"],
               department: appointmentDocs[index]["department"],
               doctor: appointmentDocs[index]["doctorOrAnlysisName"],
               senderpatientName: appointmentDocs[index]["senderPatientName"],
@@ -70,14 +70,16 @@ try{
               titleOfCardApp: appointmentDocs[index]["title"],
               date: appointmentDocs[index]["date_Reservation"],
               cardId: appointmentDocs[index]["cardID"],
+              diagnose: appointmentDocs[index]["diagnosis"] ?? "",
+              treatment: appointmentDocs[index]["treatment"] ?? "",
               isAppointment: true,
-              isDoctor: false,
-              //  isClinic:true,
+              isDoctor: true,
+              // isClinic:false
             ).check();
-                   }
-            catch (err){
-              Center();
-            }
+          //  }
+            // catch (err){
+            //   Center(child: Text("hey"),);
+            // }
             // return CardAppointment(
             //   department: appiontmentList[index],
             //   doctor: appiontmentList[index],

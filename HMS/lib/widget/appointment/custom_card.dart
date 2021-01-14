@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:HMS/moduls/reciever.dart';
+import 'package:HMS/screens/patient/history_screen.dart';
 import 'package:HMS/widget/appointment/my_apointment.dart';
 import 'package:HMS/widget/appointment/new_edit_delete_appointment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,6 +27,7 @@ class CustomCard extends StatefulWidget {
   final String cardId;
   final bool isAppointment;
   final bool isDoctor;
+  final String id;
   //final Function delete;
   // final int vaildButtons;
   final ValueKey key;
@@ -42,7 +45,8 @@ class CustomCard extends StatefulWidget {
       this.time,
       this.diagnose,
       this.treatment,
-      this.isDoctor});
+      this.isDoctor,
+      this.id});
 
   @override
   _CustomCardState createState() => _CustomCardState();
@@ -97,7 +101,14 @@ class _CustomCardState extends State<CustomCard> {
     //     .update({'diagnosis': 'asuism'});
   }
 
-  void viewPatientHistory() {}
+  var patientHistoryId = "";
+  void viewPatientHistory() {
+    patientHistoryId = widget.senderPatientId;
+    Navigator.of(context).pushNamed(HistoryScreen.nameRoute,
+        arguments:
+            Reciever(id: patientHistoryId, name: widget.senderpatientName));
+  }
+
   void change(context) {
     showModalBottomSheet(
         context: context,
@@ -124,10 +135,31 @@ class _CustomCardState extends State<CustomCard> {
         });
   }
 
+  // void viewHistory() {
+
+  // }
+
+  var userEmail = FirebaseAuth.instance.currentUser.email;
+
   @override
   Widget build(BuildContext context) {
+    var isClinic = true;
+    var _isSenderHistory = false;
+    var _isForDoc = false;
+    _isForDoc =
+        widget.recieverDoctorId == FirebaseAuth.instance.currentUser.uid ||
+            widget.recieverDoctorId ==
+                userEmail.substring(
+                    (userEmail.indexOf("@") + 1), userEmail.indexOf("@") + 4);
+    _isSenderHistory = widget.senderPatientId == widget.id;
+    isClinic = !(widget.titleOfCardApp == "Blood Test Lab" ||
+        widget.titleOfCardApp == "Radiology");
     if (widget.senderPatientId == FirebaseAuth.instance.currentUser.uid ||
-        widget.recieverDoctorId == FirebaseAuth.instance.currentUser.uid)
+        widget.recieverDoctorId == FirebaseAuth.instance.currentUser.uid ||
+        widget.recieverDoctorId ==
+            userEmail.substring(
+                (userEmail.indexOf("@") + 1), userEmail.indexOf("@") + 4) ||
+        widget.senderPatientId == widget.id)
       return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(35)),
@@ -152,7 +184,9 @@ class _CustomCardState extends State<CustomCard> {
                         margin: EdgeInsets.only(left: 5, right: 5),
                         color: Color.fromRGBO(68, 204, 255, 1),
                         child: Text(
-                          widget.titleOfCardApp,
+                          _isSenderHistory
+                              ? "${widget.senderpatientName}"
+                              : widget.titleOfCardApp,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 20,
@@ -195,7 +229,7 @@ class _CustomCardState extends State<CustomCard> {
                             ),
                           ),
                           Text(
-                            widget.doctor,
+                         _isForDoc?  "Patient Name : ${widget.senderpatientName}": widget.doctor,
                             style: TextStyle(
                               color: Color.fromRGBO(0, 0, 0, 1),
                               fontSize: 17,
@@ -223,7 +257,9 @@ class _CustomCardState extends State<CustomCard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "The treatment : ",
+                                  isClinic
+                                      ? "The treatment : "
+                                      : "The result : ",
                                   style: TextStyle(
                                     color: Color.fromRGBO(0, 0, 0, 1),
                                     fontSize: 17,
@@ -341,7 +377,7 @@ class _CustomCardState extends State<CustomCard> {
                         ),
                         child: FlatButton(
                           child: Text(
-                            "Add treatment",
+                            isClinic ? "The treatment" : "The result ",
                             style: TextStyle(
                               color: Color.fromRGBO(255, 255, 255, 1),
                               fontSize: 10,

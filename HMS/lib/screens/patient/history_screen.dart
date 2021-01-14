@@ -1,6 +1,9 @@
 import 'dart:developer';
 
+import 'package:HMS/moduls/reciever.dart';
 import 'package:HMS/screens/patient/patients_home_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_analytics/observer.dart';
 
 import '../masterHome.dart';
 import 'package:HMS/widget/appointment/my_apointment.dart';
@@ -25,9 +28,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
 //                 });}
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context).settings.arguments as Reciever;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-    //  backgroundColor: Colors.white,
+      //  backgroundColor: Colors.white,
       appBar: AppBar(
         actions: [
           FlatButton.icon(
@@ -42,10 +46,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
             },
           )
         ],
-        title: Text("My Medical History"),
+        title: Text(args ==null?"My Medical History":"${args.name} Medical History"),
       ),
       //    drawer: MainDrawer(),
-      body: History(),
+      body: History(
+        sender: args,
+      ),
     );
   }
 }

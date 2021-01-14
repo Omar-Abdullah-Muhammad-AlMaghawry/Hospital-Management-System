@@ -30,8 +30,10 @@ class _RegisterState extends State<Register> {
   String userName = '';
   String phoneNumber = '';
   String address = '';
+  String backupEmail = "";
   String _date = DateFormat.yMMMd().format(DateTime.now());
   File _userImageFile;
+
   var _done = false;
   final List<String> userType = [
     'Doctor',
@@ -99,10 +101,32 @@ class _RegisterState extends State<Register> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: inputTextDecoration.copyWith(hintText: 'Email'),
                   validator: (val) {
-                    if (val.isEmpty) return 'Enter an Email';
-                    if (!(val.contains('d', val.indexOf("@")) ||
-                        val.contains('p', val.indexOf("@")) ||
-                        val.contains('f', val.indexOf("@"))))
+                    if (val.isEmpty) return 'Enter your department Email';
+                    var i = val.indexOf("@");
+                    if (!((val.contains('d', i) &&
+                            val.contains('o', i + 1) &&
+                            val.contains('c', i + 2) &&
+                            val.contains('t', i + 3) &&
+                            val.contains('o', i + 4) &&
+                            val.contains('r', i + 5)) ||
+                        (val.contains('p', i) &&
+                            val.contains('a', i + 1) &&
+                            val.contains('t', i + 2) &&
+                            val.contains('i', i + 3) &&
+                            val.contains('e', i + 4) &&
+                            val.contains('n', i + 5) &&
+                            val.contains('t', i + 6)) ||
+                        (val.contains('f', i) &&
+                            val.contains('r', i + 1) &&
+                            val.contains('o', i + 2) &&
+                            val.contains('n', i + 3) &&
+                            val.contains('t', i + 4)) ||
+                        (val.contains('r', i) &&
+                            val.contains('a', i + 1) &&
+                            val.contains('d', i + 2)) ||
+                        (val.contains('l', i) &&
+                            val.contains('a', i + 1) &&
+                            val.contains('b', i + 2))))
                       return "Please Enter Valid Email";
                     return null;
                   },
@@ -112,23 +136,28 @@ class _RegisterState extends State<Register> {
                     });
                   },
                 ),
+                //  SizedBox(height: 10.0),
                 // TextFormField(
                 //   decoration:
                 //       inputTextDecoration.copyWith(hintText: 'Backup Email'),
                 //   validator: (val) {
                 //     if (val.isEmpty) return 'Enter your Gmail';
-                //     var i =val.indexOf("@");
-                //     if (!(val.contains('g', i)&&val.contains('m', i+1)&&val.contains('a',i+2)&&val.contains('i', i+3)&&val.contains('l', i+4)))
-                //       return "Please Enter Valid Email";
+                //     var i = val.indexOf("@");
+                //     if (!(val.contains('g', i) &&
+                //         val.contains('m', i + 1) &&
+                //         val.contains('a', i + 2) &&
+                //         val.contains('i', i + 3) &&
+                //         val.contains('l', i + 4)))
+                //       return "Please Enter Your Gmail";
                 //     return null;
                 //   },
                 //   onChanged: (val) {
                 //     setState(() {
-                //       userName = val;
+                //       backupEmail = val;
                 //     });
                 //   },
                 // ),
-               // SizedBox(height: 10.0),
+
                 SizedBox(height: 10.0),
                 TextFormField(
                   obscureText: true,
@@ -292,10 +321,10 @@ class _RegisterState extends State<Register> {
                       ));
                     }
                     if (_formKey.currentState.validate()) {
-                      var index = email.indexOf('@');
-                      if (email.contains('d', index))
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => FormScreen()));
+                      // var index = email.indexOf('@');
+                      // if (email.contains('d', index))
+                      //   Navigator.of(context).push(MaterialPageRoute(
+                      //       builder: (context) => FormScreen()));
 
                       //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FormScreen()));
                       dynamic result = await _auth.registerWithEmailAndPassword(
@@ -303,6 +332,7 @@ class _RegisterState extends State<Register> {
                           address: address,
                           confirmpassword: confirmpassword,
                           email: email,
+                          backupEmail: backupEmail,
                           error: error,
                           password: password,
                           phoneNumber: phoneNumber,

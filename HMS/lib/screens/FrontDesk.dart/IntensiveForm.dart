@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:HMS/shared/constants.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 
 class IntensiveBeds extends StatefulWidget {
   @override
@@ -15,14 +16,15 @@ class _IntensiveBedsState extends State<IntensiveBeds> {
   //String password = '';
   String error = '';
   String bedIDIntensive = '';
-  String _date = (DateTime.now()).toString();
+  String _date = DateFormat.yMMMd().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.teal[500],
+        //  backgroundColor: Colors.teal[500],
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.teal[700],
+          //    backgroundColor: Colors.teal[700],
           elevation: 0.0,
           title: Text('Intensive beds reservation form'),
         ),
@@ -111,7 +113,7 @@ class _IntensiveBedsState extends State<IntensiveBeds> {
                     ),
                     SizedBox(height: 20.0),
                     RaisedButton(
-                      color: Colors.pink[400],
+                      color: Theme.of(context).appBarTheme.color,
                       child: Text(
                         'Reserve ',
                         style: TextStyle(color: Colors.white),

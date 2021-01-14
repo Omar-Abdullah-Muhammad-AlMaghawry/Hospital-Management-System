@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../widget/appointment/custom_card.dart';
@@ -17,6 +19,8 @@ class Checker {
   final String cardId;
   final bool isAppointment;
   final bool isDoctor;
+  final String id;
+
   //final Function delete;
   // final int vaildButtons;
   final ValueKey key;
@@ -33,7 +37,8 @@ class Checker {
       this.doctor,
       this.time,
       this.diagnose,
-      this.treatment,this.isDoctor});
+      this.treatment,
+      this.isDoctor,this.id});
   Widget check() {
     var datetime = date.toDate();
     if (((datetime.isAfter(DateTime.now().subtract(Duration(days: 1))))))
@@ -52,6 +57,30 @@ class Checker {
         isAppointment: isAppointment,
         key: key,
         isDoctor: isDoctor,
+      );
+    else
+      return SizedBox();
+  }
+
+  Widget checkHistory() {
+  //  var datetime = date.toDate();
+    if (id==senderPatientId||senderPatientId==FirebaseAuth.instance.currentUser.uid)
+      return CustomCard(
+        titleOfCardApp: titleOfCardApp,
+        department: department,
+        doctor: doctor,
+        senderPatientId: senderPatientId,
+        recieverDoctorId: recieverDoctorId,
+        senderpatientName: senderpatientName,
+        time: time,
+        date: date,
+        diagnose: diagnose,
+        treatment: treatment,
+        cardId: cardId,
+        isAppointment: isAppointment,
+        key: key,
+        isDoctor: isDoctor,
+        id:id,
       );
     else
       return SizedBox();

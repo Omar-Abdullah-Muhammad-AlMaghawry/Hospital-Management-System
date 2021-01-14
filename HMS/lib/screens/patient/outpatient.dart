@@ -298,81 +298,86 @@ class _InternalMedicineState extends State<InternalMedicine> {
           final documents = streamSnapshot.data.documents;
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
 
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            // 'time': ,
+                        RaisedButton(
+                          color: Colors.teal,
+                          child: Text('Book'),
+                          onPressed: () {
+                         //   Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
 
-                            // 'date': documents[index]['date1'],
-
-                            //         'senderPatientId': _user.uid,
-                            // 'senderPatientName': documents["userName"],
-                            // 'department':  documents[index]['depart'],
-                            // // 'doctorOrAnlysisName': _isClinic
-                            // //     ? "Doctor : " + _doctorOrAnlysisName.trim()
-                            // //     : "Name : " + _doctorOrAnlysisName.trim(),
-                            // 'doctorOrAnlysisName': documents[index]['name'],
-
-                            // 'recieverDoctorId': _isClinic ? DoctorsList.reciever.id : null,
-                            // 'date_Reservation': _dateOfReservation,
-                            // 'time_Reservation': _timeOfReservation,
-                            // "title": _isClinic ? "Clinic" : _departmentName.trim(),
-                            // "created At": Timestamp.now(),
-                            // "cardID": cardID,
-
-                            //TODO return doctorid
-                          });
-                        },
-                      ),
-
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('2') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color: Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -417,65 +422,86 @@ class _DermatologyState extends State<Dermatology> {
           final documents = streamSnapshot.data.documents;
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
 
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            'time': documents[index]['time'],
-                            'doctor': documents[index]['name'],
-                            'date': documents[index]['date1'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
+                        RaisedButton(
+                          color: Colors.teal,
+                          child: Text('Book'),
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('2') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color: Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -521,65 +547,86 @@ class _SurgeryState extends State<Surgery> {
           final documents = streamSnapshot.data.documents;
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
 
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            'time': documents[index]['time'],
-                            'doctor': documents[index]['name'],
-                            'date': documents[index]['date1'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
+                        RaisedButton(
+                          color: Theme.of(context).appBarTheme.color,
+                          child: Text('Book'),
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('2') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color: Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -626,65 +673,86 @@ class _CardiologyState extends State<Cardiology> {
           final documents = streamSnapshot.data.documents;
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
 
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            'time': documents[index]['time'],
-                            'doctor': documents[index]['name'],
-                            'date': documents[index]['date1'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
+                        RaisedButton(
+                          color: Colors.teal,
+                          child: Text('Book'),
+                          onPressed: () {
+                          // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('2') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color:Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -729,65 +797,86 @@ class _OrthopedicState extends State<Orthopedic> {
           final documents = streamSnapshot.data.documents;
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),  
 
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            'time': documents[index]['time'],
-                            'doctor': documents[index]['name'],
-                            'date': documents[index]['date1'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
+                        RaisedButton(
+                          color: Theme.of(context).appBarTheme.color,
+                          child: Text('Book'),
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('2') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color: Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -833,67 +922,86 @@ class _ENTState extends State<ENT> {
 ////
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
 
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            "date1": {
-                              'time': documents[index]['time'],
-                              'doctor': documents[index]['name'],
-                              'date': documents[index]['date1'],
-                              'depart': documents[index]['depart'],
-                            },
-                          });
-                        },
-                      ),
+                        RaisedButton(
+                          color:Theme.of(context).appBarTheme.color,
+                          child: Text('Book'),
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color:Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -938,64 +1046,86 @@ class _PediatricsState extends State<Pediatrics> {
           final documents = streamSnapshot.data.documents;
           return ListView.builder(
             itemCount: documents.length,
-            itemBuilder: (ctx, index) => Column(
-              children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      ListTile(
-                        //  leading: Icon(Icons.ac_unit_rounded),
-                        title: Text(documents[index]['name']),
-                        subtitle: Text(documents[index]['degree']),
-                      ),
+            itemBuilder: (ctx, index) => Container(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    color: Colors.grey[400],
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          //  leading: Icon(Icons.ac_unit_rounded),
+                          title: Text(documents[index]['name']),
+                          subtitle: Text(documents[index]['degree']),
+                        ),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_rounded),
-                        title: Text(documents[index]['date1']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        color: Colors.teal,
-                        child: Text('Book'),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('1')
-                              .setData({
-                            'time': documents[index]['time'],
-                            'doctor': documents[index]['name'],
-                            'date': documents[index]['date1'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
+                        ListTile(
+                          leading: Icon(Icons.adjust_rounded),
+                          title: Text(documents[index]['date1']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
 
-                      ListTile(
-                        leading: Icon(Icons.adjust_outlined),
-                        title: Text(documents[index]['date2']),
-                        subtitle: Text(documents[index]['time']),
-                      ),
-                      // SizedBox(height: 12),
-                      RaisedButton(
-                        child: Text('Book'),
-                        color: Colors.teal,
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('/appoiment')
-                              .document('2') //user id
-                              .setData({
-                            'date2': documents[index]['date2'],
-                            'doctor': documents[index]['name'],
-                            'time': documents[index]['time'],
-                            'depart': documents[index]['depart'],
-                          });
-                        },
-                      ),
-                    ],
+                        RaisedButton(
+                          color:Theme.of(context).appBarTheme.color,
+                          child: Text('Book'),
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1')
+                            //     .setData({
+                            //   "date1": {
+                            //     'time': documents[index]['time'],
+                            //     'doctor': documents[index]['name'],
+                            //     'date': documents[index]['date1'],
+                            //     'depart': documents[index]['depart'],
+                            //   },
+                            // });
+                          },
+                        ),
+
+                        ListTile(
+                          leading: Icon(Icons.adjust_outlined),
+                          title: Text(documents[index]['date2']),
+                          subtitle: Text(documents[index]['time']),
+                        ),
+                        // SizedBox(height: 12),
+                        RaisedButton(
+                          child: Text('Book'),
+                          color: Theme.of(context).appBarTheme.color,
+                          onPressed: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => ClinicDate(
+                            //       documents[index]['name'],
+                            //       '200',
+                            //       'user',
+                            //       'doctor',
+                            //       documents[index]['depart']),
+                            // ));
+                            // Firestore.instance
+                            //     .collection('/appoiment')
+                            //     .document('1') //user id
+                            //     .setData({
+                            //   'date2': documents[index]['date2'],
+                            //   'doctor': documents[index]['name'],
+                            //   'time': documents[index]['time'],
+                            //   'depart': documents[index]['depart'],
+                            // });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

@@ -15,15 +15,15 @@ class Bloodbank extends StatefulWidget {
   _BloodbankState createState() => _BloodbankState();
 }
  class _BloodbankState extends State<Bloodbank> {
-   int A_plus=0;
+   int a_plus=0;
    
-   int A_neg=0;
-   int B_plus=0 ;
-   int B_neg=0;
-   int AB_neg=0 ;
-   int AB_plus=0;
-   int O_plus=0;
-   int O_neg=0;
+   int a_neg=0;
+   int b_plus=0 ;
+   int b_neg=0;
+   int ab_neg=0 ;
+   int ab_plus=0;
+   int o_plus=0;
+   int o_neg=0;
    String temp;
    int v;
    Map x;
@@ -36,7 +36,7 @@ Future getnumofbloodbags()async{
    } );
 }
 
-   int  Blood( int num , int blood_type  ) {
+   int  blood( int num , int blood_type  ) {
 
    if (num == 1) {
      setState(() {
@@ -56,14 +56,14 @@ return blood_type ;
  void initState(){
       super.initState();
   // getnumofbloodbags();
-  A_plus =  widget.aplus;
-  B_plus =  widget.bplus;
-  AB_plus =  widget.abplus;
-  O_plus =  widget.oplus;
-  A_neg =  widget.aneg;
-  B_neg =  widget.bneg;
-  O_neg =  widget.oneg;
-  AB_neg =  widget.abneg;
+  a_plus =  widget.aplus;
+  b_plus =  widget.bplus;
+  ab_plus =  widget.abplus;
+  o_plus =  widget.oplus;
+  a_neg =  widget.aneg;
+  b_neg =  widget.bneg;
+  o_neg =  widget.oneg;
+  ab_neg =  widget.abneg;
   
     
     print('yallllllahwy');
@@ -81,10 +81,23 @@ return blood_type ;
     return MaterialApp(
       home:Scaffold(
 
-      backgroundColor: Color(0xFF035F6D),
+     backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Color(0xFF8F0026),
+       // backgroundColor: Color(0xFF8F0026),
         title: Text('Blood Bank Inventory'),
+         actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
       ),
       body:Container (
 
@@ -140,11 +153,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                        RaisedButton(onPressed: (){
-                             A_plus = Blood(1, A_plus);
-                             print(A_plus);
+                             a_plus = blood(1, a_plus);
+                             print(a_plus);
                              
                              Firestore.instance.collection('bloodBank').doc('Aplus').set({
-                               'num':  A_plus,
+                               'num':  a_plus,
 
                              });
 
@@ -163,7 +176,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
 
 
-                          Text('$A_plus',
+                          Text('$a_plus',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -172,11 +185,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                            RaisedButton(onPressed: (){
-                             A_plus =  Blood(0, A_plus);
-                              print(A_plus);
-                             print(A_plus.toString());
+                             a_plus =  blood(0, a_plus);
+                              print(a_plus);
+                             print(a_plus.toString());
                              Firestore.instance.collection('bloodBank').doc('Aplus').set({
-                               'num':  A_plus,
+                               'num':  a_plus,
 
                              });
                             },
@@ -223,11 +236,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           //Padding(
                             //padding: EdgeInsets.only( right: 15,  left: 15, top: 10 , bottom: 10) ,
                             RaisedButton(onPressed: (){
-                              A_neg = Blood(1, A_neg);
-                               print(A_neg);
+                              a_neg = blood(1, a_neg);
+                               print(a_neg);
                            
                              Firestore.instance.collection('bloodBank').doc('Aneg').set({
-                               'num':  A_neg.toString(),
+                               'num':  a_neg.toString(),
 
                              });
 
@@ -246,7 +259,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
                          // ),
 
-                          Text( ' $A_neg',
+                          Text( ' $a_neg',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -254,12 +267,12 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                            RaisedButton(onPressed: (){
-                              A_neg= Blood(0, A_neg);
+                              a_neg= blood(0, a_neg);
 
-                               print(A_neg);
+                               print(a_neg);
                            
                              Firestore.instance.collection('bloodBank').doc('Aneg').set({
-                               'num':  A_neg.toString(),
+                               'num':  a_neg.toString(),
 
                              });
                             },
@@ -303,11 +316,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                          RaisedButton(onPressed: (){
-                              B_plus = Blood(1, B_plus);
-                                print(B_plus );
+                              b_plus = blood(1, b_plus);
+                                print(b_plus );
                            
                              Firestore.instance.collection('bloodBank').doc('Bplus').set({
-                               'num':  B_plus.toString(),
+                               'num':  b_plus.toString(),
 
                              });
 
@@ -326,7 +339,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
 
 
-                          Text( ' $B_plus',
+                          Text( ' $b_plus',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -334,11 +347,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                           RaisedButton(onPressed: (){
-                              B_plus = Blood(0, B_plus);
-                               print(B_plus );
+                              b_plus = blood(0, b_plus);
+                               print(b_plus );
                            
                              Firestore.instance.collection('bloodBank').doc('Bplus').set({
-                               'num':  B_plus.toString(),
+                               'num':  b_plus.toString(),
 
                              });
                             },
@@ -384,11 +397,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                            RaisedButton(onPressed: (){
-                              AB_neg = Blood(1, AB_neg);
-                               print(AB_neg );
+                              ab_neg = blood(1, ab_neg);
+                               print(ab_neg );
                            
                              Firestore.instance.collection('bloodBank').doc('ABplus').set({
-                               'num':  AB_neg.toString(),
+                               'num':  ab_neg.toString(),
 
                              });
 
@@ -407,7 +420,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
 
 
-                          Text( ' $AB_neg',
+                          Text( ' $ab_neg',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -415,11 +428,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                           RaisedButton(onPressed: (){
-                              AB_neg= Blood(0, AB_neg);
-                               print(AB_neg );
+                              ab_neg= blood(0, ab_neg);
+                               print(ab_neg );
                            
                              Firestore.instance.collection('bloodBank').doc('ABneg').set({
-                               'num':  AB_neg.toString(),
+                               'num':  ab_neg.toString(),
 
                              });
                               
@@ -465,11 +478,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                           RaisedButton(onPressed: (){
-                              B_neg = Blood(1, B_neg);
-                               print(B_neg);
+                              b_neg = blood(1, b_neg);
+                               print(b_neg);
                            
                              Firestore.instance.collection('bloodBank').doc('Bneg').set({
-                               'num':  B_neg.toString(),
+                               'num':  b_neg.toString(),
 
                              });
 
@@ -488,7 +501,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
 
 
-                          Text( ' $B_neg',
+                          Text( ' $b_neg',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -496,11 +509,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                           RaisedButton(onPressed: (){
-                              B_neg= Blood(0, B_neg);
-                                print(B_neg);
+                              b_neg= blood(0, b_neg);
+                                print(b_neg);
                            
                              Firestore.instance.collection('bloodBank').doc('Bneg').set({
-                               'num':  B_neg.toString(),
+                               'num':  b_neg.toString(),
 
                              });
                             },
@@ -545,11 +558,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                            RaisedButton(onPressed: (){
-                              AB_plus = Blood(1, AB_plus);
-                                print(AB_plus);
+                              ab_plus = blood(1, ab_plus);
+                                print(ab_plus);
                            
                              Firestore.instance.collection('bloodBank').doc('ABplus').set({
-                               'num':  AB_plus.toString(),
+                               'num':  ab_plus.toString(),
 
                              });
 
@@ -567,7 +580,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               ),
                             ),
 
-                          Text( ' $AB_plus',
+                          Text( ' $ab_plus',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -575,11 +588,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                            RaisedButton(onPressed: (){
-                              AB_plus= Blood(0, AB_plus);
-                                 print(AB_plus);
+                              ab_plus= blood(0, ab_plus);
+                                 print(ab_plus);
                            
                              Firestore.instance.collection('bloodBank').doc('ABplus').set({
-                               'num':  AB_plus.toString(),
+                               'num':  ab_plus.toString(),
 
                              });
                             },
@@ -624,11 +637,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                           RaisedButton(onPressed: (){
-                              O_plus= Blood(1, O_plus);
-                                 print(O_plus);
+                              o_plus= blood(1, o_plus);
+                                 print(o_plus);
                            
                              Firestore.instance.collection('bloodBank').doc('oplus').set({
-                               'num':  O_plus.toString(),
+                               'num':  o_plus.toString(),
 
                              });
 
@@ -647,7 +660,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
 
 
-                          Text( ' $O_plus',
+                          Text( ' $o_plus',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -655,11 +668,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                            RaisedButton(onPressed: (){
-                              O_plus= Blood(0, O_plus);
-                                 print(O_plus);
+                              o_plus= blood(0, o_plus);
+                                 print(o_plus);
                            
                              Firestore.instance.collection('bloodBank').doc('oplus').set({
-                               'num':  O_plus.toString(),
+                               'num':  o_plus.toString(),
 
                              });
                             },
@@ -704,11 +717,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
 
                            RaisedButton(onPressed: (){
-                              O_neg = Blood(1, O_neg);
-                                  print(O_neg);
+                              o_neg = blood(1, o_neg);
+                                  print(o_neg);
                            
                              Firestore.instance.collection('bloodBank').doc('oneg').set({
-                               'num':  O_neg.toString(),
+                               'num':  o_neg.toString(),
 
                              });
 
@@ -727,7 +740,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
 
 
-                          Text( ' $O_neg',
+                          Text( ' $o_neg',
                             style: TextStyle( fontSize: 25 ,
                               color: Colors.black,
 
@@ -735,11 +748,11 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),
 
                            RaisedButton(onPressed: (){
-                              O_neg= Blood(0, O_neg);
-                                  print(O_neg);
+                              o_neg= blood(0, o_neg);
+                                  print(o_neg);
                            
                              Firestore.instance.collection('bloodBank').doc('oneg').set({
-                               'num':  O_neg.toString(),
+                               'num':  o_neg.toString(),
 
                              });
                             },

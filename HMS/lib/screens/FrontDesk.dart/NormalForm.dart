@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:HMS/shared/constants.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 import './bed_reservation.dart';
 
 class NormalBeds extends StatefulWidget {
@@ -15,37 +16,38 @@ class _NormalBedsState extends State<NormalBeds> {
   //String password = '';
   String bedIDNormal = '';
   String error = '';
-  String _date = (DateTime.now()).toString();
+  String _date = DateFormat.yMMMd().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.teal[500],
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.teal[700],
+          // backgroundColor: Colors.teal[700],
           elevation: 0.0,
           title: Text('Normal beds reservation form'),
-          actions: [
-            FlatButton.icon(
-              icon: Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-              ),
-              label: Text(
-                '',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => BedReservation()),
-                );
-              },
-            )
-          ],
+          // actions: [
+          //   FlatButton.icon(
+          //     icon: Icon(
+          //       Icons.arrow_forward,
+          //       color: Colors.white,
+          //     ),
+          //     label: Text(
+          //       '',
+          //       style: TextStyle(color: Colors.white),
+          //     ),
+          //     onPressed: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => BedReservation()),
+          //       );
+          //     },
+          //   )
+          // ],
         ),
         body: Container(
             width: double.infinity,
+            
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             child: Form(
               key: _formKey,
@@ -129,7 +131,7 @@ class _NormalBedsState extends State<NormalBeds> {
                     ),
                     SizedBox(height: 20.0),
                     RaisedButton(
-                      color: Colors.pink[400],
+                      color: Theme.of(context).appBarTheme.color,
                       child: Text(
                         'Reserve ',
                         style: TextStyle(color: Colors.white),

@@ -1,3 +1,10 @@
+import 'package:HMS/screens/Radiology/rad_appointment_screen.dart';
+import 'package:HMS/screens/Radiology/rad_home_screen.dart';
+
+import './screens/Laboratory/lab_home_screen.dart';
+import 'package:HMS/widget/appointment/lab_appointment.dart';
+import './screens/Laboratory/lab_appointment_screen.dart';
+
 import './screens//MyProfile.dart';
 import './screens/doctors/my_appointment_doctors_screen.dart';
 import './models/users.dart';
@@ -79,13 +86,21 @@ class MyApp01 extends StatelessWidget {
             MyScuduleScreen.nameRoute: (context) => MyScuduleScreen(),
             MyProfile.nameRoute: (context) => MyProfile(),
             MyAppointmentDocScreen.nameRoute: (context) =>
-                MyAppointmentDocScreen()
+                MyAppointmentDocScreen(),
+                 LabAppointmentScreen.nameRoute: (context) =>
+                LabAppointmentScreen(),
+                RadAppointmentScreen.nameRoute: (context) =>
+                RadAppointmentScreen(),
+                 RadiologyHomeScreen.nameRoute: (context) =>
+                RadiologyHomeScreen(),
+            LabHomeScreen.nameRoute: (context) => LabHomeScreen(),
           },
 
           //MyHomePage(),
           theme: ThemeData(
+                // Color.fromRGBO(3, 95, 109, 1),
               backgroundColor: Colors.grey[500],
-             // Color.fromRGBO(3, 95, 109, 1),
+          
               appBarTheme: AppBarTheme(
                 color: Color.fromRGBO(0, 153, 255, 1),
               )

@@ -82,6 +82,7 @@ class AuthService {
   //register with email and password
   Future registerWithEmailAndPassword(
       {String email,
+      String backupEmail,
       String password,
       String confirmpassword,
       String error,
@@ -109,29 +110,51 @@ class AuthService {
           .set({
         'userName': userName,
         'email': email,
+        'backupEmail': backupEmail,
         'image_url': url,
         "birthDate": date,
         "address": address,
         "phoneNumber": phoneNumber,
+        "isManger": false,
       });
       await FirebaseFirestore.instance
           .collection(email.contains("p", email.indexOf("@"))
               ? "patients"
               : email.contains("d", email.indexOf("@"))
                   ? "doctors"
-                  : email.contains("f", email.indexOf("@"))
-                      ? "frontdesk"
-                      : "none")
+                  : email.contains("l", email.indexOf("@"))
+                      ? "laboratory"
+                      : email.contains("r", email.indexOf("@"))
+                          ? "radiology"
+                          : email.contains("f", email.indexOf("@"))
+                              ? "frontdesk"
+                              : "none")
           .document(user.uid)
           .set({
         'userName': userName,
         'email': email,
+        'backupEmail': backupEmail,
         'image_url': url,
         "birthDate": date,
         "address": address,
-        " phoneNumber": phoneNumber,
+        "phoneNumber": phoneNumber,
+        "isManger": false,
+        "salary":"10000",
       });
-     
+      await FirebaseFirestore.instance
+          .collection(
+              (email.contains("p", email.indexOf("@"))) ? "patients" : "none")
+          .document(user.uid)
+          .set({
+        'userName': userName,
+        'email': email,
+        'backupEmail': backupEmail,
+        'image_url': url,
+        "birthDate": date,
+        "address": address,
+        "phoneNumber": phoneNumber,
+        "isManger": false
+      });
       return _userFromFirebaseUser(user0);
     } catch (e) {
       print(e.toString());

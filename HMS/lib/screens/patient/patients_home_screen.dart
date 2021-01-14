@@ -1,3 +1,5 @@
+import 'package:HMS/screens/chat/move-to-transaction-screesn.dart';
+
 import '../masterHome.dart';
 import '../MyProfile.dart';
 import 'package:HMS/widgets/PatientDrawer.dart';
@@ -132,7 +134,7 @@ class PatientHomeScreen extends StatelessWidget {
               () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => FrontChatList(),
+                      builder: (context) =>FrontNavigator(),
                     ),
                   )),
     );
