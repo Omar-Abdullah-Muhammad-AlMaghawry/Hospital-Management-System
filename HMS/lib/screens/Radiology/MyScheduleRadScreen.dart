@@ -9,13 +9,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class MyScuduleScreen extends StatefulWidget {
-  static const nameRoute = "/my-scudule";
+class MyScuduleRadScreen extends StatefulWidget {
+  static const nameRoute = "/my-scudule-rad";
   @override
-  _MyScuduleScreenState createState() => _MyScuduleScreenState();
+  _MyScuduleRadScreenState createState() => _MyScuduleRadScreenState();
 }
 
-class _MyScuduleScreenState extends State<MyScuduleScreen> {
+class _MyScuduleRadScreenState extends State<MyScuduleRadScreen> {
   String _imageScUrl;
   final _user = FirebaseAuth.instance.currentUser;
   void _pickImage() async {
@@ -26,7 +26,7 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
     await _ref.putFile(pickedImageFile);
     final _imageUrl = await _ref.getDownloadURL();
     await FirebaseFirestore.instance
-        .collection("doctors")
+        .collection("rad")
         .document(_user.uid)
         .update({
       "sceduleImageUrl": _imageUrl,
@@ -58,7 +58,7 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection("doctors")
+              .collection("rad")
               .document(_user.uid)
               .snapshots(),
           builder: (context, snapshot) {

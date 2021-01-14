@@ -1,3 +1,4 @@
+import 'package:HMS/screens/Laboratory/MyScheduleLabScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../masterHome.dart';
@@ -161,7 +162,7 @@ class LabHomeScreen extends StatelessWidget {
 
   void moveToMySchedule(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      MyScuduleScreen.nameRoute,
+      MyScuduleLabScreen.nameRoute,
     );
   }
 

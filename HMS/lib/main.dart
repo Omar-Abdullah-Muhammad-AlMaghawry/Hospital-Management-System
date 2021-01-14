@@ -1,3 +1,5 @@
+import 'package:HMS/screens/Laboratory/MyScheduleLabScreen.dart';
+import 'package:HMS/screens/Radiology/MyScheduleRadScreen.dart';
 import 'package:HMS/screens/Radiology/rad_appointment_screen.dart';
 import 'package:HMS/screens/Radiology/rad_home_screen.dart';
 
@@ -84,6 +86,8 @@ class MyApp01 extends StatelessWidget {
             MessageListScreen.nameRoute: (context) => MessageListScreen(),
             DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
             MyScuduleScreen.nameRoute: (context) => MyScuduleScreen(),
+            MyScuduleRadScreen.nameRoute: (context) => MyScuduleRadScreen(),
+            MyScuduleLabScreen.nameRoute: (context) => MyScuduleLabScreen(),
             MyProfile.nameRoute: (context) => MyProfile(),
             MyAppointmentDocScreen.nameRoute: (context) =>
                 MyAppointmentDocScreen(),

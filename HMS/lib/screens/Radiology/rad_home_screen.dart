@@ -1,3 +1,4 @@
+import 'package:HMS/screens/Radiology/MyScheduleRadScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../masterHome.dart';
@@ -27,7 +28,7 @@ class RadiologyHomeScreen extends StatelessWidget {
 
   void moveToMySchedule(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      MyScuduleScreen.nameRoute,
+      MyScuduleRadScreen.nameRoute,
     );
   }
 
