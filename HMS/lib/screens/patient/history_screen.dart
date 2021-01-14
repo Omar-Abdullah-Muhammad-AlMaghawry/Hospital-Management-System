@@ -46,12 +46,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
             },
           )
         ],
-        title: Text(args ==null?"My Medical History":"${args.name} Medical History"),
+        title: Text(args == null
+            ? "My Medical History"
+            : "${args.name} Medical History"),
       ),
       //    drawer: MainDrawer(),
-      body: History(
-        sender: args,
-      ),
+      body: !(args == null)
+          ? History(
+              sender: args,
+            )
+          : History(sender: args ?? Reciever(id: "0")),
     );
   }
 }

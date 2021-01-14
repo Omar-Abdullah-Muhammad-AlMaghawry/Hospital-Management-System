@@ -147,12 +147,12 @@ class DoctorDrawer extends StatelessWidget {
                       .collection("none")
                       .doc(user.uid)
                       .get();
-                    
+
                   var isMangerN = docNone.data()["isManger"];
                   if (!isMangerN)
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AnnouncedoctorScreen()));
-                  else 
+                  else
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AnnounceManagerScreen()));
                 },
@@ -175,8 +175,8 @@ class DoctorDrawer extends StatelessWidget {
               padding: EdgeInsets.only(top: 15),
               child: FlatButton(
                 color: Colors.blue[100],
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => FormScreen())),
+                onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => FormScreen())),
                 child: Container(
                   width: double.infinity,
                   height: 50,
@@ -249,37 +249,42 @@ class DoctorDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              height: 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/fb_logo.jpg'),
+            InkWell(
+              // onTap: (){
+              //   return 
+              // },
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/fb_logo.jpg'),
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/twitter_logo.jpg'),
+                    Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/twitter_logo.jpg'),
+                        ),
                       ),
                     ),
-                  ),
-                  Icon(
-                    Icons.info_outline,
-                    size: 40,
-                  ),
-                ],
+                    Icon(
+                      Icons.info_outline,
+                      size: 40,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

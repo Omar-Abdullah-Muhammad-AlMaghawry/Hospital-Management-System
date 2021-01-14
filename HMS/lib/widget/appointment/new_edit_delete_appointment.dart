@@ -169,7 +169,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
   @override
   initState() {
     super.initState();
-    _doctorOrAnlysisName = DoctorsList.reciever.name;
+    _doctorOrAnlysisName = "Choose The Doctor you want to reserve with";
   }
 
   @override

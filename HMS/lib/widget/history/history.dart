@@ -28,7 +28,7 @@ class History extends StatelessWidget {
               // shrinkWrap: true,
               itemCount: appointmentDocs.length ?? 0,
               itemBuilder: (ctx, index) {
-                try {
+               try {
                   return Checker(
                     senderPatientId: appointmentDocs[index]['senderPatientId'],
                     //  recieverDoctorId: appointmentDocs[index]['recieverDoctorId'],
@@ -47,7 +47,8 @@ class History extends StatelessWidget {
                     id: sender.id,
                     // isClinic:appointmentDocs[index]['recieverDoctorId']as String ,
                   ).checkHistory();
-                } catch (err) {
+               } 
+                catch (err) {
                   Center();
                 }
               });

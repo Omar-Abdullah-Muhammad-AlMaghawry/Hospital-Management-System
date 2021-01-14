@@ -93,18 +93,20 @@ void UploadImage()async{
           appBar:AppBar(
          //   backgroundColor:  Color(0xFFD6D6D6),
             title: Text('⚡️Chat'),
-            actions: [
-              IconButton(
-                icon:Icon(Icons.close,
-                  // color: Color( 0xFF0099FF),
-                  color: Colors.white,
-                ),
-                onPressed: (){
-                FirebaseAuth.instance.signOut();
-                  Navigator.pop(context);
-                },
+           actions: [
+            FlatButton.icon(
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
               ),
-            ],
+              label: Text('Home',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+            )
+          ],
           ),
 
           body:

@@ -119,19 +119,18 @@ class _ChatState extends State<Chat> {
           //  backgroundColor:  Color(0xFFD6D6D6),
           title: Text('⚡️Chat'),
           actions: [
-            IconButton(
+            FlatButton.icon(
               icon: Icon(
-                Icons.close,
-                // color: Color( 0xFF0099FF),
+                Icons.home,
                 color: Colors.white,
               ),
+              label: Text('Home',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
               onPressed: () {
-                //_auth.signOut();
-                Navigator.pop(context);
-                Navigator.popUntil(
-                    context, ModalRoute.withName(MasterHome.nameRoute));
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
-            ),
+            )
           ],
         ),
 
