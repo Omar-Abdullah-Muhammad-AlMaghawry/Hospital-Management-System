@@ -1,3 +1,4 @@
+import 'package:HMS/screens/doctors/Form_Screen.dart';
 import 'package:HMS/screens/doctors/announcement_doctors.dart';
 import 'package:HMS/screens/doctors/announcement_manager.dart';
 import 'package:HMS/screens/doctors/doctors.dart';
@@ -161,6 +162,27 @@ class DoctorDrawer extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     'Announcments',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 15),
+              child: FlatButton(
+                color: Colors.blue[100],
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => FormScreen())),
+                child: Container(
+                  width: double.infinity,
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Falling your Date',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
