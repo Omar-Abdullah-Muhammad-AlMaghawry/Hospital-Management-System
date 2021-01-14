@@ -1,3 +1,4 @@
+import 'package:HMS/screens/patient/lab_radiolgy_book.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +22,22 @@ class _LaboratoryState extends State<Laboratory> {
       backgroundColor:Theme.of(context).backgroundColor,
       appBar: AppBar(
    //     backgroundColor: Colors.teal,
+
         title: Text(' List of Analysis'),
+         actions: [
+           FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
@@ -57,17 +73,13 @@ class _LaboratoryState extends State<Laboratory> {
                     RaisedButton(
                       color: Colors.teal,
                       child: Text('Book'),
-                      onPressed: () {
+                      onPressed: () async {
                         // final selectedDate = await _selectDateTime(context);
                         // print(selectedDate);
-                        Firestore.instance
-                            .collection('/LabReservation')
-                            .document('1') //user id
-                            .setData({
-                          'price': documents[index]['price'],
-                          'name': documents[index]['name'],
-                          'depart': 'Analysis'
-                        });
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Date(documents[index]['name'],
+                              documents[index]['price'], 'Ahmed'),
+                        ));
                       },
                     ),
                   ],

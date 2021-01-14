@@ -97,8 +97,6 @@ class _MasterHomeState extends State<MasterHome> {
                         bottomLeft: Radius.circular(50.00)),
                     image: DecorationImage(
                       image: AssetImage("assets/images/hospital.jpg"),
-                      // 'http://www.wilsonchiros.com/blog/wp-content/uploads/2015/12/hospital.jpg'),
-                      //  borderRadius: BorderRadius.only(bottomRight:Radius.circular(50.00) ,bottomLeft:Radius.circular(50.00) ),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -177,7 +175,7 @@ class _MasterHomeState extends State<MasterHome> {
                                     padding: const EdgeInsets.fromLTRB(
                                         20, 10, 20, 10),
                                     child: Text(
-                                      "Outpatient Clinics opens  everyday expect friday and saturday from 8 am : to 8 pm ",
+                                      "Outpatient Clinics open everyday except friday and saturday from 8 am : to 8 pm ",
                                       textDirection: TextDirection.ltr,
                                       style: TextStyle(
                                         color: Colors.black,
@@ -223,7 +221,7 @@ class _MasterHomeState extends State<MasterHome> {
                                     padding: const EdgeInsets.fromLTRB(
                                         20, 10, 20, 10),
                                     child: Text(
-                                      "Adress : Cairo , Maddi , 45 Street  ",
+                                      "Address : St. Mickey Mouse  ",
                                       textDirection: TextDirection.ltr,
                                       style: TextStyle(
                                         color: Colors.black,

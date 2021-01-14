@@ -4,17 +4,18 @@ import 'package:HMS/widgets/DoctorDrawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 class MyProfile extends StatelessWidget {
   static const nameRoute = "/my-profile";
   final current = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       // Colors.teal[500],
       appBar: AppBar(
         title: Text('My Profile'),
-        backgroundColor: Colors.teal[700],
+        // backgroundColor: Colors.teal[700],
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
@@ -25,13 +26,12 @@ class MyProfile extends StatelessWidget {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-               Navigator.of(context).pop();
-
+              Navigator.of(context).pop();
             },
           )
         ],
       ),
-     // drawer: DoctorDrawer(false) ,
+      // drawer: DoctorDrawer(false) ,
       body: FutureBuilder(
           future: FirebaseFirestore.instance
               .collection("users")
@@ -74,23 +74,23 @@ class MyProfile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('User Name :' + userDocs['userName'],
+                      Text('Username: ' + userDocs['userName'],
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0)),
                       SizedBox(height: 20.0),
-                      Text('Email :' + userDocs['email'],
+                      Text('Email: ' + userDocs['email'],
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0)),
                       SizedBox(height: 20.0),
-                      Text('Address :' + userDocs["address"],
+                      Text('Address:' + userDocs["address"],
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0)),
                       SizedBox(height: 20.0),
-                      Text('Phone Number :' + userDocs["phoneNumber"],
+                      Text('Phone Number: ' + userDocs["phoneNumber"],
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0)),
                       SizedBox(height: 20.0),
-                      Text('Birth date :' + userDocs["birthDate"],
+                      Text('Birthdate: ' + userDocs["birthDate"],
                           style:
                               TextStyle(color: Colors.white, fontSize: 20.0)),
                     ],
@@ -99,7 +99,6 @@ class MyProfile extends StatelessWidget {
               ),
             );
           }),
-          
     );
   }
 }

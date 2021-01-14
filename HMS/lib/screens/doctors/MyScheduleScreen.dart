@@ -19,8 +19,8 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
   String _imageScUrl;
   final _user = FirebaseAuth.instance.currentUser;
   void _pickImage() async {
-    final pickedImageFile = await ImagePicker.pickImage(
-        source: ImageSource.camera, imageQuality: 50, maxWidth: 300);
+    final pickedImageFile =
+        await ImagePicker.pickImage(source: ImageSource.camera, maxWidth: 300);
     final _ref =
         FirebaseStorage.instance.ref().child("Scudule").child("Scudule.jpg");
     await _ref.putFile(pickedImageFile);
@@ -39,11 +39,11 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: Text("My Scudule"),
+        title: Text("My Schedule"),
         actions: [
-            FlatButton.icon(
+          FlatButton.icon(
             icon: Icon(
               Icons.home,
               color: Colors.white,
@@ -51,17 +51,16 @@ class _MyScuduleScreenState extends State<MyScuduleScreen> {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-               Navigator.of(context).pop();
-
+              Navigator.of(context).pop();
             },
           )
         ],
       ),
-      body: FutureBuilder(
-          future: FirebaseFirestore.instance
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance
               .collection("doctors")
               .document(_user.uid)
-              .get(),
+              .snapshots(),
           builder: (context, snapshot) {
             final doctorDocs = snapshot.data;
             if (snapshot.connectionState == ConnectionState.waiting) {

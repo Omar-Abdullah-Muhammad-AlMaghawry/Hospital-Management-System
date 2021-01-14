@@ -39,7 +39,8 @@ class _MyAppointmentDocScreenState extends State<MyAppointmentDocScreen> {
     //     ModalRoute.of(context).settings.arguments as Map<String, String>;
     // final named = niceArgs["named"];
     return Scaffold(
-      backgroundColor:Colors.white,
+       backgroundColor: Theme.of(context).backgroundColor,
+    //  backgroundColor:Colors.white,
       appBar: AppBar(
         
         actions: [

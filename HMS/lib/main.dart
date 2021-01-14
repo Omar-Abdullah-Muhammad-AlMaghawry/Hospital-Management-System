@@ -2,7 +2,7 @@ import './screens//MyProfile.dart';
 import './screens/doctors/my_appointment_doctors_screen.dart';
 import './models/users.dart';
 import './screens/masterHome.dart';
-import './screens/doctors/MyScuduleScreen.dart';
+import 'screens/doctors/MyScheduleScreen.dart';
 import './screens/doctors/doctors_home_screen.dart';
 import './screens/wraper.dart';
 import './services/auth.dart';
@@ -77,17 +77,21 @@ class MyApp01 extends StatelessWidget {
             MessageListScreen.nameRoute: (context) => MessageListScreen(),
             DoctorsListScreen.nameRoute: (context) => DoctorsListScreen(),
             MyScuduleScreen.nameRoute: (context) => MyScuduleScreen(),
-             MyProfile.nameRoute: (context) => MyProfile(),
-             MyAppointmentDocScreen.nameRoute:(context)=>MyAppointmentDocScreen()
+            MyProfile.nameRoute: (context) => MyProfile(),
+            MyAppointmentDocScreen.nameRoute: (context) =>
+                MyAppointmentDocScreen()
           },
 
           //MyHomePage(),
           theme: ThemeData(
-            backgroundColor:  Colors.teal[500],
-            appBarTheme: AppBarTheme(color:     Colors.teal[700], )
-            //Color.fromRGBO(3, 95, 109, 1),
-            // primaryColor: Color.fromRGBO(3, 95, 109, 1),
-          ),
+              backgroundColor: Colors.grey[500],
+             // Color.fromRGBO(3, 95, 109, 1),
+              appBarTheme: AppBarTheme(
+                color: Color.fromRGBO(0, 153, 255, 1),
+              )
+              //Color.fromRGBO(3, 95, 109, 1),
+              // primaryColor: Color.fromRGBO(3, 95, 109, 1),
+              ),
         ),
       ),
     );

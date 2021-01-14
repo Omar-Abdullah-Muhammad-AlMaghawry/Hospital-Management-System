@@ -4,7 +4,7 @@ class hospitalmapimage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    AssetImage image = new AssetImage('images/map.jpg');
+    AssetImage image = new AssetImage('assets/images/map.jpg');
     Image image1 = new Image(
       image: image,
       //height: 300,
@@ -30,21 +30,23 @@ class _HospitalMapState extends State<HospitalMap> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+          backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Color(0xFFD6D6D6),
+     //   backgroundColor: Color(0xFFD6D6D6),
         title: Text(' Hospital Map'),
         actions: [
-          IconButton(
+          FlatButton.icon(
             icon: Icon(
-              Icons.close,
-              // color: Color( 0xFF0099FF),
+              Icons.home,
               color: Colors.white,
             ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-              //_auth.signOut();
-              Navigator.pop(context);
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
-          ),
+          )
         ],
       ),
       body: SafeArea(

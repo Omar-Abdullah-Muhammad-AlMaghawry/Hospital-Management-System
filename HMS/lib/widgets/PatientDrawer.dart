@@ -1,9 +1,10 @@
+import 'package:HMS/screens/hospital_map.dart';
 import 'package:HMS/screens/patient/outpatient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../screens/Laboratory.dart';
-import '../screens/map.dart';
-import '../screens/radiology.dart';
+import '../screens/patient/Laboratory.dart';
+
+import '../screens/patient/radiology.dart';
 import 'package:flutter/material.dart';
 
 //TODO bind drawer buttons to the pages the point to.
@@ -20,7 +21,7 @@ class PatientDrawer extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              color: Color(0xFF8F0026),
+              color: Color.fromRGBO(0, 153, 255, 1),
               padding: EdgeInsets.symmetric(vertical: 40),
               child: FutureBuilder(
                 future: FirebaseFirestore.instance

@@ -211,7 +211,7 @@ class _CustomCardState extends State<CustomCard> {
                           if ((widget.isAppointment && widget.isDoctor) ||
                               !widget.isAppointment)
                             Text(
-                              "Diagnose the Disease : " + widget.diagnose,
+                              "Diagnosis: " + widget.diagnose,
                               style: TextStyle(
                                 color: Color.fromRGBO(0, 0, 0, 1),
                                 fontSize: 17,

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:HMS/models/users.dart';
+import 'package:provider/provider.dart';
 
 import '../doctors/Form_Screen.dart';
 import '../../widget/user_image_picker.dart';
@@ -50,9 +52,10 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor : Colors.teal[500],
+      backgroundColor: Theme.of(context).backgroundColor,
+      //Colors.teal[500],
       appBar: AppBar(
-        backgroundColor: Colors.teal[700],
+        //  backgroundColor: Colors.teal[700],
         elevation: 0.0,
         title: Text('Registration Form '),
         actions: [
@@ -93,7 +96,7 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 10.0),
                 TextFormField(
-                   keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: inputTextDecoration.copyWith(hintText: 'Email'),
                   validator: (val) {
                     if (val.isEmpty) return 'Enter an Email';
@@ -109,6 +112,23 @@ class _RegisterState extends State<Register> {
                     });
                   },
                 ),
+                // TextFormField(
+                //   decoration:
+                //       inputTextDecoration.copyWith(hintText: 'Backup Email'),
+                //   validator: (val) {
+                //     if (val.isEmpty) return 'Enter your Gmail';
+                //     var i =val.indexOf("@");
+                //     if (!(val.contains('g', i)&&val.contains('m', i+1)&&val.contains('a',i+2)&&val.contains('i', i+3)&&val.contains('l', i+4)))
+                //       return "Please Enter Valid Email";
+                //     return null;
+                //   },
+                //   onChanged: (val) {
+                //     setState(() {
+                //       userName = val;
+                //     });
+                //   },
+                // ),
+               // SizedBox(height: 10.0),
                 SizedBox(height: 10.0),
                 TextFormField(
                   obscureText: true,
@@ -247,7 +267,7 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20.0),
                 RaisedButton(
-                  color: Colors.pink[400],
+                  color: Color.fromRGBO(0, 153, 255, 1),
                   child: Text(
                     'Register ',
                     style: TextStyle(color: Colors.white),
@@ -272,6 +292,12 @@ class _RegisterState extends State<Register> {
                       ));
                     }
                     if (_formKey.currentState.validate()) {
+                      var index = email.indexOf('@');
+                      if (email.contains('d', index))
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => FormScreen()));
+
+                      //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FormScreen()));
                       dynamic result = await _auth.registerWithEmailAndPassword(
                           date: _date,
                           address: address,
@@ -286,9 +312,11 @@ class _RegisterState extends State<Register> {
                       if (result == null) {
                         setState(() {
                           error = 'Please enter a vaild email ';
-                        });   
+                        });
                       }
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FormScreen()));
+
+                      //return either doctor home or patient home widget
+
                     }
                   },
                 ),

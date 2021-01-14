@@ -1,6 +1,7 @@
 import 'package:HMS/screens/FrontDesk.dart/Acess%20Data.dart';
 import 'package:HMS/screens/FrontDesk.dart/Service_fees.dart';
 import 'package:HMS/screens/FrontDesk.dart/bed_reservation.dart';
+import 'package:HMS/screens/FrontDesk.dart/choose_manger.dart';
 import '../chat/patientchatlist.dart';
 import 'package:flutter/material.dart';
 import '../../services/auth.dart';
@@ -51,12 +52,12 @@ class _FrontHomeState extends State<FrontHome> {
         body: list(context),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.message),
-          onPressed:  () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PatientChatList(),
-                ),
-              ),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PatientChatList(),
+            ),
+          ),
           splashColor: Colors.lightBlueAccent,
           elevation: 10,
           tooltip: "Chat",
@@ -102,6 +103,17 @@ Widget list(BuildContext context) {
               context,
               MaterialPageRoute(
                 builder: (context) => BedReservation(),
+              ));
+        },
+      ),
+      ListTile(
+        title: Text('Choose Manger'),
+        trailing: Icon(Icons.add_to_photos_rounded),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChooseMangerScreen(),
               ));
         },
       ),

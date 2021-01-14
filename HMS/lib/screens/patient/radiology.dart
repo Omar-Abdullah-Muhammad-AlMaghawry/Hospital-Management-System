@@ -1,3 +1,4 @@
+import 'package:HMS/screens/patient/lab_radiolgy_book.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -12,9 +13,23 @@ class _RadiologyState extends State<Radiology> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-       // backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        // backgroundColor: Colors.teal,
         title: Text('Rediological Tests'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -51,16 +66,13 @@ class _RadiologyState extends State<Radiology> {
                     RaisedButton(
                       color: Colors.teal,
                       child: Text('Book'),
-                      onPressed: () {
-                        Firestore.instance
-                            .collection('/appoiment')
-                            .document('1') //user id
-                            .setData({
-                          'price': documents[index]['price'],
-                          'name': documents[index]['name'],
-                          'depart': 'Radiology'
-                       
-                        });
+                      onPressed: () async {
+                        // final selectedDate = await _selectDateTime(context);
+                        // print(selectedDate);
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Date(documents[index]['name'],
+                              documents[index]['price'], 'Ahmed'),
+                        ));
                       },
                     ),
                   ],

@@ -95,7 +95,7 @@ class PatientHomeScreen extends StatelessWidget {
           ),
           NiceButton(
             onPressed: moveToMyHistory,
-            nameOfButton: "My Midical History",
+            nameOfButton: "My Medical History",
             widthOfButton: double.infinity,
             heightOfButton: 75,
           ),

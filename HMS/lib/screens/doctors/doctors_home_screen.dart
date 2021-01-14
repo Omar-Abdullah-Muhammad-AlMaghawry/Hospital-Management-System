@@ -2,7 +2,7 @@ import '../masterHome.dart';
 import '../MyProfile.dart';
 import './my_appointment_doctors_screen.dart';
 
-import './MyScuduleScreen.dart';
+import 'MyScheduleScreen.dart';
 
 import '../chat/doctorchatlist.dart';
 import '../chat/message_list_screen.dart';

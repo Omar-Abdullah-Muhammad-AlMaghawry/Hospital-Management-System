@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:HMS/screens/doctors/Form_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../models/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -128,6 +131,7 @@ class AuthService {
         "address": address,
         " phoneNumber": phoneNumber,
       });
+     
       return _userFromFirebaseUser(user0);
     } catch (e) {
       print(e.toString());

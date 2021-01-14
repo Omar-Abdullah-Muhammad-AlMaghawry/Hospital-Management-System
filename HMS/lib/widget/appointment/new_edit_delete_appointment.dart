@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:HMS/screens/patient/fawry.dart';
+
 import '../../moduls/reciever.dart';
 import '../../screens/doctors/doctors_list_screen%20copy.dart';
 import './doctor-list.dart';
@@ -141,6 +143,8 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
       _isLoading = false;
       // ListTileOfDoctors.isChoosed = false;
       Navigator.of(context).pop();
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => RandomGen()));
       _controller1.clear();
       _controller2.clear();
       _controller3.clear();
@@ -247,7 +251,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                                   children: [
                                     Text(
                                       !_isChoosed
-                                          ? "Choose The Doctor you Want to Reserve"
+                                          ? "Choose The Doctor you Want to Reserve with"
                                           : DoctorsList.reciever.name,
                                       style: !_isChoosed
                                           ? TextStyle(color: Colors.black54)
@@ -407,7 +411,7 @@ class _NewEditDeleteAppointmentState extends State<NewEditDeleteAppointment> {
                             });
                           },
                           child: Text(_isClinic
-                              ? "Anlysis/Radiation Reservaing"
+                              ? "Anlysis/Radiation Reservation"
                               : "Clinic Reservation")),
                 ],
               ),

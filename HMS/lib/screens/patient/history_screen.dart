@@ -26,7 +26,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
+    //  backgroundColor: Colors.white,
       appBar: AppBar(
         actions: [
           FlatButton.icon(

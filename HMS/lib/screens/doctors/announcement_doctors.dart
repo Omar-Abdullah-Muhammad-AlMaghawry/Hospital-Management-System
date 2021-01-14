@@ -34,21 +34,21 @@ class _AnnouncedoctorScreenState extends State<AnnouncedoctorScreen> {
         //  backgroundColor:Theme.of(context).backgroundColor,
         //   backgroundColor: Color(0xFFB3E5FC),
         appBar: AppBar(
-          backgroundColor: Color(0xFFD6D6D6),
+          //    backgroundColor: Color(0xFFD6D6D6),
           title: Text('Announcements'),
           actions: [
             FlatButton.icon(
-            icon: Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-            label: Text('Home',
-                style: TextStyle(color: Colors.white, fontSize: 16.0)),
-            onPressed: () {
-               Navigator.of(context).pop();
-
-            },
-          )
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              label: Text('Home',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0)),
+              onPressed: () {
+                Navigator.of(context).pop();
+                 Navigator.of(context).pop();
+              },
+            )
           ],
         ),
         //  drawer: DoctorDrawer(false),
@@ -62,7 +62,8 @@ class _AnnouncedoctorScreenState extends State<AnnouncedoctorScreen> {
                   padding: EdgeInsets.fromLTRB(5, 5, 10, 3),
                   child: Expanded(
                     child: Container(
-                      color: Color(0xFFB3E5FC),
+                      color: Theme.of(context).backgroundColor,
+                      // Color(0xFFB3E5FC),
                       child: StreamBuilder<QuerySnapshot>(
                           stream: _stream,
                           builder: (context, snapshot) {
@@ -147,7 +148,8 @@ class PostBubble extends StatelessWidget {
                 post,
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.bold,
+                  //   fontWeight: FontWeight.w300,
                 ),
               ),
             ),

@@ -15,8 +15,7 @@ class _DoctorListState extends State<DoctorList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: _getClinicsAppBar(context),
       body: Center(
         child: Container(
@@ -111,13 +110,13 @@ class _DoctorListState extends State<DoctorList> {
                       ListTile(
                         leading: FlatButton(
                             child: Text(
-                              'InternalMedicine Department',
+                              'Internal Medicine Department',
                               style: TextStyle(fontSize: 20.0),
                             ),
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => InternalMedicineDoctors(
-                                    'InternalMedicine Department'),
+                                    'Internal Medicine Department'),
                               ));
                             }),
                       ),
@@ -180,7 +179,8 @@ _getClinicsAppBar(BuildContext context) {
     preferredSize: Size.fromHeight(50),
     child: Container(
       alignment: Alignment.bottomCenter,
-       color: Colors.teal[700],
+      color: Theme.of(context).appBarTheme.color,
+      // Colors.teal[700],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -188,8 +188,7 @@ _getClinicsAppBar(BuildContext context) {
             icon: Icon(Icons.arrow_back),
             color: Colors.white,
             onPressed: () {
-               Navigator.of(context).pop();
-             
+              Navigator.of(context).pop();
             },
           ),
           Text(
@@ -204,8 +203,8 @@ _getClinicsAppBar(BuildContext context) {
             label: Text('Home',
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
-               Navigator.of(context).pop();
-
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
           )
         ],
@@ -215,11 +214,11 @@ _getClinicsAppBar(BuildContext context) {
 }
 
 class InternalMedicineDoctors extends StatefulWidget {
-  final Title;
-  InternalMedicineDoctors(this.Title);
+  final title;
+  InternalMedicineDoctors(this.title);
   @override
   _InternalMedicineDoctorsState createState() =>
-      _InternalMedicineDoctorsState(Title);
+      _InternalMedicineDoctorsState(title);
 }
 
 class _InternalMedicineDoctorsState extends State<InternalMedicineDoctors> {
@@ -231,7 +230,21 @@ class _InternalMedicineDoctorsState extends State<InternalMedicineDoctors> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-       // backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ], // backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -288,11 +301,11 @@ class _InternalMedicineDoctorsState extends State<InternalMedicineDoctors> {
 }
 
 class DermatologyDoctors extends StatefulWidget {
-  final Title;
-  DermatologyDoctors(this.Title);
+  final title;
+  DermatologyDoctors(this.title);
 
   @override
-  _DermatologyDoctorsState createState() => _DermatologyDoctorsState(Title);
+  _DermatologyDoctorsState createState() => _DermatologyDoctorsState(title);
 }
 
 class _DermatologyDoctorsState extends State<DermatologyDoctors> {
@@ -302,9 +315,23 @@ class _DermatologyDoctorsState extends State<DermatologyDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-       // backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        // backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -323,6 +350,7 @@ class _DermatologyDoctorsState extends State<DermatologyDoctors> {
             );
           }
           final documents = streamSnapshot.data.documents;
+
           return ListView.builder(
             itemCount: documents.length,
             itemBuilder: (ctx, index) => Column(
@@ -362,10 +390,10 @@ class _DermatologyDoctorsState extends State<DermatologyDoctors> {
 }
 
 class SurgeryDoctors extends StatefulWidget {
-  final Title;
-  SurgeryDoctors(this.Title);
+  final title;
+  SurgeryDoctors(this.title);
   @override
-  _SurgeryDoctorsState createState() => _SurgeryDoctorsState(Title);
+  _SurgeryDoctorsState createState() => _SurgeryDoctorsState(title);
 }
 
 class _SurgeryDoctorsState extends State<SurgeryDoctors> {
@@ -376,9 +404,23 @@ class _SurgeryDoctorsState extends State<SurgeryDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-     //   backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        //   backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -436,10 +478,10 @@ class _SurgeryDoctorsState extends State<SurgeryDoctors> {
 }
 
 class CardiologyDoctors extends StatefulWidget {
-  final Title;
-  CardiologyDoctors(this.Title);
+  final title;
+  CardiologyDoctors(this.title);
   @override
-  _CardiologyDoctorsState createState() => _CardiologyDoctorsState(Title);
+  _CardiologyDoctorsState createState() => _CardiologyDoctorsState(title);
 }
 
 class _CardiologyDoctorsState extends State<CardiologyDoctors> {
@@ -450,9 +492,23 @@ class _CardiologyDoctorsState extends State<CardiologyDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-  //      backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        //      backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -508,10 +564,10 @@ class _CardiologyDoctorsState extends State<CardiologyDoctors> {
 }
 
 class OrthopedicDoctors extends StatefulWidget {
-  final Title;
-  OrthopedicDoctors(this.Title);
+  final title;
+  OrthopedicDoctors(this.title);
   @override
-  _OrthopedicDoctorsState createState() => _OrthopedicDoctorsState(Title);
+  _OrthopedicDoctorsState createState() => _OrthopedicDoctorsState(title);
 }
 
 class _OrthopedicDoctorsState extends State<OrthopedicDoctors> {
@@ -521,10 +577,23 @@ class _OrthopedicDoctorsState extends State<OrthopedicDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-
-     //   backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        //   backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -580,10 +649,10 @@ class _OrthopedicDoctorsState extends State<OrthopedicDoctors> {
 }
 
 class ENTDoctors extends StatefulWidget {
-  final Title;
-  ENTDoctors(this.Title);
+  final title;
+  ENTDoctors(this.title);
   @override
-  _ENTDoctorsState createState() => _ENTDoctorsState(Title);
+  _ENTDoctorsState createState() => _ENTDoctorsState(title);
 }
 
 class _ENTDoctorsState extends State<ENTDoctors> {
@@ -593,9 +662,23 @@ class _ENTDoctorsState extends State<ENTDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-      //  backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        //  backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -606,7 +689,7 @@ class _ENTDoctorsState extends State<ENTDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ENT').snapshots(),
+        stream: Firestore.instance.collection('/ ENT').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -652,10 +735,10 @@ class _ENTDoctorsState extends State<ENTDoctors> {
 }
 
 class PediatricsDoctors extends StatefulWidget {
-  final Title;
-  PediatricsDoctors(this.Title);
+  final title;
+  PediatricsDoctors(this.title);
   @override
-  _PediatricsDoctorsState createState() => _PediatricsDoctorsState(Title);
+  _PediatricsDoctorsState createState() => _PediatricsDoctorsState(title);
 }
 
 class _PediatricsDoctorsState extends State<PediatricsDoctors> {
@@ -665,9 +748,23 @@ class _PediatricsDoctorsState extends State<PediatricsDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-     //   backgroundColor: Colors.teal,
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        //   backgroundColor: Colors.teal,
         title: Text(text),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -678,7 +775,7 @@ class _PediatricsDoctorsState extends State<PediatricsDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/Pediatrics').snapshots(),
+        stream: Firestore.instance.collection('/Pediartics').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -730,9 +827,22 @@ class _LabDoctorsState extends State<LabDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-   //     backgroundColor: Colors.red[900],
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+        //     backgroundColor: Colors.red[900],
         title: Text('Lab Doctors'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -803,10 +913,23 @@ class _RadiologyDoctorsState extends State<RadiologyDoctors> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-
       appBar: AppBar(
-      //  backgroundColor: Colors.red[900],
+        //  backgroundColor: Colors.red[900],
         title: Text('Radiology Doctors'),
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
@@ -816,7 +939,8 @@ class _RadiologyDoctorsState extends State<RadiologyDoctors> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/RadiologySpecialist').snapshots(),
+        stream:
+            Firestore.instance.collection('/RadiologySpecialist').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(

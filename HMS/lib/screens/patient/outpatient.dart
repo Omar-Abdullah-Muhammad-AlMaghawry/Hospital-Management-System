@@ -32,6 +32,7 @@ class _DepartmentsState extends State<Departments> {
                 style: TextStyle(color: Colors.white, fontSize: 16.0)),
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
           )
         ],
@@ -132,13 +133,13 @@ class _DepartmentsState extends State<Departments> {
                       ListTile(
                         leading: FlatButton(
                             child: Text(
-                              'InternalMedicine Department',
+                              'Internal Medicine Department',
                               style: TextStyle(fontSize: 20.0),
                             ),
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => InternalMedicine(
-                                    'InternalMedicine Department'),
+                                    'Internal Medicine Department'),
                               ));
                             }),
                       ),
@@ -258,6 +259,21 @@ class _InternalMedicineState extends State<InternalMedicine> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        actions: [
+          FlatButton.icon(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: Text('Home',
+                style: TextStyle(color: Colors.white, fontSize: 16.0)),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          )
+        ],
         //   backgroundColor: Colors.teal,
         title: Text(text),
         // leading: IconButton(
@@ -272,7 +288,7 @@ class _InternalMedicineState extends State<InternalMedicine> {
         // ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/InternalMedicine').snapshots(),
+        stream: Firestore.instance.collection('/ InternalMedicine').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -391,7 +407,7 @@ class _DermatologyState extends State<Dermatology> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/Dermatology').snapshots(),
+        stream: Firestore.instance.collection('/ Dermatology').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -495,7 +511,7 @@ class _SurgeryState extends State<Surgery> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/Surgery').snapshots(),
+        stream: Firestore.instance.collection('/ Surgery').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -600,7 +616,7 @@ class _CardiologyState extends State<Cardiology> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/Cardiology').snapshots(),
+        stream: Firestore.instance.collection('/ Cardiology').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -703,7 +719,7 @@ class _OrthopedicState extends State<Orthopedic> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/Orthopedic').snapshots(),
+        stream: Firestore.instance.collection('/ Orthopedic').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -806,7 +822,7 @@ class _ENTState extends State<ENT> {
         ),
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('/ENT').snapshots(),
+        stream: Firestore.instance.collection('/ ENT').snapshots(),
         builder: (ctx, streamSnapshot) {
           if (streamSnapshot.connectionState == ConnectionState.waiting) {
             return Center(

@@ -27,7 +27,7 @@ class HomeWrapper extends StatelessWidget {
       return PatientHomeScreen() ?? Center();
     }
     else if (ok.contains('f', index)) {
-      return DoctorsHomeScreen() ?? Center();
+      return FrontHome() ?? Center();
     } else if (ok.contains('g', index)){
       Center();
     }

@@ -1,10 +1,10 @@
 import 'package:HMS/screens/doctors/announcement_doctors.dart';
+import 'package:HMS/screens/doctors/announcement_manager.dart';
 import 'package:HMS/screens/doctors/doctors.dart';
+import 'package:HMS/screens/hospital_map.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../screens/map.dart';
 
 //TODO bind drawer buttons to the pages the point to.
 class DoctorDrawer extends StatelessWidget {
@@ -19,7 +19,7 @@ class DoctorDrawer extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              color: Color(0xFF8F0026),
+              color: Color.fromRGBO(0, 153, 255, 1),
               padding: EdgeInsets.symmetric(vertical: 40),
               child: FutureBuilder(
                 future: FirebaseFirestore.instance
@@ -140,8 +140,20 @@ class DoctorDrawer extends StatelessWidget {
               padding: EdgeInsets.only(top: 15),
               child: FlatButton(
                 color: Colors.blue[100],
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => AnnouncedoctorScreen())),
+                onPressed: () async {
+                  var user = FirebaseAuth.instance.currentUser;
+                  var docDoc = await FirebaseFirestore.instance
+                      .collection("doctors")
+                      .doc(user.uid)
+                      .get();
+                  var isManger = docDoc.data()["isManger"];
+                  if (!isManger)
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AnnouncedoctorScreen()));
+                  else 
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AnnounceManagerScreen()));
+                },
                 child: Container(
                   width: double.infinity,
                   height: 50,
